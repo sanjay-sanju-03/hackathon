@@ -11,23 +11,15 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Leaflet Routing Machine CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-        #location-info {
-            font-size: 16px;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <nav>
-    <a href="#art">Art</a>
+    <a href="#Home">Home</a>
     <a href="cuisine.html">Cuisine</a>
     <a href="experience.html">Experiences</a>
+    <a href="events.html">Events</a>
         <div class="search-wrapper">
         <input type="text" id="searchInput" placeholder="Search cultural heritage sites...">
         <i class="fas fa-search search-icon"></i>
@@ -77,14 +69,15 @@
     
     <div class="filter-container">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="temple">Temples</button>
+        <button class="filter-btn" data-filter="temple">sanctuary</button>
         <button class="filter-btn" data-filter="fort">Forts</button>
         <button class="filter-btn" data-filter="culture">Culture</button>
         <button class="filter-btn" data-filter="nature">Nature</button>
+        <button class="filter-btn" data-filter="ksdp">Products of Kasaragod</button>
     </div>
 
     <div class="cards">
-        <div class="card" data-category="culture">
+        <div class="card" data-category="all">
             <img src="images/Asap.jpg" alt="ASAP">
             <div class="card-content">
                 <h3>ASAP Community Skill Park</h3>
@@ -92,11 +85,11 @@
             </div>
             <div class="card-buttons">
                 <button onclick="showOnMap(12.5182, 75.0141, 'ASAP Community Skill Park')">Show on Map</button>
-                <a href="https://wa.me/9544877787">Contact on WhatsApp</a>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
             </div>
         </div>
 
-        <div class="card" data-category="temple">
+        <div class="card" data-category="sanctuary">
             <img src="images/Anantapura_Lake_Temple.jpg" alt="Anantapura Lake Temple">
             <div class="card-content">
                 <h3>Anantapura Lake Temple</h3>
@@ -108,6 +101,18 @@
             </div>
         </div>
 
+        <div class="card" data-category="All">
+            <img src="images/houseb.jpeg" alt="Nileshwar HouseBoat">
+            <div class="card-content">
+                <h3>Nileshwar HouseBoats</h3>
+                <p>Enjoy the nature with nileshwar houseboat.</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="location.href='house.html'">Book your houseboat Trip</button>
+                <a href="https://wa.me/9846913111">Contact on WhatsApp</a>
+            </div>
+        </div>
+
         <div class="card" data-category="fort">
             <img src="images/bekalfort front.jpg" alt="Bekal Fort">
             <div class="card-content">
@@ -116,7 +121,7 @@
             </div>
             <div class="card-buttons">
                 <button onclick="showOnMap(12.3917, 75.0328, 'Bekal Fort')">Show on Map</button>
-                <a href="https://wa.me/9544877787">Contact on WhatsApp</a>
+                <a href="https://wa.me/+91 4672 950 500">Contact on WhatsApp</a>
             </div>
         </div>
     </div>
@@ -131,7 +136,7 @@
 </section>
 
 <footer>
-    <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
+    <p>&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
