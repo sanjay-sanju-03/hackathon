@@ -1,0 +1,117 @@
+/* General Styles */
+:root {
+    --primary-color: #750c47;
+    --secondary-color: #388bdd;
+    --accent-color: #a04545;
+    --white: #ffffff;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    scroll-behavior: smooth;
+}
+
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: #f9f9f9;
+}
+
+nav button {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top:20px;
+    margin-left:10px;
+}
+
+nav button:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+nav button a {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.hero {
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#anan{
+   color:rgb(185, 8, 58); 
+   text-align:center;
+}
+#cover-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire container */
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Places the video behind other content */
+}
+
+
+
+/* Footer Styles */
+footer {
+    background: #333;
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    nav button {
+        margin-bottom: 1rem;
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+
+iframe#cover-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Places the video behind other content */
+    object-fit: cover;
+}
