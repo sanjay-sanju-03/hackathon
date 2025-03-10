@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasaragod Cuisine Guide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2c3e50;
+            --accent-color: #45a049;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--secondary-color);
+            padding: 0.5rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cuisine-section {
+            padding: 4rem 2rem;
+        }
+
+        .cuisine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cuisine-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .cuisine-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .cuisine-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .cuisine-content {
+            padding: 1.5rem;
+        }
+
+        .cuisine-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cuisine-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cuisine-section {
+                padding: 2rem 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cuisine.html">Cuisine</a>
+        <a href="experience.html">Experiences</a>
+        <a href="events.html">Events</a>
+    </nav>
+
+    <!-- Rest of the content -->
+
+    <div class="hero">
+        <div>
+            <h1>Kasaragod's Culinary Delights</h1>
+            <p>Discover the authentic flavors of Northern Kerala</p>
+        </div>
+    </div>
+
+    <section class="cuisine-section">
+        <div class="cuisine-grid">
+            <div class="cuisine-card">
+                <img src="images/puttu.jpg" alt="Puttu">
+                <div class="cuisine-content">
+                    <h3>Puttu & Kadala Curry</h3>
+                    <p>Traditional steamed rice cake served with black chickpea curry. A perfect breakfast combination.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Hotel Rahmath, Kasaragod Town
+                    </div>
+                    <div class="price">₹50 - ₹80</div>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/karimeen.jpg" alt="Karimeen">
+                <div class="cuisine-content">
+                    <h3>Karimeen Pollichathu</h3>
+                    <p>Pearl spot fish marinated in spices, wrapped in banana leaf and grilled to perfection.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Bekal Beach Restaurant
+                    </div>
+                    <div class="price">₹300 - ₹400</div>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/biriyani.jpg" alt="Biriyani">
+                <div class="cuisine-content">
+                    <h3>Beef Pallikari</h3>
+                    <p>Beef Pallikari is a flavorful, spicy beef curry from Kasaragod, made with tender meat, aromatic spices, and roasted coconut. A true taste of Kerala!.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kolya Hotel, Madhur, Kasaragod
+                    </div>
+                    <div class="price">₹150 - ₹250</div>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/pathiri.jpg" alt="Pathiri">
+                <div class="cuisine-content">
+                    <h3>Pathiri</h3>
+                    <p>Rice flour bread served with spicy chicken curry, a Malabar specialty.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Malabar Kitchen, Nileshwar
+                    </div>
+                    <div class="price">₹100 - ₹150</div>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/seafood.jpg" alt="Seafood">
+                <div class="cuisine-content">
+                    <h3>Fresh Seafood Platter</h3>
+                    <p>Variety of fresh seafood including prawns, crabs, and fish prepared in local style.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
+                    </div>
+                    <div class="price">₹500 - ₹800</div>
+                </div>
+            </div>
+                <div class="cuisine-card">
+                    <img src="images/pickle.jpg" alt="Seafood">
+                    <div class="cuisine-content">
+                        <h3>Kallumakkaya Pickle</h3>
+                        <p>Kallumakkaya Pickle is a flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices. This savory pickle offers a rich and bold taste of Kasaragod's coastal cuisine..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
+                        </div>
+                        <div class="price">₹250 - ₹400</div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+
+<section class="section" id="map-section">
+    <h2>Location Map</h2>
+    <div id="map"></div>
+</section>
+    
+<footer>
+    <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
+</footer>
+    
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
