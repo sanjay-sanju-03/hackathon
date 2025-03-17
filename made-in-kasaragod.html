@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made in Kasaragod - Discover Local Treasures</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/made-in-kasaragod.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="cuisine.html">Cuisine</a>
+    <a href="experience.html">Experiences</a>
+    <a href="events.html">Events</a>
+    <a href="house.html">Houseboats</a>
+    <a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search local products...">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+</nav>
+
+<div class="hero-container">
+    <div class="hero-content">
+        <h1>Discover Kasaragod's Local Treasures</h1>
+    </div>
+</div>
+
+<section class="section">
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+        <button class="filter-btn" data-filter="textiles">Textiles</button>
+        <button class="filter-btn" data-filter="food">Food Products</button>
+        <button class="filter-btn" data-filter="art">Art</button>
+        <button class="filter-btn" data-filter="spices">Spices</button>
+    </div>
+
+    <div class="cards">
+        <div class="card" data-category="handicrafts">
+            <div class="product-badge">Best Seller</div>
+            <img src="images/kasaragod-handloom.jpg" alt="Kasaragod Handloom">
+            <div class="card-content">
+                <h3>Kasaragod Handloom</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Traditional handwoven textiles known for their unique patterns and superior quality. Each piece tells a story of our rich cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Seller
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Handloom')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="food">
+            <div class="product-badge">Popular</div>
+            <img src="images/kasaragod-halwa.jpg" alt="Kasaragod Special Halwa">
+            <div class="card-content">
+                <h3>Kasaragod Special Halwa</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Famous sweet delicacy made with traditional recipes passed down through generations. A perfect blend of local ingredients and authentic taste.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Special Halwa')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="art">
+            <div class="product-badge">Unique</div>
+            <img src="images/theyyam-crafts.jpg" alt="Theyyam Crafts">
+            <div class="card-content">
+                <h3>Theyyam Art & Crafts</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>Handcrafted decorative items inspired by the traditional Theyyam art form. Each piece is a masterpiece of cultural expression.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Artist
+                </a>
+                <button class="location-btn" onclick="showStores('Theyyam Art & Crafts')">
+                    <i class="fas fa-map-marker-alt"></i> Visit Gallery
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="textiles">
+            <div class="product-badge">Premium</div>
+            <img src="images/kasaragod-saree.jpg" alt="Kasaragod Sarees">
+            <div class="card-content">
+                <h3>Traditional Kasaragod Sarees</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Exquisite handwoven sarees featuring traditional Kerala designs and motifs. A perfect blend of elegance and cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Seller
+                </a>
+                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="spices">
+            <div class="product-badge">Organic</div>
+            <img src="images/kasaragod-spices.jpg" alt="Kasaragod Spices">
+            <div class="card-content">
+                <h3>Kasaragod Spice Collection</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Premium quality organic spices sourced directly from local farmers. Experience the authentic flavors of Kasaragod.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Spice Collection')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+            
+            cards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Store location functionality
+function showStores(productName) {
+    // This would typically show a modal or redirect to a map with store locations
+    alert(`Showing stores for ${productName}. This feature will be implemented soon!`);
+}
+</script>
+
+</body>
+</html> 
