@@ -42,13 +42,6 @@ nav {
     transition: all 0.3s ease;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 nav a {
     color: var(--secondary-color);
     font-weight: 500;
@@ -94,6 +87,53 @@ nav a.active {
     z-index: 1001;
 }
 
+/* Improved Mobile Menu Search */
+.mobile-search-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.mobile-search-wrapper input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.2rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--secondary-color);
+}
+
+.mobile-search-wrapper input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.15);
+    background: white;
+}
+
+.mobile-search-wrapper .search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.mobile-search-wrapper .search-button:hover {
+    color: var(--accent-color);
+}
+
+.mobile-search-wrapper input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
 .hamburger:hover {
     color: var(--accent-color);
 }
@@ -114,6 +154,7 @@ nav a.active {
     transition: right 0.4s ease;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    padding-bottom: 3rem;
 }
 
 .mobile-menu.active {
@@ -124,7 +165,7 @@ nav a.active {
     display: block;
     color: var(--secondary-color);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 1rem 0;
     margin: 0.5rem 0;
     text-decoration: none;
@@ -173,62 +214,14 @@ nav a.active {
     transform: rotate(90deg);
 }
 
-/* Mobile Search */
-.mobile-search-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    width: 100%;
-}
-
-.mobile-search-wrapper input {
-    width: 100%;
-    padding: 1rem 3rem 1rem 1.2rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--secondary-color);
-}
-
-.mobile-search-wrapper input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.15);
-    background: white;
-}
-
-.mobile-search-wrapper .search-button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    font-size: 1rem;
-}
-
-.mobile-search-wrapper .search-button:hover {
-    color: var(--accent-color);
-}
-
-.mobile-search-wrapper input::placeholder {
-    color: #999;
-    font-style: italic;
-}
-
 /* Header */
 .header {
     padding: 3.5rem 0;
     text-align: center;
     position: relative;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     margin-top: 70px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header h1 {
@@ -268,7 +261,6 @@ nav a.active {
     display: flex;
     flex-direction: column;
     height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .card:hover {
@@ -280,7 +272,6 @@ nav a.active {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .card-content {
@@ -294,14 +285,11 @@ nav a.active {
     margin-bottom: 1rem;
     flex-grow: 1;
     line-height: 1.6;
-    color: #333;
 }
 
 .card-content small {
-    color: #777;
+    color: #666;
     align-self: flex-end;
-    font-size: 0.85rem;
-    font-style: italic;
 }
 
 /* Upload Button */
@@ -312,8 +300,8 @@ nav a.active {
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    background: var(--primary-gradient);
-    color: white;
+    background: var(--light-bg);
+    color: #FF6B6B;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -324,7 +312,7 @@ nav a.active {
 }
 
 .upload-btn:hover {
-    transform: scale(1.1) rotate(90deg);
+    transform: scale(1.1) rotate(180deg);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -354,7 +342,6 @@ nav a.active {
     border-radius: 24px;
     position: relative;
     animation: modalSlide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
 .modal-header {
@@ -367,11 +354,6 @@ nav a.active {
     font-size: 2em;
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
-}
-
-.modal-header p {
-    color: #666;
-    font-size: 1.1rem;
 }
 
 .form-group {
@@ -391,7 +373,6 @@ nav a.active {
     border: 2px solid #e1e8f0;
     border-radius: 12px;
     transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
 }
 
 .form-input:focus {
@@ -415,7 +396,6 @@ nav a.active {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .submit-btn:hover {
@@ -462,6 +442,7 @@ nav a.active {
 @media (max-width: 992px) {
     .hamburger {
         display: block;
+        margin-left: auto;
     }
     
     .nav-links {
@@ -531,9 +512,9 @@ nav a.active {
     }
     
     .content-grid {
-        grid-template-columns: 1fr;
         padding: 1rem;
         gap: 1.5rem;
+        grid-template-columns: 1fr;
     }
     
     .modal-content {
@@ -584,5 +565,74 @@ nav a.active {
     
     .card-content p {
         font-size: 0.9em;
+    }
+}
+
+/* Treasures Heading */
+.treasures-heading {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/ksd.jpg') no-repeat center center;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+    margin: 0 auto 3rem;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.treasures-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    color: white;
+    margin: 0;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    line-height: 1.3;
+    max-width: 900px;
+    padding: 0 2rem;
+    text-align: center;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.treasures-heading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(230, 126, 34, 0.3), rgba(41, 128, 185, 0.3));
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .treasures-heading {
+        padding: 3rem 0;
+    }
+    
+    .treasures-heading h2 {
+        font-size: 2.5em;
+        letter-spacing: 3px;
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .treasures-heading {
+        padding: 2.5rem 0;
+    }
+    
+    .treasures-heading h2 {
+        font-size: 2em;
+        letter-spacing: 2px;
+        padding: 0 1rem;
     }
 }
