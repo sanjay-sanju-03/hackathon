@@ -11,7 +11,19 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Leaflet Routing Machine CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="css/styles.css">
+=======
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: 40px;
+        }
+    </style>
+>>>>>>> Stashed changes
 </head>
 <body>
 
@@ -87,13 +99,13 @@
 
     <div class="cards">
         <div class="card" data-category="all">
-            <img src="images/Asap.jpg" alt="ASAP">
+            <img id="asap-image" src="images/Asap.jpg" alt="ASAP">
             <div class="card-content">
-                <h3>ASAP Community Skill Park</h3>
+                <a href="asap-skill-park.html"><h3>ASAP Community Skill Park</h3></a>
                 <p>A center for skill development and vocational training in Kasaragod.</p>
             </div>
             <div class="card-buttons">
-                <button onclick="showOnMap(12.5182, 75.0141, 'ASAP Community Skill Park')">Show on Map</button>
+                <button onclick="location.href='asap-skill-park.html'">Show more details</button>
                 <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
             </div>
         </div>
@@ -289,6 +301,20 @@
     }
 
     getUserLocation();
+
+    const asapImages = [
+        'images/Asap.jpg',
+        'images/asap2.jpg',
+        'images/asap3.jpg',
+        'images/asap4.jpg'
+    ];
+    let currentImageIndex = 0;
+    const asapImageElement = document.getElementById('asap-image');
+
+    setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % asapImages.length;
+        asapImageElement.src = asapImages[currentImageIndex];
+    }, 2000);
 </script>
 </body>
 </html>
