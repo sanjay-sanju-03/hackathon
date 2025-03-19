@@ -4,86 +4,276 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events in Kasaragod</title>
+    
+    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- External CSS -->
     <link rel="stylesheet" href="css/mobile-menu.css">
     <link rel="stylesheet" href="css/events.css">
+
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2c3e50;
+            --accent-color: #45a049;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--secondary-color);
+            padding: 0.5rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #searchInput {
+            padding: 0.5rem;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            width: 200px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-icon {
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('images/theyyam.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Events Section */
+        .events-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .event-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (min-width: 768px) {
+            .event-card {
+                flex-direction: row;
+            }
+        }
+
+        .event-image {
+            flex: 1;
+            min-height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .event-content {
+            flex: 2;
+            padding: 2rem;
+        }
+
+        .event-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .event-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: var(--white);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-left">
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="cuisine.html">Cuisine</a>
-                <a href="experience.html">Experiences</a>
-                <a href="events.html" class="active">Events</a>
-                <a href="house.html">Houseboats</a>
-                <a href="arts-artisans.html">Art & Artisans</a>
-                <a href="made-in-kasaragod.html">Made in Kasaragod</a>
-            </div>
-        </div>
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Search events...">
-            <i class="fas fa-search search-icon"></i>
-            <div class="search-suggestions"></div>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <div>
-            <h1>Upcoming Events</h1>
-            <p>Discover the vibrant cultural events of Kasaragod</p>
+<!-- Navigation -->
+<nav>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html">Experiences</a>
+            <a href="events.html" class="active">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
+            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div>
+        <h1>Upcoming Events</h1>
+        <p>Discover the vibrant cultural events of Kasaragod</p>
+    </div>
+</div>
+
+<!-- Events Section -->
+<div class="events-container">
+    <!-- Basic Scuba Lessons -->
+    <div class="event-card">
+        <div class="event-image" style="background-image: url('images/scuba.jpg')"></div>
+        <div class="event-content">
+            <div class="event-date">02 May 2025</div>
+            <h2 class="event-title">Basic Scuba Lessons</h2>
+            <p class="event-description">Learn the fundamentals of scuba diving with professional instructors.</p>
+            <a href="#" class="btn btn-secondary" target="_blank">Learn More</a>
         </div>
     </div>
 
-    <div class="events-container">
-        <!-- Basic Scuba Lessons -->
-        <div class="event-card">
-            <div class="event-image" style="background-image: url('images/scuba.jpg')"></div>
-            <div class="event-content">
-                <div class="event-date">02 May 2025</div>
-                <h2 class="event-title">Basic Scuba Lessons</h2>
-                <p class="event-description">Learn the fundamentals of scuba diving with professional instructors in a safe environment.</p>
-                <div class="event-details">
-                    <div class="detail-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Gvhss Mogral</span>
-                    </div>
-	<a href="https://allevents.in/kasaragod/basic-scuba-lessons/200027838349920" class="btn btn-secondary" target="_blank">Learn More</a>
-		
-                    
-                </div>
-                
-            </div>
+    <!-- Sahitya Gana Nritya Vaibhava -->
+    <div class="event-card">
+        <div class="event-image" style="background-image: url('images/sahitya.jpg')"></div>
+        <div class="event-content">
+            <div class="event-date">18 Mar 2025</div>
+            <h2 class="event-title">Sahitya Gana Nritya Vaibhava</h2>
+            <p class="event-description">A celebration of literature, music, and dance.</p>
+            <a href="#" class="btn btn-secondary" target="_blank">Learn More</a>
         </div>
+    </div>
+</div>
 
-        <!-- Sahitya Gana Nritya Vaibhava -->
-        <div class="event-card">
-            <div class="event-image" style="background-image: url('images/sahitya.jpg')"></div>
-            <div class="event-content">
-                <div class="event-date">18 Mar 2025</div>
-                <h2 class="event-title">Sahitya Gana Nritya Vaibhava</h2>
-                <p class="event-description">A grand celebration of literature, music, and dance, showcasing cultural performances from across the region.</p>
-                <div class="event-details">
-                    <div class="detail-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Sri Umamaheshwara Temple, Narampady</span>
-	<a href="https://allevents.in/kasaragod/%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF-%E0%B2%97%E0%B2%BE%E0%B2%A8-%E0%B2%A8%E0%B3%83%E0%B2%A4%E0%B3%8D%E0%B2%AF-%E0%B2%B5%E0%B3%88%E0%B2%AD%E0%B2%B8%E0%B3%8D/200027890337734" class="btn btn-secondary" target="_blank">Learn More</a>
-                    </div>
-                    
-                </div>
-                
-      
-            </div>
-        </div>
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Cultural Heritage Platform. Built for Kasaragod.</p>
+</footer>
 
-    <footer>
-        <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
-    </footer>
-    
-    <script src="js/menu-toggle.js"></script>
+<script src="js/menu-toggle.js"></script>
 </body>
 </html>
