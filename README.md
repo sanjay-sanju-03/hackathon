@@ -14,12 +14,27 @@ The Kasaragod Cultural Heritage Platform is a web application designed to showca
 ## Technologies Used
 - **Frontend**: HTML, CSS, JavaScript
 - **Libraries**: Leaflet.js for maps, Splide.js for the image slider
-- **Backend**: Python (Flask)
+- **Backend**: Python (Flask), Node.js (Express)
 - **APIs**: OpenStreetMap for map tiles, Leaflet Routing Machine for directions
 
 ## Project Structure
 ```
-hackathon-1/
+hackathon/
+├── backend/
+│   ├── server.js
+│   ├── insert.js
+│   ├── models/
+│   │   ├── heritage.js
+│   │   └── experience.js
+│   ├── routes/
+│   │   ├── heritage.js
+│   │   └── experience.js
+│   ├── public/
+│   │   ├── uploads/
+│   ├── node_modules/
+│   ├── package.json
+│   ├── package-lock.json
+│   └── .env
 ├── css/
 │   ├── anantapura.css
 │   ├── events.css
@@ -46,21 +61,30 @@ hackathon-1/
 1. **Clone the repository**:
     ```sh
     git clone https://github.com/yourusername/kasaragod-heritage.git
-    cd kasaragod-heritage/hackathon-1
+    cd kasaragod-heritage/hackathon
     ```
 
-2. **Install dependencies**:
+2. **Backend Setup**:
+    - Navigate to the backend directory:
+        ```sh
+        cd backend
+        ```
+    - Install dependencies:
+        ```sh
+        npm install
+        ```
+    - Create a `.env` file and add your MongoDB connection string:
+        ```env
+        MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/culturalHeritage?retryWrites=true&w=majority
+        ```
+
+3. **Run the Backend Server**:
     ```sh
-    pip install -r requirements.txt
+    node server.js
     ```
 
-3. **Run the application**:
-    ```sh
-    python app.py
-    ```
-
-4. **Open the application**:
-    Open your web browser and navigate to `http://localhost:5000`.
+4. **Run the Frontend**:
+    Open your web browser and navigate to `http://localhost:3000`.
 
 ## Usage
 - **Home Page**: Navigate through the main attractions using the image slider.
