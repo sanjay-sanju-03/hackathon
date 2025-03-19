@@ -6,6 +6,7 @@
     <title>Kasaragod Cuisine Guide</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         :root {
             --primary-color: #4CAF50;
@@ -16,7 +17,7 @@
         }
 
         body {
-            font-family: 'Modern No. 20', serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -56,9 +57,9 @@
         }
 
         .nav-links a:hover {
-    color: #e67e22;
-    background: rgba(230, 126, 34, 0.1);
-}
+            color: #e67e22;
+            background: rgba(230, 126, 34, 0.1);
+        }
 
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner.jpg');
@@ -132,53 +133,40 @@
             color: var(--secondary-color);
         }
 
+        button {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent-color);
+        }
+
+        #map-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f7f7f7;
+        }
+
+        #map {
+            height: 400px;
+            width: 80%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
         footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 1rem 0;
             margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cuisine-section {
-                padding: 2rem 1rem;
-            }
-
-            nav {
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                padding: 0.5rem 1rem;
-            }
-        }
-
-        .search-wrapper {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            margin-right: 30px;
-            position: relative;
-        }
-
-        #searchInput {
-            padding: 0.5rem 2rem 0.5rem 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            margin-right: 0.5rem;
-            width: 200px;
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            color: var(--secondary-color);
-            cursor: pointer;
         }
     </style>
 </head>
@@ -193,14 +181,8 @@
                 <a href="house.html">Houseboats</a>
                 <a href="made-in-kasaragod.html">Made in Kasaragod</a>
             </div>
-            <div class="search-wrapper">
-                <input type="text" id="searchInput" placeholder="Search dishes...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
         </div>
     </nav>
-
-    <!-- Rest of the content -->
 
     <div class="hero">
         <div>
@@ -212,33 +194,30 @@
     <section class="cuisine-section">
         <div class="cuisine-grid">
             <div class="cuisine-card">
-                <img src="images/Beef-Palli-Curry1.jpg" alt="Puttu">
+                <img src="images/Beef-Palli-Curry1.jpg" alt="Beef Palli Curry">
                 <div class="cuisine-content">
-                    <h3>Beef palli curry</h3>
-                    <p>Palli Curry is basically Beef curry that is served in packets along with Ghee rice in masjid (Mosque) for special occasions and it is usually served for mehandi nights at a wedding</p>
+                    <h3>Beef Palli Curry</h3>
+                    <p>Special beef curry served with ghee rice, famous in local mosques.</p>
                     <div class="location">
                         <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
                     </div>
                     <div class="price">₹100-₹130</div>
-                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattkada')">Show on Map</button>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
                 </div>
             </div>
 
             <div class="cuisine-card">
-                <img src="images/goli baje.jpeg" alt="Goli baje">
+                <img src="images/goli-baje.jpeg" alt="Goli Baje">
                 <div class="cuisine-content">
-                    <h3>Goli baje</h3>
-                    <p> These are also known as maida bonda since they are made with maida (all-purpose flour). These homemade Bajji are light & crispy yet fluffy and soft inside, the way they are supposed to be..</p>
+                    <h3>Goli Baje</h3>
+                    <p>Soft and crispy fried snack made from all-purpose flour.</p>
                     <div class="location">
-                        
                         <i class="fas fa-map-marker-alt"></i> Best at: Bekal Beach Restaurant
                     </div>
                     <div class="price">₹10 - ₹20</div>
-                    <button onclick="showOnMap(12.5138378, 74.9058774, 'Kollya Thattkada')">Show on Map</button>
+                    <button onclick="showOnMap(12.5138378, 74.9058774, 'Bekal Beach Restaurant')">Show on Map</button>
                 </div>
             </div>
-
-           
 
             <div class="cuisine-card">
                 <img src="images/pathiri.jpg" alt="Pathiri">
@@ -246,11 +225,10 @@
                     <h3>Pathiri</h3>
                     <p>Rice flour bread served with spicy chicken curry, a Malabar specialty.</p>
                     <div class="location">
-                       
                         <i class="fas fa-map-marker-alt"></i> Best at: Malabar Kitchen, Nileshwar
                     </div>
                     <div class="price">₹100 - ₹150</div>
-                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattkada')">Show on Map</button>
+                    <button onclick="showOnMap(12.3714, 75.1197, 'Malabar Kitchen')">Show on Map</button>
                 </div>
             </div>
 
@@ -260,41 +238,55 @@
                     <h3>Fresh Seafood Platter</h3>
                     <p>Variety of fresh seafood including prawns, crabs, and fish prepared in local style.</p>
                     <div class="location">
-                        
                         <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
                     </div>
                     <div class="price">₹500 - ₹800</div>
-                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattkada')">Show on Map</button>
+                    <button onclick="showOnMap(12.5138, 74.9059, 'Sea Shore Restaurant')">Show on Map</button>
                 </div>
             </div>
-                <div class="cuisine-card">
-                    <img src="images/pickle.jpg" alt="Seafood">
-                    <div class="cuisine-content">
-                        <h3>Kallumakkaya Pickle</h3>
-                        <p>Kallumakkaya Pickle is a flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices. This savory pickle offers a rich and bold taste of Kasaragod's coastal cuisine..</p>
-                        <div class="location">
-                            
-                            <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
-                        </div>
-                        <div class="price">₹250 - ₹400</div>
-                        <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattkada')">Show on Map</button>
+
+            <div class="cuisine-card">
+                <img src="images/pickle.jpg" alt="Kallumakkaya Pickle">
+                <div class="cuisine-content">
+                    <h3>Kallumakkaya Pickle</h3>
+                    <p>Flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
                     </div>
+                    <div class="price">₹250 - ₹400</div>
+                    <button onclick="showOnMap(12.5138, 74.9059, 'Sea Shore Restaurant')">Show on Map</button>
                 </div>
             </div>
-        </div>    
+        </div>
     </section>
 
-<section class="section" id="map-section">
-    <h2>Location Map</h2>
-    <div id="map"></div>
-</section>
-    
-<footer>
-    <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
-</footer>
-    
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-<script src="js/script.js"></script>
+    <section id="map-section">
+        <h2>Location Map</h2>
+        <div id="map"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([12.5761, 74.9906], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker;
+
+        function showOnMap(lat, lng, placeName) {
+            if (marker) {
+                map.removeLayer(marker);
+            }
+            marker = L.marker([lat, lng]).addTo(map)
+                .bindPopup(`<b>${placeName}</b>`).openPopup();
+            map.setView([lat, lng], 14);
+        }
+    </script>
 </body>
 </html>
