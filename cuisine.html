@@ -16,7 +16,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Modern No. 20', serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -24,17 +24,30 @@
 
         nav {
             display: flex;
-            justify-content: center;
-            background: var(--secondary-color);
+            justify-content: flex-start;
+            background: white;
             padding: 0.5rem;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
-            color: var(--white);
+            color: var(--secondary-color);
             padding: 1rem 2rem;
             text-decoration: none;
             margin: 0 0.5rem;
@@ -42,10 +55,10 @@
             transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
+        .nav-links a:hover {
+    color: #e67e22;
+    background: rgba(230, 126, 34, 0.1);
+}
 
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner.jpg');
@@ -144,15 +157,47 @@
                 padding: 0.5rem 1rem;
             }
         }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: 30px;
+            position: relative;
+        }
+
+        #searchInput {
+            padding: 0.5rem 2rem 0.5rem 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            width: 200px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="cuisine.html">Cuisine</a>
-        <a href="experience.html">Experiences</a>
-        <a href="events.html">Events</a>
-        <a href="house.html">Houseboats</a>
+        <div class="nav-left">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="cuisine.html">Cuisine</a>
+                <a href="experience.html">Experiences</a>
+                <a href="events.html">Events</a>
+                <a href="house.html">Houseboats</a>
+                <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+            </div>
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search dishes...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
     </nav>
 
     <!-- Rest of the content -->
