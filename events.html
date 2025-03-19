@@ -10,11 +10,25 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="cuisine.html">Cuisine</a>
-        <a href="experience.html">Experiences</a>
-        <a href="events.html">Events</a>
-        <a href="house.html">Houseboats</a>
+        <div class="nav-left">
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="cuisine.html">Cuisine</a>
+                <a href="experience.html">Experiences</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="house.html">Houseboats</a>
+                <a href="arts-artisans.html">Art & Artisans</a>
+                <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+            </div>
+        </div>
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Search events...">
+            <i class="fas fa-search search-icon"></i>
+            <div class="search-suggestions"></div>
+        </div>
     </nav>
 
     <div class="hero">
@@ -68,5 +82,36 @@
     <footer>
         <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
     </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.nav-left') && !event.target.closest('.menu-toggle')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+
+                // Close menu when clicking a link
+                const links = document.querySelectorAll('.nav-links a');
+                links.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <script src="js/menu-toggle.js"></script>
 </body>
 </html>

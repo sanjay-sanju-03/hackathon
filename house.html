@@ -11,18 +11,24 @@
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <img src="images/kasargod-logo.png" alt="Kasargod Houseboats Logo" width="180" height="60">
+            <div class="nav-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="cuisine.html">Cuisine</a>
+                    <a href="experience.html">Experiences</a>
+                    <a href="events.html">Events</a>
+                    <a href="house.html" class="active">Houseboats</a>
+                    <a href="arts-artisans.html">Art & Artisans</a>
+                    <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+                </div>
             </div>
-            <ul>
-                <li><a href="index.html">Home</a>
-                <li><a href="cuisine.html">Cuisine</a></li>
-                <li><a href="experience.html">Experiences</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="house.html">Houseboats</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search houseboats...">
+                <i class="fas fa-search search-icon"></i>
+                <div class="search-suggestions"></div>
             </div>
         </nav>
     </header>
@@ -300,5 +306,6 @@
     </div>
 
     <script src="./js/house.js"></script>
+    <script src="js/menu-toggle.js"></script>
 </body>
 </html>
