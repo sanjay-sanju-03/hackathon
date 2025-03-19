@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiences</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/experience.css">
     
@@ -23,23 +23,32 @@
             <a href="experience.html" class="active">Experiences</a>
             <a href="events.html">Events</a>
             <a href="house.html">Houseboats</a>
+            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
         </div>
         
         <button class="hamburger" id="hamburger">
             <i class="fas fa-bars"></i>
         </button>
-    <nav>
-    <a href="index.html">Home</a>
-    <a href="cuisine.html">Cuisine</a>
-    <a href="experience.html">Experiences</a>
-    <a href="events.html">Events</a>
-    <a href="house.html">Houseboats</a>
-    <a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a>
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search local products...">
-        <i class="fas fa-search search-icon"></i>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="index.html">Home</a>
+        <a href="cuisine.html">Cuisine</a>
+        <a href="experience.html" class="active">Experiences</a>
+        <a href="events.html">Events</a>
+        <a href="house.html">Houseboats</a>
+        <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        
+        <div class="mobile-search-wrapper">
+            <input type="text" id="mobileSearchInput" placeholder="Search experiences...">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
     </div>
-</nav>
 
     <div class="menu-overlay" id="menu-overlay"></div>
 
@@ -139,7 +148,35 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', fetchExperiences);
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchExperiences();
+            
+            // Hamburger Menu Functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeMenuFunction() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeMenu.addEventListener('click', closeMenuFunction);
+            menuOverlay.addEventListener('click', closeMenuFunction);
+
+            // Close menu when clicking on links
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', closeMenuFunction);
+            });
+        });
 
         // Convert file to base64
         function convertFileToBase64(file) {
@@ -182,32 +219,6 @@
                 console.error('Error uploading experience:', error);
                 alert('Error uploading experience. Please try again.');
             }
-        });
-
-        // Hamburger Menu Functionality
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenu = document.getElementById('close-menu');
-        const menuOverlay = document.getElementById('menu-overlay');
-
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        function closeMenuFunction() {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        closeMenu.addEventListener('click', closeMenuFunction);
-        menuOverlay.addEventListener('click', closeMenuFunction);
-
-        // Close menu when clicking on links
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMenuFunction);
         });
     </script>
 </body>
