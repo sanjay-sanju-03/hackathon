@@ -17,12 +17,32 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="cuisine.html">Cuisine</a>
-        <a href="experience.html">Experiences</a>
-        <a href="events.html">Events</a>
-        <a href="house.html">Houseboats</a>
-    </nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html" class="active">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+        </div>
+        
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="cuisine.html">Cuisine</a>
+    <a href="experience.html">Experiences</a>
+    <a href="events.html">Events</a>
+    <a href="house.html">Houseboats</a>
+    <a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search local products...">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+</nav>
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+
     <header class="header">
         <h1>Experiences</h1>
         <p>Share your story with the world</p>
@@ -162,6 +182,32 @@
                 console.error('Error uploading experience:', error);
                 alert('Error uploading experience. Please try again.');
             }
+        });
+
+        // Hamburger Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeMenuFunction() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeMenu.addEventListener('click', closeMenuFunction);
+        menuOverlay.addEventListener('click', closeMenuFunction);
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenuFunction);
         });
     </script>
 </body>

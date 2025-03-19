@@ -1,3 +1,16 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-gradient: linear-gradient(135deg, #4CAF50, #45a049);
+    --secondary-color: #2c3e50;
+    --accent-color: #e67e22;
+    --white: #ffffff;
+    --light-bg: rgba(255, 255, 255, 0.95);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    --border-radius: 16px;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,18 +19,209 @@
 
 body {
     min-height: 100vh;
-    font-family: 'Modern No. 20', serif;
+    font-family: 'Modern No. 20', sans-serif;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/exp.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: #2c3e50;
+    color: var(--secondary-color);
+    line-height: 1.6;
 }
 
+/* Navigation */
+nav {
+    background: var(--light-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 1.2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+nav a {
+    color: var(--secondary-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 0 1.2rem;
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+nav a:hover:after,
+nav a.active:after {
+    width: 100%;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--accent-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+/* Improved Mobile Menu Search */
+.mobile-search-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.mobile-search-wrapper input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.2rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--secondary-color);
+}
+
+.mobile-search-wrapper input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.15);
+    background: white;
+}
+
+.mobile-search-wrapper .search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.mobile-search-wrapper .search-button:hover {
+    color: var(--accent-color);
+}
+
+.mobile-search-wrapper input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.hamburger:hover {
+    color: var(--accent-color);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--light-bg);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 5rem 2rem 2rem;
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    padding-bottom: 3rem;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu a {
+    display: block;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    margin: 0.5rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.mobile-menu a:hover {
+    color: var(--accent-color);
+    transform: translateX(10px);
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    display: block;
+}
+
+.close-menu {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-menu:hover {
+    color: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+/* Header */
 .header {
     padding: 3.5rem 0;
     text-align: center;
     position: relative;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    margin-top: 70px;
 }
 
 .header h1 {
@@ -27,16 +231,17 @@ body {
     margin-bottom: 0.5rem;
     letter-spacing: 2px;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header p {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.2em;
     font-weight: 300;
     letter-spacing: 1px;
 }
 
+/* Experience Cards */
 .content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -47,11 +252,11 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
     backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
@@ -60,7 +265,7 @@ body {
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: var(--hover-shadow);
 }
 
 .card img {
@@ -87,6 +292,7 @@ body {
     align-self: flex-end;
 }
 
+/* Upload Button */
 .upload-btn {
     position: fixed;
     bottom: 2.5rem;
@@ -94,21 +300,27 @@ body {
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--light-bg);
     color: #FF6B6B;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+    z-index: 99;
 }
 
 .upload-btn:hover {
     transform: scale(1.1) rotate(180deg);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
+.upload-btn i {
+    font-size: 1.5rem;
+}
+
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -140,7 +352,7 @@ body {
 .modal-title {
     font-family: 'Playfair Display', serif;
     font-size: 2em;
-    color: #2c3e50;
+    color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
 
@@ -151,7 +363,7 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 0.8rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
     font-weight: 500;
 }
 
@@ -165,12 +377,12 @@ body {
 
 .form-input:focus {
     outline: none;
-    border-color: #0f3b38;
-    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: var(--primary-gradient);
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -180,11 +392,15 @@ body {
     cursor: pointer;
     width: 100%;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn {
@@ -192,15 +408,18 @@ body {
     top: 1.5rem;
     right: 1.5rem;
     font-size: 1.8em;
-    color: #2c3e50;
+    color: var(--secondary-color);
     cursor: pointer;
     transition: color 0.3s ease;
+    background: none;
+    border: none;
 }
 
 .close-btn:hover {
     color: #FF6B6B;
 }
 
+/* Animations */
 @keyframes modalSlide {
     from {
         transform: translateY(-100px);
@@ -212,150 +431,139 @@ body {
     }
 }
 
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .content-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hamburger {
+        display: block;
+        margin-left: auto;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+    
+    nav {
+        justify-content: flex-end;
+        padding: 1rem 1.5rem;
+    }
+    
+    .header h1 {
+        font-size: 3.5em;
+    }
+    
+    .content-grid {
+        padding: 2rem;
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .header {
+        padding: 2.5rem 0;
+        margin-top: 60px;
+    }
+    
     .header h1 {
         font-size: 2.8em;
+    }
+    
+    .header p {
+        font-size: 1em;
     }
     
     .content-grid {
         padding: 1.5rem;
         gap: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .modal-content {
+        padding: 2rem;
+        width: 95%;
+        margin: 30px auto;
+    }
+    
+    .modal-title {
+        font-size: 1.8em;
+    }
+    
+    .upload-btn {
+        width: 55px;
+        height: 55px;
+        bottom: 2rem;
+        right: 2rem;
     }
 }
-:root {
-    --primary-color: #4CAF50;
-    --secondary-color: #2c3e50;
-    --accent-color: #45a049;
-    --white: #ffffff;
-    --shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
 
-body {
-    font-family: 'Modern No. 20', serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    background: var(--secondary-color);
-    padding: 0.5rem;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-nav a {
-    color: var(--white);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-}
-
-nav a:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/kasaragod-cuisine.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    margin-top: 60px;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-.cuisine-section {
-    padding: 4rem 2rem;
-}
-
-.cuisine-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.cuisine-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
-}
-
-.cuisine-card:hover {
-    transform: translateY(-10px);
-}
-
-.cuisine-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.cuisine-content {
-    padding: 1.5rem;
-}
-
-.cuisine-content h3 {
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-}
-
-.cuisine-content p {
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.location {
-    color: var(--primary-color);
-    font-size: 0.9rem;
-}
-
-.price {
-    font-weight: bold;
-    color: var(--secondary-color);
-}
-
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-}
-
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 2.2em;
     }
-
-    .cuisine-section {
-        padding: 2rem 1rem;
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1.5rem;
     }
-
+    
+    .modal-content {
+        padding: 1.5rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5em;
+    }
+    
+    .form-group label {
+        font-size: 0.9em;
+    }
+    
+    .form-input {
+        padding: 0.8rem;
+    }
+    
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 1em;
+    }
+    
+    .upload-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    
     nav {
-        flex-wrap: wrap;
+        padding: 0.8rem 1rem;
     }
+}
 
-    nav a {
-        padding: 0.5rem 1rem;
+@media (max-width: 380px) {
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .header p {
+        font-size: 0.9em;
+    }
+    
+    .card-content {
+        padding: 1.2rem;
+    }
+    
+    .card-content p {
+        font-size: 0.9em;
     }
 }
