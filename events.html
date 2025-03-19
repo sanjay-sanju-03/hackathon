@@ -6,7 +6,8 @@
     <title>Events in Kasaragod</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    \<link rel="stylesheet" href="css/events.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/events.css">
 </head>
 <body>
     <nav>
@@ -82,35 +83,6 @@
     <footer>
         <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
     </footer>
-    
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!event.target.closest('.nav-left') && !event.target.closest('.menu-toggle')) {
-                        navLinks.classList.remove('active');
-                    }
-                });
-
-                // Close menu when clicking a link
-                const links = document.querySelectorAll('.nav-links a');
-                links.forEach(link => {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('active');
-                    });
-                });
-            }
-        });
-    </script>
     
     <script src="js/menu-toggle.js"></script>
 </body>
