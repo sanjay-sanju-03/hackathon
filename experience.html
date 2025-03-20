@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/experience.css">
     <link rel="stylesheet" href="css/navbar.css">
+    
+    <!-- Firebase SDK (using v8 for easier browser integration) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 </head>
 <body>
     <nav>
@@ -36,7 +41,7 @@
         <p>Share your story with the world</p>
     </header>
 
-    <div id="experiences-container"></div>
+    <div id="experiences-container" class="content-grid"></div>
 
     <div class="upload-btn" onclick="openModal()">
         <i class="fas fa-plus"></i>
@@ -49,14 +54,14 @@
                 <h2 class="modal-title">Share Your Moment</h2>
                 <p>Upload your photos and videos</p>
             </div>
-            <form class="upload-form">
+            <form class="upload-form" id="uploadForm">
                 <div class="form-group">
                     <label>Choose Media</label>
-                    <input type="file" accept="image/*,video/*" class="form-input">
+                    <input type="file" accept="image/*,video/*" class="form-input" id="mediaInput">
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-input" rows="4" placeholder="Tell your story..."></textarea>
+                    <textarea class="form-input" rows="4" placeholder="Tell your story..." id="descriptionInput"></textarea>
                 </div>
                 <button type="submit" class="submit-btn">
                     <i class="fas fa-cloud-upload-alt"></i> Share Now
@@ -66,6 +71,22 @@
     </div>
 
     <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyALOzPCLfTMEj0CZGtR7hY-nloEsgWXdeQ",
+            authDomain: "kasaroam-bf9bb.firebaseapp.com",
+            projectId: "kasaroam-bf9bb",
+            storageBucket: "kasaroam-bf9bb.appspot.com",
+            messagingSenderId: "643910066383",
+            appId: "1:643910066383:web:ec5c21e5c2aca0ed8317ba",
+            measurementId: "G-PQ19Z5DT1W"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
         function openModal() {
             document.getElementById('uploadModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -84,16 +105,25 @@
 
         async function fetchExperiences() {
             try {
-                const response = await fetch('/api/experiences');
-                const experiences = await response.json();
+                const experiencesRef = await db.collection('experiences').orderBy('createdAt', 'desc').get();
                 const container = document.getElementById('experiences-container');
-                experiences.forEach(exp => {
+                container.innerHTML = ''; // Clear existing content
+                
+                if (experiencesRef.empty) {
+                    console.log('No experiences found');
+                    return;
+                }
+                
+                experiencesRef.forEach(doc => {
+                    const exp = doc.data();
                     const expDiv = document.createElement('div');
-                    expDiv.classList.add('experience');
+                    expDiv.classList.add('card');
                     expDiv.innerHTML = `
                         <img src="${exp.imageUrl}" alt="Experience Image">
-                        <p>${exp.description}</p>
-                        <small>${new Date(exp.createdAt).toLocaleString()}</small>
+                        <div class="card-content">
+                            <p>${exp.description}</p>
+                            <small>${exp.createdAt ? new Date(exp.createdAt.toDate()).toLocaleString() : 'Date unavailable'}</small>
+                        </div>
                     `;
                     container.appendChild(expDiv);
                 });
@@ -101,6 +131,50 @@
                 console.error('Error fetching experiences:', error);
             }
         }
+
+        // Convert file to base64
+        function convertFileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // Add event listener for form submission
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const file = document.getElementById('mediaInput').files[0];
+            const description = document.getElementById('descriptionInput').value;
+            
+            if (!file || !description) {
+                alert('Please provide both media and description.');
+                return;
+            }
+
+            try {
+                // Convert image to base64 instead of uploading to Storage
+                const base64Image = await convertFileToBase64(file);
+                
+                // Add document to Firestore with base64 image
+                await db.collection('experiences').add({
+                    imageUrl: base64Image,
+                    description: description,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Reset form
+                document.getElementById('uploadForm').reset();
+                closeModal();
+                fetchExperiences();
+                
+                alert('Your experience has been shared successfully!');
+            } catch (error) {
+                console.error('Error uploading experience:', error);
+                alert('Error uploading experience. Please try again.');
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', fetchExperiences);
     </script>
