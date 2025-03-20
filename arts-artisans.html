@@ -17,7 +17,7 @@
         }
         
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/theyyam-hero.jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/Theyyam.jpg');
             background-size: cover;
             background-position: center;
             height: 60vh;
@@ -183,6 +183,132 @@
                 padding: 2rem 1rem;
             }
         }
+        
+        /* Popup Styles */
+        .popup-content {
+            display: none;
+            position: absolute;
+            background: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .popup-content.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .popup-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .popup-header h3 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin: 0;
+        }
+        
+        .popup-close {
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+        
+        .popup-close:hover {
+            color: var(--accent-color);
+        }
+        
+        .popup-body {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .popup-body p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .popup-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .popup-footer {
+            margin-top: 1.5rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            text-align: right;
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        .popup-btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .popup-btn:hover {
+            background: #e67e22;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-content {
+                width: 90%;
+                padding: 1.5rem;
+            }
+            
+            .popup-header h3 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
     <link rel="stylesheet" href="css/navbar.css">
 </head>
@@ -226,25 +352,27 @@
         <div class="artisan-cards">
             <div class="artisan-card">
                 <div class="artisan-img">
-                    <img src="images/theyyam-artist.jpg" alt="Theyyam Artist">
+                    <img src="images/theyyam.webp" alt="Theyyam Artist">
                 </div>
                 <div class="artisan-info">
                     <span class="artisan-specialty">Theyyam Performance</span>
                     <h3>Rajesh Peruvannan</h3>
                     <p>A third-generation Theyyam performer with over 25 years of experience in this sacred ritual art form.</p>
-                    <a href="#" class="artisan-btn">Learn More</a>
+                    <a href="theyyam.html" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="theyyam-popup">Quick Info</button>
                 </div>
             </div>
 
             <div class="artisan-card">
                 <div class="artisan-img">
-                    <img src="images/weaver.jpg" alt="Traditional Weaver">
+                    <img src="images/loom.webp" alt="Traditional Weaver">
                 </div>
                 <div class="artisan-info">
                     <span class="artisan-specialty">Handloom Weaving</span>
                     <h3>Lakshmi Devi</h3>
                     <p>Master weaver specializing in traditional Kasaragod sarees using handloom techniques passed down through generations.</p>
                     <a href="#" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="weaving-popup">Quick Info</button>
                 </div>
             </div>
 
@@ -257,6 +385,7 @@
                     <h3>Gopalan Asari</h3>
                     <p>Renowned wood carver creating intricate designs for temples and traditional Kerala homes for over 40 years.</p>
                     <a href="#" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="woodcarving-popup">Quick Info</button>
                 </div>
             </div>
 
@@ -269,6 +398,7 @@
                     <h3>Sreelatha K</h3>
                     <p>Skilled artist preserving the tradition of Kerala mural painting with unique depictions of mythology and folklore.</p>
                     <a href="#" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="mural-popup">Quick Info</button>
                 </div>
             </div>
 
@@ -281,6 +411,7 @@
                     <h3>Manoj Mooshari</h3>
                     <p>Expert craftsman working with bell metal to create traditional lamps, vessels, and decorative items using ancient techniques.</p>
                     <a href="#" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="bellmetal-popup">Quick Info</button>
                 </div>
             </div>
 
@@ -293,6 +424,20 @@
                     <h3>Kunjambu</h3>
                     <p>Traditional potter crafting eco-friendly cookware and decorative items using locally sourced clay and natural colors.</p>
                     <a href="#" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="pottery-popup">Quick Info</button>
+                </div>
+            </div>
+
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/kalari.webp" alt="Kalaripayattu Master">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Kalaripayattu</span>
+                    <h3>Madhavan Gurukkal</h3>
+                    <p>Master practitioner of Kalaripayattu, the ancient martial art form of Kerala, with decades of experience training students in traditional techniques.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                    <button class="artisan-btn popup-trigger" data-popup="kalari-popup">Quick Info</button>
                 </div>
             </div>
         </div>
@@ -301,6 +446,128 @@
     <footer>
         <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
     </footer>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay"></div>
+    
+    <!-- Theyyam Popup -->
+    <div id="theyyam-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Theyyam - The Dance of Gods</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/theyyam.webp" alt="Theyyam" class="popup-img">
+            <p><span class="highlight">Theyyam</span> is a sacred ritual art form of Northern Kerala that dates back over 800 years. It is a vibrant and theatrical form of worship where the performer embodies a deity and is believed to be possessed by divine spirit during the performance.</p>
+            <p>Performers undergo rigorous training from a young age, learning complex dance movements, elaborate makeup techniques, and intricate costume creation. <span class="highlight">Rajesh Peruvannan</span> comes from a family that has been practicing this art form for generations.</p>
+            <p>Each Theyyam performance is unique, with over 400 distinct forms representing different deities. The performances often include fire rituals, acrobatics, and intense physical movements that can last for hours.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="theyyam.html" class="popup-btn">Learn More</a>
+        </div>
+    </div>
+    
+    <!-- Weaving Popup -->
+    <div id="weaving-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Traditional Handloom Weaving</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/loom.webp" alt="Handloom Weaving" class="popup-img">
+            <p>The <span class="highlight">traditional handloom weaving</span> in Kasaragod has a history dating back centuries. Local weavers like <span class="highlight">Lakshmi Devi</span> produce distinctive textiles known for their quality and intricate designs.</p>
+            <p>The Kasaragod handloom industry specializes in cotton and silk sarees with distinctive patterns that reflect the region's cultural heritage. Traditional wooden looms are used, and the entire process from thread preparation to weaving is done by hand.</p>
+            <p>These handloom products are not just items of clothing but represent a cultural legacy and sustainable fashion. Each piece takes several days to complete and incorporates motifs inspired by nature, mythology, and local traditions.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="#" class="popup-btn">Learn More</a>
+        </div>
+    </div>
+    
+    <!-- Wood Carving Popup -->
+    <div id="woodcarving-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Kerala Wood Carving</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/wood-carver.jpg" alt="Wood Carving" class="popup-img">
+            <p><span class="highlight">Kerala wood carving</span> is a traditional craft that has adorned temples, palaces, and traditional homes for centuries. Master craftsmen like <span class="highlight">Gopalan Asari</span> create intricate designs that tell stories from mythology and showcase local flora and fauna.</p>
+            <p>The craft involves using local hardwoods like rosewood, teak, and jackfruit wood. Each piece is meticulously carved by hand using traditional tools that have remained largely unchanged for generations.</p>
+            <p>Wood carvers typically train through a guru-shishya (master-apprentice) system, with skills passed down through families. The art form is now gaining renewed appreciation as part of heritage conservation efforts.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="#" class="popup-btn">Learn More</a>
+        </div>
+    </div>
+    
+    <!-- Mural Painting Popup -->
+    <div id="mural-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Kerala Mural Painting</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/mural-artist.jpg" alt="Mural Painting" class="popup-img">
+            <p><span class="highlight">Kerala mural painting</span> is a traditional art form characterized by detailed illustrations, vibrant colors, and themes drawn from Hindu mythology. Artists like <span class="highlight">Sreelatha K</span> use natural pigments and traditional techniques to create these stunning works.</p>
+            <p>Traditional murals use only five colors, each with symbolic meaning: yellow, red, green, black, and white. These colors are derived from natural sources like plant extracts, minerals, and even stones ground into fine powder.</p>
+            <p>The process involves preparing the surface with a special plaster, sketching the outline, and then filling in colors in a specific order. A complete mural can take months to finish, depending on its size and complexity.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="#" class="popup-btn">Learn More</a>
+        </div>
+    </div>
+    
+    <!-- Bell Metal Craft Popup -->
+    <div id="bellmetal-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Bell Metal Craftsmanship</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/bell-metal.jpg" alt="Bell Metal Craft" class="popup-img">
+            <p><span class="highlight">Bell metal craftsmanship</span> in Kerala produces traditional items like lamps, vessels, and musical instruments. Craftsmen like <span class="highlight">Manoj Mooshari</span> create these objects using an alloy of copper and tin that produces a distinctive resonant sound when struck.</p>
+            <p>The craft involves multiple stages: creating clay models, preparing molds, melting and casting the metal, and finally polishing the finished product. Traditional techniques ensure each piece has excellent acoustic properties and durability.</p>
+            <p>Bell metal items are not just functional but are integral to Kerala's cultural and religious practices. The traditional bell metal lamps (Nilavilakku) are essential elements in temples, churches, and homes for rituals and ceremonies.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="#" class="popup-btn">Learn More</a>
+        </div>
+    </div>
+    
+    <!-- Pottery Popup -->
+    <div id="pottery-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Traditional Kerala Pottery</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/pottery.jpg" alt="Traditional Pottery" class="popup-img">
+            <p><span class="highlight">Traditional pottery</span> in Kerala creates eco-friendly cookware and decorative items that have been part of Kerala households for centuries. <span class="highlight">Kunjambu</span> continues this ancient tradition using locally sourced clay and natural colors.</p>
+            <p>The distinctive red-brown color of Kerala pottery comes from the iron-rich clay found in the region. Potters use traditional hand-turning wheels and firing techniques that have been passed down through generations.</p>
+            <p>Kerala pottery is known for its water cooling properties and ability to enhance the flavor of food. Common items include water pots (Kindi), cooking vessels (Chatti), and storage containers that are both functional and aesthetically pleasing.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="#" class="popup-btn">Learn More</a>
+        </div>
+    </div>
+    
+    <!-- Kalaripayattu Popup -->
+    <div id="kalari-popup" class="popup-content">
+        <div class="popup-header">
+            <h3>Kalaripayattu - Ancient Martial Art</h3>
+            <button class="popup-close">&times;</button>
+        </div>
+        <div class="popup-body">
+            <img src="images/kalari.webp" alt="Kalaripayattu" class="popup-img">
+            <p><span class="highlight">Kalaripayattu</span> is one of the oldest martial art forms in the world, originating in Kerala over 3,000 years ago. It combines combat techniques, physical exercises, and healing methods, with practitioners like <span class="highlight">Madhavan Gurukkal</span> preserving its authentic traditions.</p>
+            <p>Training takes place in a 'Kalari', a specialized pit or arena with clay flooring and traditional architecture. Students progress through various stages, starting with body conditioning, moving to wooden weapons, and finally metal weapons.</p>
+            <p>Beyond combat, Kalaripayattu includes Marma treatment (pressure point therapy) and indigenous medical practices. The art form has influenced many performance traditions in Kerala including Theyyam and Kathakali.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="#" class="popup-btn">Learn More</a>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -343,6 +610,62 @@
                     });
                 });
             }
+            
+            // Popup functionality
+            const popupTriggers = document.querySelectorAll('.popup-trigger');
+            const popupOverlay = document.querySelector('.popup-overlay');
+            const popupCloseButtons = document.querySelectorAll('.popup-close');
+            const popupContents = document.querySelectorAll('.popup-content');
+            
+            // Open popup
+            popupTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const popupId = trigger.getAttribute('data-popup');
+                    const popup = document.getElementById(popupId);
+                    
+                    popupOverlay.classList.add('active');
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+            
+            // Close popup when clicking the close button
+            popupCloseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    popupOverlay.classList.remove('active');
+                    popupContents.forEach(popup => {
+                        popup.classList.remove('active');
+                    });
+                    document.body.style.overflow = ''; // Re-enable scrolling
+                });
+            });
+            
+            // Close popup when clicking outside the popup
+            popupOverlay.addEventListener('click', () => {
+                popupOverlay.classList.remove('active');
+                popupContents.forEach(popup => {
+                    popup.classList.remove('active');
+                });
+                document.body.style.overflow = ''; // Re-enable scrolling
+            });
+            
+            // Prevent popup from closing when clicking inside it
+            popupContents.forEach(popup => {
+                popup.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Close popup when pressing Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    popupOverlay.classList.remove('active');
+                    popupContents.forEach(popup => {
+                        popup.classList.remove('active');
+                    });
+                    document.body.style.overflow = ''; // Re-enable scrolling
+                }
+            });
         });
     </script>
     
