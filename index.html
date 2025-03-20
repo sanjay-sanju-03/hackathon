@@ -90,9 +90,34 @@
         <button class="filter-btn" data-filter="fort">Forts</button>
         <button class="filter-btn" data-filter="culture">Culture</button>
         <button class="filter-btn" data-filter="nature">Nature</button>
+        <button class="filter-btn" data-filter="textiles">Textiles</button>
     </div>
 
     <div class="cards">
+        <div class="featured-card card" data-category="textiles">
+            <div class="product-badge featured-badge">Featured</div>
+            <img src="images/kasaragod-saree.jpg" alt="Traditional Kasaragod Sarees">
+            <div class="card-content">
+                <h3>Traditional Kasaragod Sarees</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Handwoven silk sarees with intricate designs reflecting cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="javascript:void(0)" class="order-btn" onclick="showOrderForm('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-shopping-cart"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
         <div class="card" data-category="all">
             <img src="images/Asap.jpg" alt="ASAP">
             <div class="card-content">
@@ -295,6 +320,124 @@
     }
 
     getUserLocation();
+</script>
+
+<script>
+    // Store location functionality
+    function showStores(productName) {
+        // This would typically show a modal or redirect to a map with store locations
+        alert(`Showing stores for ${productName}. This feature will be implemented soon!`);
+    }
+
+    // Order form functionality
+    function showOrderForm(productName) {
+        // Check if the overlay exists, if not create it
+        let overlay = document.querySelector('.order-form-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'order-form-overlay';
+            document.body.appendChild(overlay);
+            
+            const container = document.createElement('div');
+            container.className = 'order-form-container';
+            overlay.appendChild(container);
+        }
+        
+        const container = overlay.querySelector('.order-form-container');
+        
+        // Set the product information
+        container.innerHTML = `
+            <div class="order-form-header">
+                <h2>Order ${productName}</h2>
+                <button class="close-form"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="order-form-body">
+                <div class="product-preview">
+                    <div class="product-image">
+                        <img src="images/kasaragod-saree.jpg" alt="${productName}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${productName}</h3>
+                        <p class="product-price">₹1,500 - ₹5,000</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(25 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <textarea id="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="variant">Variant</label>
+                            <select id="variant" required>
+                                <option value="red">Red with Gold Border</option>
+                                <option value="blue">Blue with Silver Border</option>
+                                <option value="green">Green with Gold Border</option>
+                                <option value="purple">Purple with Silver Border</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-order">Submit Order</button>
+                </form>
+            </div>
+        `;
+        
+        // Display the overlay
+        overlay.classList.add('active');
+        
+        // Add event listeners
+        const closeButton = overlay.querySelector('.close-form');
+        closeButton.addEventListener('click', () => {
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.classList.remove('active', 'fade-out');
+            }, 300);
+        });
+        
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.add('fade-out');
+                setTimeout(() => {
+                    overlay.classList.remove('active', 'fade-out');
+                }, 300);
+            }
+        });
+        
+        const orderForm = overlay.querySelector('#orderForm');
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert(`Thank you for your order of ${productName}. We will contact you shortly to confirm your order details.`);
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.classList.remove('active', 'fade-out');
+            }, 300);
+        });
+    }
 </script>
 
 <script src="js/menu-toggle.js"></script>
