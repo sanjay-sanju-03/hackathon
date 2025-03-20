@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Leaflet Routing Machine CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
@@ -91,7 +90,6 @@
         <button class="filter-btn" data-filter="fort">Forts</button>
         <button class="filter-btn" data-filter="culture">Culture</button>
         <button class="filter-btn" data-filter="nature">Nature</button>
-        <button class="filter-btn" data-filter="ksdp">Products of Kasaragod</button>
     </div>
 
     <div class="cards">
@@ -107,7 +105,7 @@
             </div>
         </div>
 
-        <div class="card" data-category="sanctuary">
+        <div class="card" data-category="temple">
             <img src="images/Anantapura_Lake_Temple.jpg" alt="Anantapura Lake Temple">
             <div class="card-content">
                 <h3>Anantapura Lake Temple</h3>
@@ -142,6 +140,68 @@
                 <a href="https://wa.me/+91 4672 950 500">Contact on WhatsApp</a>
             </div>
         </div>
+
+        <div class="card" data-category="culture">
+            <img src="images/yaks.jpg" alt="Yakshagana">
+            <div class="card-content">
+                <h3>Yakshagana</h3>
+                <p>A traditional dance drama form that combines dance, music, and dialogue.</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5063, 75.0014, 'Yakshagana')">Show on Map</button>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
+            </div>
+        </div>
+           
+        <div class="card" data-category="sanctuary">
+            <img src="images/bela.jpeg" alt="Bela">
+            <div class="card-content">
+                <h3>Bela Church</h3>
+                <p>Bela Church, also known as Our Lady of Sorrows Church, is a Roman Catholic church in Kasaragod, Kerala, known for being the oldest church in the district, built in 1890 in a Gothic Revival style</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5870, 75.0224, 'Bela church')">Show on Map</button>
+                <a href="https://wa.me/098952 13576">Contact on WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="nature">
+            <img src="images/kareems forest park.jpg" alt="forest park">
+            <div class="card-content">
+                <h3>Kareem's forest park</h3>
+                <p>Kareem's Forest Park is a remarkable man-made forest located in Puliyamkulam, near Parappa, approximately 23 kilometers east of Kanhangad town in Kerala's Kasaragod district.</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5076, 74.9882, 'kareems Forest Park')">Show on Map</button>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="nature">
+            <img src="images/suranga.jpg" alt="Suranga">
+            <div class="card-content">
+                <h3>Suranga </h3>
+                <p>Popularly known as Suranga or Thurangam, these artificial tunnel wells are carved in the slopes of laterite hills so that people can walk towards the water source</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5076, 74.9882, 'Suranga')">Show on Map</button>
+                <a href="Suranga.html">Show more details</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="temple">
+            <img src="images/kodothtemp.jpg" alt="Kodoth bhagavathi temple">
+            <div class="card-content">
+                <h3>Kodoth bhagavathi temple </h3>
+                <p>This is a temple dedicated to Goddess Bhagavathy, and is located in the village of Kodom in Kasaragod. Rich in architectural beauty, the major attractions of this temple are the wood paintings and the temple pond. The village of Kodom itself is located 24 kms from Kanhangad in Kasaragod, Kerala.
+                </p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.41544, 75.1906, 'Kodoth bhagavathi temple')">Show on Map</button>
+                <a href="Suranga.html">Show more details</a>
+            </div>
+        </div>    
+
     </div>
 </section>
 
@@ -154,7 +214,7 @@
 </section>
 
 <footer>
-    <p>&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
+    <p>© 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -165,7 +225,7 @@
     const map = L.map('map').setView([12.4280 , 75.3616], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     const bekalFort = [12.4280, 75.3616];
