@@ -1,1021 +1,510 @@
-/* Main Styles */
-body {
-    background-color: #f8f9fa;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* Navigation */
-nav {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 0.6rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #2c3e50;
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.menu-toggle:hover {
-    color: #e67e22;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-nav a {
-    color: #2c3e50;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    text-decoration: none;
-    margin: 0 1rem;
-}
-
-nav a:hover, nav a.active {
-    color: #e67e22;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    nav {
-        padding: 0.8rem 1rem;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made in Kasaragod - Traditional Crafts and Products</title>
+    <!-- Preloading critical resources -->
+    <link rel="preload" href="css/made-in-kasaragod.css" as="style">
+    <link rel="preload" href="images/kasaragod-hero.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="images/kasaragod-saree.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="images/logo.png" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    .menu-toggle {
-        display: block;
-    }
+    <!-- Critical CSS first -->
+    <link rel="stylesheet" href="css/made-in-kasaragod.css">
     
-    .nav-links {
-        position: fixed;
-        top: 60px;
-        left: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: calc(100vh - 60px);
-        background: white;
-        flex-direction: column;
-        padding: 2rem 0;
-        transition: left 0.3s ease;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-    }
+    <!-- Asynchronously load non-critical resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    .nav-links.active {
-        left: 0;
-    }
+    <!-- Load critical font awesome icons inline -->
+    <style>
+        @font-face {
+            font-family: 'FontAwesome';
+            font-display: swap;
+        }
+    </style>
     
-    .nav-links a {
-        width: 100%;
-        text-align: center;
-        padding: 1rem;
-        margin: 0.5rem 0;
-    }
-}
-
-/* Hero Section */
-.hero-container {
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/kasaragod-craft.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    margin-top: 0;
-    padding: 0;
-}
-
-.hero-content {
-    padding: 8rem;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 40px;
-    max-width: 1400px;
-    width: 98%;
-    animation: fadeInUp 0.8s ease;
-    margin: 0 1rem;
-    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.6);
-    will-change: transform, opacity;
-}
-
-.hero-content h1 {
-    font-size: 5.5rem;
-    margin: 0;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: linear-gradient(45deg, #e67e22, #f39c12);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-    line-height: 1.1;
-    animation: fadeInUp 1s ease;
-    will-change: transform, opacity;
-}
-
-.hero-content p {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    color: #ecf0f1;
-}
-
-/* Filter Section */
-.filter-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-    padding: 0 1rem;
-}
-
-.filter-btn {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 30px;
-    background: white;
-    color: #2c3e50;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 1rem;
-    font-weight: 500;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.filter-btn:hover, .filter-btn.active {
-    background: #e67e22;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* Cards Section */
-.section {
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    animation: scaleIn 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.card img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-.card:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-.card-content {
-    padding: 2rem;
-}
-
-.card-content h3 {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-.card-content p {
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
-}
-
-.card-buttons {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-top: 1px solid #eee;
-    flex-wrap: wrap;
-}
-
-.featured-card .card-buttons {
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.featured-card .card-buttons a,
-.featured-card .card-buttons button {
-    flex: 0 0 calc(50% - 0.5rem);
-    margin-bottom: 0.5rem;
-}
-
-.featured-card .card-buttons .order-btn {
-    flex: 0 0 100%;
-    background: linear-gradient(135deg, #e67e22, #f39c12);
-    padding: 1.2rem;
-    font-weight: 600;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
-    order: -1;
-    margin-bottom: 0.5rem;
-}
-
-.featured-card .card-buttons .order-btn i {
-    font-size: 1.2rem;
-}
-
-.whatsapp-btn, .location-btn, .order-btn {
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.whatsapp-btn {
-    background: #25D366;
-    color: white;
-}
-
-.order-btn {
-    background: #e67e22;
-    color: white;
-}
-
-.location-btn {
-    background: #3498db;
-    color: white;
-}
-
-.whatsapp-btn:hover, .location-btn:hover, .order-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.whatsapp-btn:hover i, .location-btn:hover i, .order-btn:hover i {
-    animation: pulse 1s infinite;
-}
-
-.whatsapp-btn::before, .location-btn::before, .order-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.4s ease;
-}
-
-.whatsapp-btn:hover::before, .location-btn:hover::before, .order-btn:hover::before {
-    left: 100%;
-}
-
-/* Product Badge */
-.product-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #e74c3c;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    animation: pulse 2s infinite;
-}
-
-/* Rating Stars */
-.rating {
-    color: #f1c40f;
-    margin: 0.8rem 0;
-    font-size: 1.2rem;
-}
-
-/* Contact Section */
-.contact-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/artisan.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 6rem 2rem;
-    margin-top: 4rem;
-    position: relative;
-}
-
-.contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(230, 126, 34, 0.9), rgba(241, 196, 15, 0.9));
-    opacity: 0.9;
-}
-
-.contact-section h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.contact-section p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    z-index: 1;
-    line-height: 1.8;
-}
-
-.contact-btn {
-    padding: 1.2rem 3rem;
-    background: white;
-    color: #e67e22;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    position: relative;
-    z-index: 1;
-}
-
-.contact-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    background: #e67e22;
-    color: white;
-}
-
-/* Footer */
-footer {
-    background: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 4rem;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Apply animations to elements */
-.hero-content {
-    animation: fadeInUp 0.8s ease;
-    will-change: transform, opacity;
-}
-
-.hero-content h1 {
-    animation: fadeInUp 1s ease;
-    will-change: transform, opacity;
-}
-
-.filter-btn {
-    transition: all 0.2s ease;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-.card {
-    animation: scaleIn 0.4s ease;
-    transition: all 0.3s ease;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.card:nth-child(odd) {
-    animation: fadeInRight 0.6s ease;
-}
-
-.card:nth-child(even) {
-    animation: fadeInLeft 0.6s ease;
-}
-
-.product-badge {
-    animation: pulse 2s infinite;
-}
-
-.card img {
-    transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-.card:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-.whatsapp-btn, .location-btn, .order-btn {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.whatsapp-btn:hover, .location-btn:hover, .order-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.whatsapp-btn:hover i, .location-btn:hover i, .order-btn:hover i {
-    animation: pulse 1s infinite;
-}
-
-.whatsapp-btn::before, .location-btn::before, .order-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.4s ease;
-}
-
-.whatsapp-btn:hover::before, .location-btn:hover::before, .order-btn:hover::before {
-    left: 100%;
-}
-
-/* Scroll reveal animations */
-.reveal {
-    position: relative;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    will-change: transform, opacity;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Add more animation classes for different sections */
-.reveal-left {
-    position: relative;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    will-change: transform, opacity;
-}
-
-.reveal-right {
-    position: relative;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    will-change: transform, opacity;
-}
-
-.reveal-left.active, .reveal-right.active {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 4rem;
-    }
+    <!-- Fallback for browsers that don't support JavaScript -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
+            <a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-suggestions"></div>
+    </div>
+</nav>
+
+<div class="hero-container">
+    <div class="hero-content">
+        <h1>Discover Kasaragod's Local Treasures</h1>
+        <p>Explore the rich cultural heritage and traditional craftsmanship of Kasaragod</p>
+    </div>
+</div>
+
+<section class="section">
+    <div class="filter-container reveal">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+        <button class="filter-btn" data-filter="textiles">Textiles</button>
+        <button class="filter-btn" data-filter="food">Food Products</button>
+        <button class="filter-btn" data-filter="art">Art</button>
+        <button class="filter-btn" data-filter="spices">Spices</button>
+    </div>
+
+    <div class="cards">
+        <div class="featured-card card reveal" data-category="clothing">
+            <div class="product-badge featured-badge">Featured</div>
+            <img src="images/kasaragod-saree.jpg" alt="Traditional Kasaragod Sarees" loading="eager" fetchpriority="high">
+            <div class="card-content">
+                <h3>Traditional Kasaragod Sarees</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Handwoven silk sarees with intricate designs reflecting cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="javascript:void(0)" class="order-btn" onclick="showOrderForm('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-shopping-cart"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+        
+        <div class="card reveal" data-category="handicrafts">
+            <div class="product-badge">Best Seller</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/kasaragod-handicrafts.jpg" alt="Kasaragod Handicrafts" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Kasaragod Handicrafts</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Exquisite handicrafts showcasing the artistic excellence of local artisans.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Seller
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Handicrafts')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+        
+        <div class="card reveal" data-category="food">
+            <div class="product-badge">Organic</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/kasaragod-spices.jpg" alt="Kasaragod Spices" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Kasaragod Spices</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Premium quality spices grown in the fertile lands of Kasaragod.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Spices')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
+        <div class="card reveal-left" data-category="art">
+            <div class="product-badge">Unique</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/theyyam-crafts.jpg" alt="Theyyam Crafts" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Theyyam Art & Crafts</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>Handcrafted decorative items inspired by the traditional Theyyam art form. Each piece is a masterpiece of cultural expression.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Artist
+                </a>
+                <button class="location-btn" onclick="showStores('Theyyam Art & Crafts')">
+                    <i class="fas fa-map-marker-alt"></i> Visit Gallery
+                </button>
+            </div>
+        </div>
+
+        <div class="card reveal-left" data-category="spices">
+            <div class="product-badge">Organic</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/kasaragod-spices.jpg" alt="Kasaragod Spices" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Kasaragod Spice Collection</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Premium quality organic spices sourced directly from local farmers. Experience the authentic flavors of Kasaragod.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Spice Collection')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Preload images to improve performance
+    const cardImages = document.querySelectorAll('.card img');
+    cardImages.forEach(img => {
+        if (img.src) {
+            const preloadImage = new Image();
+            preloadImage.src = img.src;
+        }
+    });
+
+    // Optimize filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+    let currentFilter = 'all';
     
-    .hero-content {
-        padding: 6rem;
-        width: 98%;
-    }
+    // Initialize to show featured card with optimized animation
+    setTimeout(() => {
+        const featuredCard = document.querySelector('.featured-card');
+        if (featuredCard) {
+            featuredCard.classList.add('active');
+        }
+    }, 100);
+
+    // Throttle the reveal animations
+    let revealTimeout;
+    setTimeout(() => {
+        revealOnScroll();
+    }, 200);
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Skip if already on this filter
+            const newFilter = button.getAttribute('data-filter');
+            if (currentFilter === newFilter) return;
+            
+            currentFilter = newFilter;
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Apply filter with performance optimizations
+            requestAnimationFrame(() => {
+                cards.forEach(card => {
+                    if (currentFilter === 'all' || card.getAttribute('data-category') === currentFilter) {
+                        card.style.display = 'flex';
+                        // Stagger animations slightly for better performance
+                        setTimeout(() => {
+                            card.classList.add('active');
+                        }, 10);
+                    } else {
+                        card.classList.remove('active');
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+
+    // Optimized search functionality
+    const searchInput = document.getElementById('searchInput');
+    let searchTimeout;
     
-    .cards {
-        grid-template-columns: 1fr;
-        padding: 1rem;
+    searchInput.addEventListener('input', () => {
+        // Debounce search to improve performance
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            requestAnimationFrame(() => {
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.classList.add('active');
+                        }, 10);
+                    } else {
+                        card.classList.remove('active');
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }, 200); // Debounce delay
+    });
+
+    // Optimized scroll reveal functionality
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal:not(.active), .reveal-left:not(.active), .reveal-right:not(.active)');
+        
+        if (reveals.length === 0) return;
+        
+        const windowHeight = window.innerHeight;
+        const elementVisible = 150;
+        
+        reveals.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add('active');
+            }
+        });
     }
+
+    // Use passive event listener for better scroll performance
+    window.addEventListener('scroll', () => {
+        // Throttle scroll events
+        if (!revealTimeout) {
+            revealTimeout = setTimeout(() => {
+                revealOnScroll();
+                revealTimeout = null;
+            }, 100);
+        }
+    }, { passive: true });
+});
+
+// Store location functionality - optimized
+function showStores(productName) {
+    // This would typically show a modal or redirect to a map with store locations
+    alert(`Showing stores for ${productName}. This feature will be implemented soon!`);
+}
+
+// Order form functionality - optimized
+function showOrderForm(productName) {
+    // Create the HTML for order form
+    const orderHTML = `
+        <div class="order-form-overlay">
+            <div class="order-form-container">
+                <div class="order-form-header">
+                    <h3>Order ${productName}</h3>
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="order-form-body">
+                    <div class="product-preview">
+                        <img src="images/kasaragod-saree.jpg" alt="${productName}">
+                        <div class="product-info">
+                            <h4>${productName}</h4>
+                            <p class="price">₹2,499 - ₹7,999</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(24 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="order-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Delivery Address</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="variant">Variant</label>
+                            <select id="variant">
+                                <option value="traditional">Traditional Design</option>
+                                <option value="modern">Modern Design</option>
+                                <option value="bridal">Bridal Collection</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Place Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
     
-    .filter-container {
-        flex-direction: column;
-        align-items: center;
-    }
+    // Add the order form to the page
+    const orderFormContainer = document.createElement('div');
+    orderFormContainer.innerHTML = orderHTML;
+    document.body.appendChild(orderFormContainer.firstElementChild);
     
-    .filter-btn {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .contact-section h2 {
-        font-size: 2.2rem;
-    }
-
-    .card-buttons {
-        flex-direction: column;
-    }
+    // Add event listeners
+    const overlay = document.querySelector('.order-form-overlay');
+    const closeBtn = document.querySelector('.order-form-overlay .close-btn');
+    const orderForm = document.getElementById('order-form');
     
-    .featured-card .card-buttons a,
-    .featured-card .card-buttons button {
-        flex: 1 1 auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
+    // Force reflow to ensure animations work properly
+    overlay.offsetWidth;
     
-    .hero-content {
-        padding: 4rem;
-    }
-}
-
-/* Search Bar */
-.search-wrapper {
-    position: relative;
-    max-width: 300px;
-}
-
-.search-wrapper input {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    padding-right: 2.5rem;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.search-wrapper input:focus {
-    outline: none;
-    border-color: #e67e22;
-    box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
-}
-
-.search-icon {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.search-icon:hover {
-    color: #e67e22;
-}
-
-/* Featured Card */
-.featured-card {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    border: 2px solid #e67e22;
-    position: relative;
-    z-index: 2;
-    grid-column: span 2;
-}
-
-.featured-card::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    bottom: -10px;
-    left: -10px;
-    background: linear-gradient(135deg, rgba(230, 126, 34, 0.2), rgba(230, 126, 34, 0.05));
-    border-radius: 24px;
-    z-index: -1;
-    animation: pulse 2.5s infinite alternate;
-}
-
-.featured-card:hover {
-    transform: translateY(-15px) scale(1.05);
-}
-
-.featured-card h3 {
-    font-size: 1.8rem;
-    color: #e67e22;
-}
-
-.featured-badge {
-    background: linear-gradient(135deg, #e67e22, #f39c12);
-    font-size: 1rem;
-    padding: 0.9rem 1.8rem;
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
-}
-
-@media (max-width: 768px) {
-    .featured-card {
-        grid-column: auto;
-        transform: scale(1.02);
-    }
+    // Show the form with optimized animation
+    requestAnimationFrame(() => {
+        overlay.classList.add('active');
+    });
     
-    .featured-card:hover {
-        transform: translateY(-15px) scale(1.02);
-    }
-}
-
-@media (max-width: 1200px) {
-    .featured-card {
-        grid-column: span 1;
-    }
-}
-
-@media (max-width: 768px) {
-    .cards {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Order Form */
-.order-form-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.order-form-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.order-form-overlay.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.order-form-container {
-    background: white;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-.order-form-overlay.active .order-form-container {
-    transform: translateY(0);
-}
-
-.order-form-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.order-form-header h3 {
-    margin: 0;
-    color: #e67e22;
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #999;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-    color: #e67e22;
-}
-
-.order-form-body {
-    padding: 1.5rem;
-}
-
-.product-preview {
-    display: flex;
-    margin-bottom: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.product-preview img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-right: 1rem;
-}
-
-.product-info h4 {
-    margin: 0 0 0.5rem;
-    font-size: 1.1rem;
-    color: #2c3e50;
-}
-
-.price {
-    color: #e67e22;
-    font-weight: 600;
-    margin: 0.5rem 0;
-}
-
-.product-info .rating {
-    font-size: 0.9rem;
-}
-
-.product-info .rating span {
-    color: #666;
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #2c3e50;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: #e67e22;
-    box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
-}
-
-.form-actions {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.submit-btn {
-    background: linear-gradient(135deg, #e67e22, #f39c12);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
-}
-
-.submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
-}
-
-@media (max-width: 480px) {
-    .product-preview {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+    closeBtn.addEventListener('click', () => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => {
+            overlay.remove();
+        }, 300);
+    });
     
-    .product-preview img {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 100px;
-        height: 100px;
-    }
-}
-
-/* Optimize animations for performance */
-@media (prefers-reduced-motion: reduce) {
-    .hero-content,
-    .hero-content h1,
-    .card,
-    .card:nth-child(odd),
-    .card:nth-child(even),
-    .product-badge,
-    .reveal,
-    .reveal-left,
-    .reveal-right {
-        animation: none !important;
-        transform: none !important;
-        transition: opacity 0.1s ease !important;
-    }
-}
-
-/* Performance optimizations */
-.card, .hero-content, .filter-btn, .section-title, .featured-card {
-    contain: content;
-    will-change: transform, opacity;
-}
-
-/* Optimize critical rendering path */
-.hero-section {
-    content-visibility: auto;
-    contain-intrinsic-size: 600px;
-}
-
-.products-section {
-    content-visibility: auto;
-    contain-intrinsic-size: 1200px;
-}
-
-/* Reduce layout thrashing */
-.card {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-/* Optimize animations */
-@media (prefers-reduced-motion: reduce) {
-    .reveal, .reveal-left, .reveal-right, .card, .hero-content, .hero-content h1, .hero-content p {
-        transition: none !important;
-        animation: none !important;
-        transform: none !important;
-        opacity: 1 !important;
-    }
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.remove();
+            }, 300);
+        }
+    });
     
-    .filter-btn, .card-btn {
-        transition: background-color 0.1s ease !important;
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your order! We will contact you shortly to confirm the details.');
+        overlay.classList.add('fade-out');
+        setTimeout(() => {
+            overlay.remove();
+        }, 300);
+    });
+}
+
+// Defer non-critical operations
+function deferOperation(fn, delay) {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => setTimeout(fn, delay));
+    } else {
+        setTimeout(fn, delay);
     }
+}
+
+// Lazy load images
+function lazyLoadImages() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    if (src) {
+                        img.src = src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.getAttribute('data-src');
+            img.removeAttribute('data-src');
+        });
+    }
+}
+
+// Initialize performance optimizations
+deferOperation(() => {
+    // Convert regular images to lazy-loaded
+    document.querySelectorAll('img:not([data-src])').forEach(img => {
+        if (!img.src.includes('data:image')) { // Skip already loaded images
+            img.setAttribute('data-src', img.src);
+            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+            img.classList.add('lazy');
+        }
+    });
     
-    .order-form-overlay {
-        transition: opacity 0.2s ease-in-out !important;
-    }
-}
+    lazyLoadImages();
+    
+    // Pre-cache order form
+    deferOperation(() => {
+        const dummyForm = document.createElement('div');
+        dummyForm.style.display = 'none';
+        dummyForm.innerHTML = `
+            <div class="order-form-overlay" style="opacity: 0; pointer-events: none;">
+                <div class="order-form-container"></div>
+            </div>
+        `;
+        document.body.appendChild(dummyForm);
+        
+        // Remove after a short time
+        setTimeout(() => {
+            dummyForm.remove();
+        }, 500);
+    }, 2000);
+}, 1000);
+</script>
 
-/* Optimize order form rendering */
-.order-form-overlay {
-    contain: layout style paint;
-    will-change: opacity;
-    transition: opacity 0.25s ease-in-out;
-}
-
-.order-form-container {
-    transform: translateZ(0);
-    will-change: transform;
-    transition: transform 0.25s ease-out;
-}
-
-/* Optimize buttons */
-.card-btn-container {
-    contain: layout style;
-} 
+<script src="js/menu-toggle.js"></script>
+</body>
+</html> 

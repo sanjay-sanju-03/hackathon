@@ -3,277 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kasaragod Cuisine Guide</title>
+    <title>Discover Kasaragod's Culture</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #2c3e50;
-            --accent-color: #45a049;
-            --white: #ffffff;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            background: var(--secondary-color);
-            padding: 0.6rem 2rem;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--white);
-            cursor: pointer;
-            padding: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        nav a {
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .search-wrapper {
-            position: relative;
-            max-width: 250px;
-        }
-
-        .search-wrapper input {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            padding-right: 3rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        .search-wrapper input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            cursor: pointer;
-        }
-
-        .search-suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 0.5rem;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-            z-index: 1000;
-        }
-
-        .search-suggestions.active {
-            display: block;
-        }
-
-        .suggestion-item {
-            padding: 0.8rem 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid #eee;
-            color: var(--secondary-color);
-        }
-
-        .suggestion-item:hover {
-            background: #f8f9fa;
-            color: var(--primary-color);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cuisine-section {
-            padding: 4rem 2rem;
-        }
-
-        .cuisine-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cuisine-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .cuisine-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .cuisine-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .cuisine-content {
-            padding: 1.5rem;
-        }
-
-        .cuisine-content h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .cuisine-content p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .location {
-            color: var(--primary-color);
-            font-size: 0.9rem;
-        }
-
-        .price {
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 0.8rem 1rem;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 60px;
-                left: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: calc(100vh - 60px);
-                background: var(--secondary-color);
-                flex-direction: column;
-                padding: 2rem 0;
-                transition: left 0.3s ease;
-                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links a {
-                width: 100%;
-                text-align: center;
-                padding: 1rem;
-                margin: 0.5rem 0;
-            }
-
-            .search-wrapper {
-                max-width: 200px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cuisine-section {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Leaflet Routing Machine CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
-    <nav>
+
+<nav>
     <div class="nav-left">
         <button class="menu-toggle">
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="cuisine.html" class="active">Cuisine</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="cuisine.html">Cuisine</a>
             <a href="experience.html">Experiences</a>
             <a href="events.html">Events</a>
             <a href="house.html">Houseboats</a>
@@ -288,126 +37,264 @@
     </div>
 </nav>
 
-    <div class="hero">
-        <div>
-            <h1>Kasaragod's Culinary Delights</h1>
-            <p>Discover the authentic flavors of Northern Kerala</p>
+<div class="hero-container">
+    <div class="hero-content">
+        <a href="#art">
+            <h1>
+                <span class="title-top">what next?</span>
+                <span class="title-main">Kasaragod.</span>
+                <span class="title-arrow">&darr;</span>
+            </h1>
+        </a>
+    </div>
+    <section class="hero">
+        <div class="splide" id="main-slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <a href="bekal.html">
+                            <img src="images/maha.jpg" alt="Bekal Fort">
+                        </a>
+                    </li>
+                    <li class="splide__slide">
+                        <img src="images/Anantapura_Lake_Temple.jpg" alt="Anantapura Lake Temple">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="images/Asap.jpg" alt="ASAP">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="images/bekalfort front.jpg" alt="Bekal Fort">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="images/yaks.jpg" alt="Heritage Image">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="images/baclklk.jpg" alt="Kasaragod Heritage">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="images/Theyyam.jpg" alt="Theyyam Performance">
+                    </li>
+                </ul>
+            </div>
         </div>
+    </section>
+</div>
+
+<section class="section" id="art">
+    <h2>Cultural Heritage</h2>
+    <p>Explore the rich cultural heritage of Kasaragod</p>
+    
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="temple">sanctuary</button>
+        <button class="filter-btn" data-filter="fort">Forts</button>
+        <button class="filter-btn" data-filter="culture">Culture</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
     </div>
 
-    <section class="cuisine-section">
-        <div class="cuisine-grid">
-            <div class="cuisine-card">
-                <img src="images/puttu.jpg" alt="Puttu">
-                <div class="cuisine-content">
-                    <h3>Puttu & Kadala Curry</h3>
-                    <p>Traditional steamed rice cake served with black chickpea curry. A perfect breakfast combination.</p>
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Hotel Rahmath, Kasaragod Town
-                    </div>
-                    <div class="price">₹50 - ₹80</div>
-                </div>
+    <div class="cards">
+        <div class="card" data-category="all">
+            <img src="images/Asap.jpg" alt="ASAP">
+            <div class="card-content">
+                <h3>ASAP Community Skill Park</h3>
+                <p>A center for skill development and vocational training in Kasaragod.</p>
             </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5182, 75.0141, 'ASAP Community Skill Park')">Show on Map</button>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
+            </div>
+        </div>
 
-            <div class="cuisine-card">
-                <img src="images/karimeen.jpg" alt="Karimeen">
-                <div class="cuisine-content">
-                    <h3>Karimeen Pollichathu</h3>
-                    <p>Pearl spot fish marinated in spices, wrapped in banana leaf and grilled to perfection.</p>
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Bekal Beach Restaurant
-                    </div>
-                    <div class="price">₹300 - ₹400</div>
-                </div>
+        <div class="card" data-category="temple">
+            <img src="images/Anantapura_Lake_Temple.jpg" alt="Anantapura Lake Temple">
+            <div class="card-content">
+                <h3>Anantapura Lake Temple</h3>
+                <p>Ancient lake temple known for its unique architecture and peaceful surroundings.</p>
             </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5182, 75.0141, 'Anantapura Lake Temple')">Show on Map</button>
+                <a href="anantapura.html">Show more details</a>
+            </div>
+        </div>
 
-            <div class="cuisine-card">
-                <img src="images/biriyani.jpg" alt="Biriyani">
-                <div class="cuisine-content">
-                    <h3>Beef Pallikari</h3>
-                    <p>Beef Pallikari is a flavorful, spicy beef curry from Kasaragod, made with tender meat, aromatic spices, and roasted coconut. A true taste of Kerala!.</p>
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Kolya Hotel, Madhur, Kasaragod
-                    </div>
-                    <div class="price">₹150 - ₹250</div>
-                </div>
+        <div class="card" data-category="All">
+            <img src="images/houseb.jpeg" alt="Nileshwar HouseBoat">
+            <div class="card-content">
+                <h3>Nileshwar HouseBoats</h3>
+                <p>Enjoy the nature with nileshwar houseboat.</p>
             </div>
+            <div class="card-buttons">
+                <button onclick="location.href='house.html'">Book your houseboat Trip</button>
+                <a href="https://wa.me/9846913111">Contact on WhatsApp</a>
+            </div>
+        </div>
 
-            <div class="cuisine-card">
-                <img src="images/pathiri.jpg" alt="Pathiri">
-                <div class="cuisine-content">
-                    <h3>Pathiri</h3>
-                    <p>Rice flour bread served with spicy chicken curry, a Malabar specialty.</p>
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Malabar Kitchen, Nileshwar
-                    </div>
-                    <div class="price">₹100 - ₹150</div>
-                </div>
+        <div class="card" data-category="fort">
+            <img src="images/bekalfort front.jpg" alt="Bekal Fort">
+            <div class="card-content">
+                <h3>Bekal Fort</h3>
+                <p>The largest and best-preserved fort in Kerala, offering stunning views of the Arabian Sea.</p>
             </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.3917, 75.0328, 'Bekal Fort')">Show on Map</button>
+                <a href="https://wa.me/+91 4672 950 500">Contact on WhatsApp</a>
+            </div>
+        </div>
 
-            <div class="cuisine-card">
-                <img src="images/seafood.jpg" alt="Seafood">
-                <div class="cuisine-content">
-                    <h3>Fresh Seafood Platter</h3>
-                    <p>Variety of fresh seafood including prawns, crabs, and fish prepared in local style.</p>
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
-                    </div>
-                    <div class="price">₹500 - ₹800</div>
-                </div>
+        <div class="card" data-category="culture">
+            <img src="images/yaks.jpg" alt="Yakshagana">
+            <div class="card-content">
+                <h3>Yakshagana</h3>
+                <p>A traditional dance drama form that combines dance, music, and dialogue.</p>
             </div>
-                <div class="cuisine-card">
-                    <img src="images/pickle.jpg" alt="Seafood">
-                    <div class="cuisine-content">
-                        <h3>Kallumakkaya Pickle</h3>
-                        <p>Kallumakkaya Pickle is a flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices. This savory pickle offers a rich and bold taste of Kasaragod's coastal cuisine..</p>
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
-                        </div>
-                        <div class="price">₹250 - ₹400</div>
-                    </div>
-                </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5063, 75.0014, 'Yakshagana')">Show on Map</button>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
+            </div>
+        </div>
+           
+        <div class="card" data-category="sanctuary">
+            <img src="images/bela.jpeg" alt="Bela">
+            <div class="card-content">
+                <h3>Bela Church</h3>
+                <p>Bela Church, also known as Our Lady of Sorrows Church, is a Roman Catholic church in Kasaragod, Kerala, known for being the oldest church in the district, built in 1890 in a Gothic Revival style</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5870, 75.0224, 'Bela church')">Show on Map</button>
+                <a href="https://wa.me/098952 13576">Contact on WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="nature">
+            <img src="images/kareems forest park.jpg" alt="forest park">
+            <div class="card-content">
+                <h3>Kareem's forest park</h3>
+                <p>Kareem's Forest Park is a remarkable man-made forest located in Puliyamkulam, near Parappa, approximately 23 kilometers east of Kanhangad town in Kerala's Kasaragod district.</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5076, 74.9882, 'kareems Forest Park')">Show on Map</button>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="nature">
+            <img src="images/suranga.jpg" alt="Suranga">
+            <div class="card-content">
+                <h3>Suranga </h3>
+                <p>Popularly known as Suranga or Thurangam, these artificial tunnel wells are carved in the slopes of laterite hills so that people can walk towards the water source</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5076, 74.9882, 'Suranga')">Show on Map</button>
+                <a href="Suranga.html">Show more details</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="temple">
+            <img src="images/kodothtemp.jpg" alt="Kodoth bhagavathi temple">
+            <div class="card-content">
+                <h3>Kodoth bhagavathi temple </h3>
+                <p>This is a temple dedicated to Goddess Bhagavathy, and is located in the village of Kodom in Kasaragod. Rich in architectural beauty, the major attractions of this temple are the wood paintings and the temple pond. The village of Kodom itself is located 24 kms from Kanhangad in Kasaragod, Kerala.
+                </p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.41544, 75.1906, 'Kodoth bhagavathi temple')">Show on Map</button>
+                <a href="Suranga.html">Show more details</a>
             </div>
         </div>    
-    </section>
 
-<section class="section" id="map-section">
-    <h2>Location Map</h2>
-    <div id="map"></div>
+    </div>
 </section>
-    
+
+<section class="map-section">
+    <div class="map-container">
+        <h2>Find Cultural Locations</h2>
+        <div id="map"></div>
+        <div id="location-info"></div>
+    </div>
+</section>
+
 <footer>
-    <p>&copy; 2024 Kasaragod Tourism. All rights reserved.</p>
+    <p>© 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
 </footer>
-    
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script src="js/script.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 <script>
-    // Mobile menu toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    const map = L.map('map').setView([12.4280 , 75.3616], 10);
 
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.nav-left') && !event.target.closest('.menu-toggle')) {
-                navLinks.classList.remove('active');
-            }
-        });
+    const bekalFort = [12.4280, 75.3616];
 
-        // Close menu when clicking a link
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
+    L.marker(bekalFort).addTo(map)
+        .bindPopup("Bekal Fort")
+        .openPopup();
+
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                const userLocation = [latitude, longitude];
+                L.marker(userLocation).addTo(map)
+                    .bindPopup("You are here!")
+                    .openPopup();
+
+                map.setView(userLocation, 13);
+                document.getElementById('location-info').innerHTML = `
+                    Latitude: ${latitude}<br>
+                    Longitude: ${longitude}
+                `;
+                calculateDistance(userLocation, bekalFort);
+                showDirections(userLocation, bekalFort);
+
+            }, function(error) {
+                alert("Error getting location: " + error.message);
             });
-        });
-    });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function calculateDistance(userLocation, destination) {
+        const lat1 = userLocation[0];
+        const lon1 = userLocation[1];
+        const lat2 = destination[0];
+        const lon2 = destination[1];
+
+        const rad = Math.PI / 180;
+        const dLat = (lat2 - lat1) * rad;
+        const dLon = (lon2 - lon1) * rad;
+
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        const R = 6371;
+        const distance = R * c;
+
+        document.getElementById('location-info').innerHTML += `
+            <br>Distance to Bekal Fort: ${distance.toFixed(2)} km
+        `;
+    }
+
+    function showDirections(userLocation, destination) {
+        L.Routing.control({
+            waypoints: [
+                L.latLng(userLocation[0], userLocation[1]),
+                L.latLng(destination[0], destination[1])
+            ],
+            routeWhileDragging: true
+        }).addTo(map);
+    }
+
+    getUserLocation();
 </script>
 
 <script src="js/menu-toggle.js"></script>
