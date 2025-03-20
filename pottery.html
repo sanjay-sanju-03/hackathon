@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theyyam - Ritual Art Form of Kasaragod</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/pottery.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.2s ease;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Modern No. 20', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #f8c291, #e55039);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1.2s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1.5s ease;
+            font-weight: 300;
+        }
+        
+        .coming-soon {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .coming-soon h2 {
+            font-family: 'Modern No. 20', serif;
+            font-size: 3.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .coming-soon h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #f8c291, #e55039);
+            border-radius: 2px;
+        }
+        
+        .coming-soon p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.8;
+            text-align: justify;
+            padding: 0 2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #f8c291, #e55039);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229, 80, 57, 0.2);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(229, 80, 57, 0.3);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 0;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        footer .fa-heart {
+            color: #e55039;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+            
+            .coming-soon h2 {
+                font-size: 2.8rem;
+            }
+            
+            .coming-soon p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .coming-soon h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="cuisine.html">Cuisine</a>
+                <a href="experience.html">Experiences</a>
+                <a href="events.html">Events</a>
+                <a href="house.html">Houseboats</a>
+                <a href="arts-artisans.html">Art & Artisans</a>
+                <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+            </div>
+        </div>
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <i class="fas fa-search search-icon"></i>
+            <div class="search-suggestions"></div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Pottery</h1>
+            <p>Master Potter Preserving Kerala's Traditional Clay Craftsmanship</p>
+        </div>
+    </div>
+
+    <section class="coming-soon">
+        <h2>Kunjambu</h2>
+        <p>Kunjambu is a traditional potter renowned for crafting eco-friendly cookware and decorative items using locally sourced clay and natural colors. Kerala's traditional clay pottery dates back thousands of years, with its origins rooted in the ancient Indus Valley Civilization. Artisans
+             like Kunjambu utilize traditional techniques to create a variety of products, including earthen pots such as the 'Manchatti' or 'Meenchatti', which are unglazed, free from toxic materials, and 100% eco-friendly. Cooking in clay pots is known to retain moisture and natural oils in food, 
+             allowing for healthier meals with reduced oil content. Additionally, the slow cooking process in clay pots enhances the flavor and nutritional value of the food. Kunjambu's commitment to eco-friendly practices and cultural preservation offers valuable insights into sustainable living and 
+             the enduring relevance of traditional crafts.​</p>
+        <a href="arts-artisans.html" class="back-btn">Return to Art & Artisans</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
+    </footer>
+
+    <script src="js/menu-toggle.js"></script>
+</body>
+</html> 
