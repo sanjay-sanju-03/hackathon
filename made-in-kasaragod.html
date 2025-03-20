@@ -67,7 +67,7 @@
 </div>
 
 <section class="section">
-    <div class="filter-container reveal">
+    <div class="filter-container">
         <button class="filter-btn active" data-filter="all">All Products</button>
         <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
         <button class="filter-btn" data-filter="textiles">Textiles</button>
@@ -77,30 +77,11 @@
     </div>
 
     <div class="cards">
-
+        <div class="card" data-category="handicrafts">
+            <div class="product-badge">Best Seller</div>
+            <img src="images/handloom.jpg" alt="Kasaragod Handloom">
             <div class="card-content">
-                <h3>Traditional Kasaragod Sarees</h3>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>Handwoven silk sarees with intricate designs reflecting cultural heritage.</p>
-            </div>
-            <div class="card-buttons">
-                <a href="javascript:void(0)" class="order-btn" onclick="showOrderForm('Traditional Kasaragod Sarees')">
-                    <i class="fas fa-shopping-cart"></i> Order Now
-                </a>
-                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
-                    <i class="fas fa-map-marker-alt"></i> Find Stores
-                </button>
-            </div>
-        </div>
-
-            <div class="card-content">
-                <h3>Kasaragod Handicrafts</h3>
+                <h3>Kasaragod Handloom</h3>
                 <div class="rating">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -108,40 +89,45 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <p>Exquisite handicrafts showcasing the artistic excellence of local artisans.</p>
+                <p>Traditional handwoven textiles known for their unique patterns and superior quality. Each piece tells a story of our rich cultural heritage.</p>
             </div>
             <div class="card-buttons">
                 <a href="https://wa.me/1234567890" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Contact Seller
                 </a>
-                <button class="location-btn" onclick="showStores('Kasaragod Handicrafts')">
+                <button class="location-btn" onclick="showStores('Kasaragod Handloom')">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
             </div>
         </div>
 
+        <div class="card" data-category="food">
+            <div class="product-badge">Popular</div>
+            <img src="images/halwa.jpg" alt="Kasaragod Special Halwa">
             <div class="card-content">
-                <h3>Kasaragod Spices</h3>
+                <h3>Kasaragod Special Halwa</h3>
                 <div class="rating">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <p>Premium quality spices grown in the fertile lands of Kasaragod.</p>
+                <p>Famous sweet delicacy made with traditional recipes passed down through generations. A perfect blend of local ingredients and authentic taste.</p>
             </div>
             <div class="card-buttons">
                 <a href="https://wa.me/1234567890" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Order Now
                 </a>
-                <button class="location-btn" onclick="showStores('Kasaragod Spices')">
+                <button class="location-btn" onclick="showStores('Kasaragod Special Halwa')">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
             </div>
         </div>
 
-
+        <div class="card" data-category="art">
+            <div class="product-badge">Unique</div>
+            <img src="images/theyyam.webp" alt="Theyyam Crafts">
             <div class="card-content">
                 <h3>Theyyam Art & Crafts</h3>
                 <div class="rating">
@@ -163,9 +149,33 @@
             </div>
         </div>
 
-        <div class="card reveal-left" data-category="spices">
-            <div class="product-badge">Organic</div>
+        <div class="card" data-category="textiles">
+            <div class="product-badge">Premium</div>
+            <img src="images/saree.jpg" alt="Kasaragod Sarees">
+            <div class="card-content">
+                <h3>Traditional Kasaragod Sarees</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Exquisite handwoven sarees featuring traditional Kerala designs and motifs. A perfect blend of elegance and cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Seller
+                </a>
+                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
 
+        <div class="card" data-category="spices">
+            <div class="product-badge">Organic</div>
+            <img src="images/spices.jpg" alt="Kasaragod Spices">
             <div class="card-content">
                 <h3>Kasaragod Spice Collection</h3>
                 <div class="rating">
@@ -195,304 +205,50 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Preload images to improve performance
-    const cardImages = document.querySelectorAll('.card img');
-    cardImages.forEach(img => {
-        if (img.src) {
-            const preloadImage = new Image();
-            preloadImage.src = img.src;
-        }
-    });
-
-    // Optimize filter functionality
+    // Filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.card');
-    let currentFilter = 'all';
-    
-    // Initialize to show featured card with optimized animation
-    setTimeout(() => {
-        const featuredCard = document.querySelector('.featured-card');
-        if (featuredCard) {
-            featuredCard.classList.add('active');
-        }
-    }, 100);
-
-    // Throttle the reveal animations
-    let revealTimeout;
-    setTimeout(() => {
-        revealOnScroll();
-    }, 200);
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Skip if already on this filter
-            const newFilter = button.getAttribute('data-filter');
-            if (currentFilter === newFilter) return;
-            
-            currentFilter = newFilter;
-            
-            // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
             
-            // Apply filter with performance optimizations
-            requestAnimationFrame(() => {
-                cards.forEach(card => {
-                    if (currentFilter === 'all' || card.getAttribute('data-category') === currentFilter) {
-                        card.style.display = 'flex';
-                        // Stagger animations slightly for better performance
-                        setTimeout(() => {
-                            card.classList.add('active');
-                        }, 10);
-                    } else {
-                        card.classList.remove('active');
-                        card.style.display = 'none';
-                    }
-                });
+            cards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         });
     });
 
-    // Optimized search functionality
+    // Search functionality
     const searchInput = document.getElementById('searchInput');
-    let searchTimeout;
-    
     searchInput.addEventListener('input', () => {
-        // Debounce search to improve performance
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            const searchTerm = searchInput.value.toLowerCase();
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
             
-            requestAnimationFrame(() => {
-                cards.forEach(card => {
-                    const title = card.querySelector('h3').textContent.toLowerCase();
-                    const description = card.querySelector('p').textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                        card.style.display = 'flex';
-                        setTimeout(() => {
-                            card.classList.add('active');
-                        }, 10);
-                    } else {
-                        card.classList.remove('active');
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        }, 200); // Debounce delay
-    });
-
-    // Optimized scroll reveal functionality
-    function revealOnScroll() {
-        const reveals = document.querySelectorAll('.reveal:not(.active), .reveal-left:not(.active), .reveal-right:not(.active)');
-        
-        if (reveals.length === 0) return;
-        
-        const windowHeight = window.innerHeight;
-        const elementVisible = 150;
-        
-        reveals.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            if (elementTop < windowHeight - elementVisible) {
-                element.classList.add('active');
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
             }
         });
-    }
-
-    // Use passive event listener for better scroll performance
-    window.addEventListener('scroll', () => {
-        // Throttle scroll events
-        if (!revealTimeout) {
-            revealTimeout = setTimeout(() => {
-                revealOnScroll();
-                revealTimeout = null;
-            }, 100);
-        }
-    }, { passive: true });
+    });
 });
 
-// Store location functionality - optimized
+// Store location functionality
 function showStores(productName) {
     // This would typically show a modal or redirect to a map with store locations
     alert(`Showing stores for ${productName}. This feature will be implemented soon!`);
 }
-
-// Order form functionality - optimized
-function showOrderForm(productName) {
-    // Create the HTML for order form
-    const orderHTML = `
-        <div class="order-form-overlay">
-            <div class="order-form-container">
-                <div class="order-form-header">
-                    <h3>Order ${productName}</h3>
-                    <button class="close-btn"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="order-form-body">
-                    <div class="product-preview">
-                        <img src="images/kasaragod-saree.jpg" alt="${productName}">
-                        <div class="product-info">
-                            <h4>${productName}</h4>
-                            <p class="price">₹2,499 - ₹7,999</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(24 reviews)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <form id="order-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Delivery Address</label>
-                            <textarea id="address" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="quantity">Quantity</label>
-                            <input type="number" id="quantity" min="1" value="1">
-                        </div>
-                        <div class="form-group">
-                            <label for="variant">Variant</label>
-                            <select id="variant">
-                                <option value="traditional">Traditional Design</option>
-                                <option value="modern">Modern Design</option>
-                                <option value="bridal">Bridal Collection</option>
-                            </select>
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="submit-btn">Place Order</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Add the order form to the page
-    const orderFormContainer = document.createElement('div');
-    orderFormContainer.innerHTML = orderHTML;
-    document.body.appendChild(orderFormContainer.firstElementChild);
-    
-    // Add event listeners
-    const overlay = document.querySelector('.order-form-overlay');
-    const closeBtn = document.querySelector('.order-form-overlay .close-btn');
-    const orderForm = document.getElementById('order-form');
-    
-    // Force reflow to ensure animations work properly
-    overlay.offsetWidth;
-    
-    // Show the form with optimized animation
-    requestAnimationFrame(() => {
-        overlay.classList.add('active');
-    });
-    
-    closeBtn.addEventListener('click', () => {
-        overlay.classList.add('fade-out');
-        setTimeout(() => {
-            overlay.remove();
-        }, 300);
-    });
-    
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-            overlay.classList.add('fade-out');
-            setTimeout(() => {
-                overlay.remove();
-            }, 300);
-        }
-    });
-    
-    orderForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your order! We will contact you shortly to confirm the details.');
-        overlay.classList.add('fade-out');
-        setTimeout(() => {
-            overlay.remove();
-        }, 300);
-    });
-}
-
-// Defer non-critical operations
-function deferOperation(fn, delay) {
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => setTimeout(fn, delay));
-    } else {
-        setTimeout(fn, delay);
-    }
-}
-
-// Lazy load images
-function lazyLoadImages() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const src = img.getAttribute('data-src');
-                    if (src) {
-                        img.src = src;
-                        img.removeAttribute('data-src');
-                    }
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    } else {
-        // Fallback for browsers that don't support IntersectionObserver
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            img.src = img.getAttribute('data-src');
-            img.removeAttribute('data-src');
-        });
-    }
-}
-
-// Initialize performance optimizations
-deferOperation(() => {
-    // Convert regular images to lazy-loaded
-    document.querySelectorAll('img:not([data-src])').forEach(img => {
-        if (!img.src.includes('data:image')) { // Skip already loaded images
-            img.setAttribute('data-src', img.src);
-            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
-            img.classList.add('lazy');
-        }
-    });
-    
-    lazyLoadImages();
-    
-    // Pre-cache order form
-    deferOperation(() => {
-        const dummyForm = document.createElement('div');
-        dummyForm.style.display = 'none';
-        dummyForm.innerHTML = `
-            <div class="order-form-overlay" style="opacity: 0; pointer-events: none;">
-                <div class="order-form-container"></div>
-            </div>
-        `;
-        document.body.appendChild(dummyForm);
-        
-        // Remove after a short time
-        setTimeout(() => {
-            dummyForm.remove();
-        }, 500);
-    }, 2000);
-}, 1000);
 </script>
 
 <script src="js/menu-toggle.js"></script>
