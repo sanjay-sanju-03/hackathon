@@ -85,7 +85,7 @@ nav a.active {
 /* Hero Section */
 .hero-container {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/kasaragod-craft.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/ksd.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
