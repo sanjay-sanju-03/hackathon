@@ -1,638 +1,110 @@
-:root {
-    --primary-color: #4CAF50;
-    --primary-gradient: linear-gradient(135deg, #4CAF50, #45a049);
-    --secondary-color: #2c3e50;
-    --accent-color: #e67e22;
-    --white: #ffffff;
-    --light-bg: rgba(255, 255, 255, 0.95);
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    --border-radius: 16px;
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+    <nav>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html" class="active">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
+            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-suggestions"></div>
+    </div>
+</nav>
+    <header class="header">
+        <h1>Experiences</h1>
+        <p>Share your story with the world</p>
+    </header>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <div id="experiences-container"></div>
 
-body {
-    min-height: 100vh;
-    font-family: 'Modern No. 20', sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/exp.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: var(--secondary-color);
-    line-height: 1.6;
-}
+    <div class="upload-btn" onclick="openModal()">
+        <i class="fas fa-plus"></i>
+    </div>
 
-/* Navigation */
-nav {
-    background: var(--light-bg);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 1.2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Share Your Moment</h2>
+                <p>Upload your photos and videos</p>
+            </div>
+            <form class="upload-form">
+                <div class="form-group">
+                    <label>Choose Media</label>
+                    <input type="file" accept="image/*,video/*" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-input" rows="4" placeholder="Tell your story..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-cloud-upload-alt"></i> Share Now
+                </button>
+            </form>
+        </div>
+    </div>
 
-nav a {
-    color: var(--secondary-color);
-    font-weight: 500;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    margin: 0 1.2rem;
-    position: relative;
-    padding: 0.5rem 0;
-    font-size: 1.05rem;
-}
+    <script>
+        function openModal() {
+            document.getElementById('uploadModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
 
-nav a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s ease;
-}
+        function closeModal() {
+            document.getElementById('uploadModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
-nav a:hover:after,
-nav a.active:after {
-    width: 100%;
-}
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('uploadModal')) {
+                closeModal();
+            }
+        }
 
-nav a:hover,
-nav a.active {
-    color: var(--accent-color);
-}
+        async function fetchExperiences() {
+            try {
+                const response = await fetch('/api/experiences');
+                const experiences = await response.json();
+                const container = document.getElementById('experiences-container');
+                experiences.forEach(exp => {
+                    const expDiv = document.createElement('div');
+                    expDiv.classList.add('experience');
+                    expDiv.innerHTML = `
+                        <img src="${exp.imageUrl}" alt="Experience Image">
+                        <p>${exp.description}</p>
+                        <small>${new Date(exp.createdAt).toLocaleString()}</small>
+                    `;
+                    container.appendChild(expDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching experiences:', error);
+            }
+        }
 
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-    z-index: 1001;
-}
-
-/* Improved Mobile Menu Search */
-.mobile-search-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    width: 100%;
-}
-
-.mobile-search-wrapper input {
-    width: 100%;
-    padding: 1rem 3rem 1rem 1.2rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--secondary-color);
-}
-
-.mobile-search-wrapper input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.15);
-    background: white;
-}
-
-.mobile-search-wrapper .search-button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    font-size: 1rem;
-}
-
-.mobile-search-wrapper .search-button:hover {
-    color: var(--accent-color);
-}
-
-.mobile-search-wrapper input::placeholder {
-    color: #999;
-    font-style: italic;
-}
-
-.hamburger:hover {
-    color: var(--accent-color);
-}
-
-/* Mobile Menu */
-.mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background: var(--light-bg);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 5rem 2rem 2rem;
-    transition: right 0.4s ease;
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    padding-bottom: 3rem;
-}
-
-.mobile-menu.active {
-    right: 0;
-}
-
-.mobile-menu a {
-    display: block;
-    color: var(--secondary-color);
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 1rem 0;
-    margin: 0.5rem 0;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.mobile-menu a:hover {
-    color: var(--accent-color);
-    transform: translateX(10px);
-}
-
-.menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.menu-overlay.active {
-    opacity: 1;
-    display: block;
-}
-
-.close-menu {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.close-menu:hover {
-    color: var(--accent-color);
-    transform: rotate(90deg);
-}
-
-/* Header */
-.header {
-    padding: 3.5rem 0;
-    text-align: center;
-    position: relative;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    margin-top: 70px;
-}
-
-.header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4em;
-    color: white;
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.header p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.2em;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* Experience Cards */
-.content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2.5rem;
-    padding: 3rem;
-    max-width: 1600px;
-    margin: 0 auto;
-}
-
-.card {
-    background: var(--light-bg);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: var(--transition);
-    backdrop-filter: blur(5px);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--hover-shadow);
-}
-
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-content p {
-    margin-bottom: 1rem;
-    flex-grow: 1;
-    line-height: 1.6;
-}
-
-.card-content small {
-    color: #666;
-    align-self: flex-end;
-}
-
-/* Upload Button */
-.upload-btn {
-    position: fixed;
-    bottom: 2.5rem;
-    right: 2.5rem;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: var(--light-bg);
-    color: #FF6B6B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    transition: var(--transition);
-    z-index: 99;
-}
-
-.upload-btn:hover {
-    transform: scale(1.1) rotate(180deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.upload-btn i {
-    font-size: 1.5rem;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    width: 90%;
-    max-width: 550px;
-    margin: 50px auto;
-    padding: 2.5rem;
-    border-radius: 24px;
-    position: relative;
-    animation: modalSlide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.modal-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.modal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.8rem;
-    color: var(--secondary-color);
-    font-weight: 500;
-}
-
-.form-input {
-    width: 100%;
-    padding: 1rem;
-    border: 2px solid #e1e8f0;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.form-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
-}
-
-.submit-btn {
-    background: var(--primary-gradient);
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.close-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    font-size: 1.8em;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    background: none;
-    border: none;
-}
-
-.close-btn:hover {
-    color: #FF6B6B;
-}
-
-/* Animations */
-@keyframes modalSlide {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .content-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        padding: 2.5rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .hamburger {
-        display: block;
-        margin-left: auto;
-    }
+        document.addEventListener('DOMContentLoaded', fetchExperiences);
+    </script>
     
-    .nav-links {
-        display: none;
-    }
-    
-    .mobile-menu {
-        display: block;
-    }
-    
-    nav {
-        justify-content: flex-end;
-        padding: 1rem 1.5rem;
-    }
-    
-    .header h1 {
-        font-size: 3.5em;
-    }
-    
-    .content-grid {
-        padding: 2rem;
-        gap: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .header {
-        padding: 2.5rem 0;
-        margin-top: 60px;
-    }
-    
-    .header h1 {
-        font-size: 2.8em;
-    }
-    
-    .header p {
-        font-size: 1em;
-    }
-    
-    .content-grid {
-        padding: 1.5rem;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .modal-content {
-        padding: 2rem;
-        width: 95%;
-        margin: 30px auto;
-    }
-    
-    .modal-title {
-        font-size: 1.8em;
-    }
-    
-    .upload-btn {
-        width: 55px;
-        height: 55px;
-        bottom: 2rem;
-        right: 2rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .header h1 {
-        font-size: 2.2em;
-    }
-    
-    .content-grid {
-        padding: 1rem;
-        gap: 1.5rem;
-        grid-template-columns: 1fr;
-    }
-    
-    .modal-content {
-        padding: 1.5rem;
-    }
-    
-    .modal-title {
-        font-size: 1.5em;
-    }
-    
-    .form-group label {
-        font-size: 0.9em;
-    }
-    
-    .form-input {
-        padding: 0.8rem;
-    }
-    
-    .submit-btn {
-        padding: 0.8rem;
-        font-size: 1em;
-    }
-    
-    .upload-btn {
-        width: 50px;
-        height: 50px;
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-    
-    nav {
-        padding: 0.8rem 1rem;
-    }
-}
-
-@media (max-width: 380px) {
-    .header h1 {
-        font-size: 1.8em;
-    }
-    
-    .header p {
-        font-size: 0.9em;
-    }
-    
-    .card-content {
-        padding: 1.2rem;
-    }
-    
-    .card-content p {
-        font-size: 0.9em;
-    }
-}
-
-/* Treasures Heading */
-.treasures-heading {
-    text-align: center;
-    padding: 4rem 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/ksd.jpg') no-repeat center center;
-    background-size: cover;
-    backdrop-filter: blur(8px);
-    margin: 0 auto 3rem;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.treasures-heading h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5em;
-    color: white;
-    margin: 0;
-    letter-spacing: 4px;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    line-height: 1.3;
-    max-width: 900px;
-    padding: 0 2rem;
-    text-align: center;
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    z-index: 1;
-}
-
-.treasures-heading::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(230, 126, 34, 0.3), rgba(41, 128, 185, 0.3));
-    z-index: 0;
-}
-
-@media (max-width: 768px) {
-    .treasures-heading {
-        padding: 3rem 0;
-    }
-    
-    .treasures-heading h2 {
-        font-size: 2.5em;
-        letter-spacing: 3px;
-        padding: 0 1.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .treasures-heading {
-        padding: 2.5rem 0;
-    }
-    
-    .treasures-heading h2 {
-        font-size: 2em;
-        letter-spacing: 2px;
-        padding: 0 1rem;
-    }
-}
+    <script src="js/menu-toggle.js"></script>
+</body>
+</html>

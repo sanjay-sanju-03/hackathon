@@ -33,9 +33,137 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.8rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+
+.menu-toggle:hover {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+    background: rgba(26, 95, 122, 0.1);
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 350px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    padding-right: 3.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.2);
+}
+
+.search-wrapper input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.search-icon:hover {
+    color: var(--primary-color);
+    background: rgba(26, 95, 122, 0.1);
+}
+
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.search-suggestions.active {
+    display: block;
+}
+
+.suggestion-item {
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background: #f8f9fa;
+    color: var(--primary-color);
+}
+
+/* Old nav styles for backward compatibility */
+nav ul {
+    display: none; /* Hide the old navigation */
 }
 
 /* Logo styles */
@@ -61,31 +189,6 @@ nav {
     .logo img {
         height: 40px;
     }
-}
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: var(--transition);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    color: var(--primary-color);
-    background: rgba(26, 95, 122, 0.1);
-}
-
-.mobile-menu {
-    display: none;
-    cursor: pointer;
 }
 
 /* Hero Section */
@@ -692,25 +795,42 @@ footer {
         display: block;
     }
 
-    nav ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
         background: white;
         flex-direction: column;
-        padding: 1rem 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
     }
 
-    nav ul.active {
-        display: flex;
+    .nav-links.active {
+        left: 0;
     }
 
-    nav ul li {
+    .nav-links a {
         width: 100%;
         text-align: center;
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+
+    .search-wrapper {
+        max-width: 200px;
+    }
+
+    nav ul {
+        display: none;
     }
 
     .hero h1 {
@@ -735,6 +855,10 @@ footer {
 
     .hero-buttons {
         flex-direction: column;
+    }
+
+    .search-wrapper {
+        max-width: 150px;
     }
 }
 

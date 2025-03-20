@@ -1,675 +1,510 @@
-/* Main Styles */
-body {
-    background-color: #f8f9fa,url('../images/ksd.jpg') no-repeat center center fixed;;
-    font-family: 'Modern No. 20', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    overflow-x: hidden;
-}
-
-/* Navigation */
-nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 1.2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-}
-
-nav.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    padding: 0.8rem 2.5rem;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: var(--secondary-color);
-    font-weight: 500;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    margin: 0 1.2rem;
-    position: relative;
-    padding: 0.5rem 0;
-    font-size: 1.05rem;
-}
-
-nav a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s ease;
-}
-
-nav a:hover:after,
-nav a.active:after {
-    width: 100%;
-}
-
-nav a:hover,
-nav a.active {
-    color: var(--accent-color);
-}
-
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-    z-index: 1001;
-}
-
-.hamburger:hover {
-    color: var(--accent-color);
-}
-
-/* Hero Section */
-.hero-container {
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/ksd.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    margin-top: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.hero-container:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(230, 126, 34, 0.7), rgba(41, 128, 185, 0.7));
-    opacity: 0.8;
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 5rem;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 30px;
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: slideInFromRight 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.hero-content h1 {
-    font-size: 4.5rem;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: linear-gradient(45deg, #f39c12, #e74c3c, #e67e22, #d35400);
-    background-size: 300% 300%;
-    animation: gradientShift 8s ease infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-}
-
-.hero-content p {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    color: #ecf0f1;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Add a scroll indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    animation: bounce 3s ease-in-out infinite;
-}
-
-.scroll-indicator::before {
-    content: '↓';
-    font-size: 2rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) translateX(-50%);
-    }
-    40% {
-        transform: translateY(-30px) translateX(-50%);
-    }
-    60% {
-        transform: translateY(-15px) translateX(-50%);
-    }
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Filter Section */
-.filter-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 3rem 0 2rem 0;
-    flex-wrap: wrap;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 10;
-}
-
-.filter-btn {
-    padding: 0.9rem 2rem;
-    border: none;
-    border-radius: 50px;
-    background: linear-gradient(45deg, #f39c12, #e74c3c);
-    background-size: 200% 100%;
-    color: white;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    font-size: 1rem;
-    font-weight: 500;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    position: relative;
-    overflow: hidden;
-}
-
-.filter-btn:hover {
-    background-position: 100% 0;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(243, 156, 18, 0.3);
-}
-
-/* Cards Section */
-.section {
-    padding: 3rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2.5rem;
-    padding: 2rem 1rem;
-}
-
-.card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transform: translateX(50px);
-    opacity: 0;
-}
-
-.card.animate {
-    animation: slideInFromRight 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.card img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    transition: all 0.5s ease;
-}
-
-.card:hover img {
-    transform: scale(1.08);
-}
-
-.card-content {
-    padding: 2rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    position: relative;
-    z-index: 2;
-}
-
-.card-content h3 {
-    font-size: 1.6rem;
-    margin-bottom: 0.6rem;
-    color: #2c3e50;
-    font-weight: 600;
-    line-height: 1.3;
-}
-
-.card-content p {
-    color: #666;
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    font-size: 1.05rem;
-    flex-grow: 1;
-}
-
-.card-buttons {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem 2rem;
-    background: #f8f9fa;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    position: relative;
-    z-index: 2;
-}
-
-.whatsapp-btn, .location-btn {
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 500;
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.whatsapp-btn {
-    background: #25D366;
-    color: white;
-}
-
-.location-btn {
-    background: #3498db;
-    color: white;
-}
-
-.whatsapp-btn:hover, .location-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Product Badge */
-.product-badge {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
-    background-size: 200% 100%;
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 5;
-    letter-spacing: 1px;
-    animation: shimmer 3s infinite linear;
-}
-
-/* Rating Stars */
-.rating {
-    color: #f1c40f;
-    margin: 0.8rem 0;
-    font-size: 1.2rem;
-    display: flex;
-    gap: 0.2rem;
-}
-
-/* Contact Section */
-.contact-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/arti.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 6rem 2rem;
-    margin-top: 4rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(230, 126, 34, 0.9), rgba(241, 196, 15, 0.9));
-    opacity: 0.9;
-}
-
-.contact-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(230, 126, 34, 0.9), 
-        rgba(241, 196, 15, 0.9),
-        rgba(230, 126, 34, 0.9));
-    background-size: 200% 200%;
-    animation: gradientShift 15s ease infinite;
-    z-index: 0;
-}
-
-.contact-section h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.contact-section p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    z-index: 1;
-    line-height: 1.8;
-}
-
-.contact-btn {
-    padding: 1.2rem 3rem;
-    background: white;
-    color: #e67e22;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    position: relative;
-    z-index: 1;
-}
-
-.contact-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    background: #e67e22;
-    color: white;
-}
-
-/* Footer */
-footer {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: white;
-    text-align: center;
-    padding: 3rem 2rem;
-    margin-top: 4rem;
-    position: relative;
-    overflow: hidden;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(to right, 
-        transparent, 
-        rgba(255, 255, 255, 0.3), 
-        transparent);
-}
-
-footer p {
-    opacity: 0.9;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-}
-
-/* Animations */
-@keyframes slideInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes floatAnimation {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes shimmer {
-    0% { background-position: -100% 0; }
-    100% { background-position: 100% 0; }
-}
-
-.card:nth-child(1) { animation-delay: 0.2s; }
-.card:nth-child(2) { animation-delay: 0.4s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
-.card:nth-child(4) { animation-delay: 0.8s; }
-.card:nth-child(5) { animation-delay: 1.0s; }
-.card:nth-child(6) { animation-delay: 1.2s; }
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .hero-content h1 {
-        font-size: 4rem;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made in Kasaragod - Traditional Crafts and Products</title>
+    <!-- Preloading critical resources -->
+    <link rel="preload" href="css/made-in-kasaragod.css" as="style">
+    <link rel="preload" href="images/kasaragod-hero.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="images/kasaragod-saree.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="images/logo.png" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    .cards {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    <!-- Critical CSS first -->
+    <link rel="stylesheet" href="css/made-in-kasaragod.css">
+    
+    <!-- Asynchronously load non-critical resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Load critical font awesome icons inline -->
+    <style>
+        @font-face {
+            font-family: 'FontAwesome';
+            font-display: swap;
+        }
+    </style>
+    
+    <!-- Fallback for browsers that don't support JavaScript -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
+            <a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-suggestions"></div>
+    </div>
+</nav>
+
+<div class="hero-container">
+    <div class="hero-content">
+        <h1>Discover Kasaragod's Local Treasures</h1>
+        <p>Explore the rich cultural heritage and traditional craftsmanship of Kasaragod</p>
+    </div>
+</div>
+
+<section class="section">
+    <div class="filter-container reveal">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+        <button class="filter-btn" data-filter="textiles">Textiles</button>
+        <button class="filter-btn" data-filter="food">Food Products</button>
+        <button class="filter-btn" data-filter="art">Art</button>
+        <button class="filter-btn" data-filter="spices">Spices</button>
+    </div>
+
+    <div class="cards">
+        <div class="featured-card card reveal" data-category="clothing">
+            <div class="product-badge featured-badge">Featured</div>
+            <img src="images/kasaragod-saree.jpg" alt="Traditional Kasaragod Sarees" loading="eager" fetchpriority="high">
+            <div class="card-content">
+                <h3>Traditional Kasaragod Sarees</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Handwoven silk sarees with intricate designs reflecting cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="javascript:void(0)" class="order-btn" onclick="showOrderForm('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-shopping-cart"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+        
+        <div class="card reveal" data-category="handicrafts">
+            <div class="product-badge">Best Seller</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/kasaragod-handicrafts.jpg" alt="Kasaragod Handicrafts" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Kasaragod Handicrafts</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Exquisite handicrafts showcasing the artistic excellence of local artisans.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Seller
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Handicrafts')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+        
+        <div class="card reveal" data-category="food">
+            <div class="product-badge">Organic</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/kasaragod-spices.jpg" alt="Kasaragod Spices" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Kasaragod Spices</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Premium quality spices grown in the fertile lands of Kasaragod.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Spices')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
+        <div class="card reveal-left" data-category="art">
+            <div class="product-badge">Unique</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/theyyam-crafts.jpg" alt="Theyyam Crafts" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Theyyam Art & Crafts</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>Handcrafted decorative items inspired by the traditional Theyyam art form. Each piece is a masterpiece of cultural expression.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Artist
+                </a>
+                <button class="location-btn" onclick="showStores('Theyyam Art & Crafts')">
+                    <i class="fas fa-map-marker-alt"></i> Visit Gallery
+                </button>
+            </div>
+        </div>
+
+        <div class="card reveal-left" data-category="spices">
+            <div class="product-badge">Organic</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="images/kasaragod-spices.jpg" alt="Kasaragod Spices" loading="lazy" class="lazy">
+            <div class="card-content">
+                <h3>Kasaragod Spice Collection</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Premium quality organic spices sourced directly from local farmers. Experience the authentic flavors of Kasaragod.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/1234567890" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+                <button class="location-btn" onclick="showStores('Kasaragod Spice Collection')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Preload images to improve performance
+    const cardImages = document.querySelectorAll('.card img');
+    cardImages.forEach(img => {
+        if (img.src) {
+            const preloadImage = new Image();
+            preloadImage.src = img.src;
+        }
+    });
+
+    // Optimize filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+    let currentFilter = 'all';
+    
+    // Initialize to show featured card with optimized animation
+    setTimeout(() => {
+        const featuredCard = document.querySelector('.featured-card');
+        if (featuredCard) {
+            featuredCard.classList.add('active');
+        }
+    }, 100);
+
+    // Throttle the reveal animations
+    let revealTimeout;
+    setTimeout(() => {
+        revealOnScroll();
+    }, 200);
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Skip if already on this filter
+            const newFilter = button.getAttribute('data-filter');
+            if (currentFilter === newFilter) return;
+            
+            currentFilter = newFilter;
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Apply filter with performance optimizations
+            requestAnimationFrame(() => {
+                cards.forEach(card => {
+                    if (currentFilter === 'all' || card.getAttribute('data-category') === currentFilter) {
+                        card.style.display = 'flex';
+                        // Stagger animations slightly for better performance
+                        setTimeout(() => {
+                            card.classList.add('active');
+                        }, 10);
+                    } else {
+                        card.classList.remove('active');
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+
+    // Optimized search functionality
+    const searchInput = document.getElementById('searchInput');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', () => {
+        // Debounce search to improve performance
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            requestAnimationFrame(() => {
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.classList.add('active');
+                        }, 10);
+                    } else {
+                        card.classList.remove('active');
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }, 200); // Debounce delay
+    });
+
+    // Optimized scroll reveal functionality
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal:not(.active), .reveal-left:not(.active), .reveal-right:not(.active)');
+        
+        if (reveals.length === 0) return;
+        
+        const windowHeight = window.innerHeight;
+        const elementVisible = 150;
+        
+        reveals.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add('active');
+            }
+        });
+    }
+
+    // Use passive event listener for better scroll performance
+    window.addEventListener('scroll', () => {
+        // Throttle scroll events
+        if (!revealTimeout) {
+            revealTimeout = setTimeout(() => {
+                revealOnScroll();
+                revealTimeout = null;
+            }, 100);
+        }
+    }, { passive: true });
+});
+
+// Store location functionality - optimized
+function showStores(productName) {
+    // This would typically show a modal or redirect to a map with store locations
+    alert(`Showing stores for ${productName}. This feature will be implemented soon!`);
+}
+
+// Order form functionality - optimized
+function showOrderForm(productName) {
+    // Create the HTML for order form
+    const orderHTML = `
+        <div class="order-form-overlay">
+            <div class="order-form-container">
+                <div class="order-form-header">
+                    <h3>Order ${productName}</h3>
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="order-form-body">
+                    <div class="product-preview">
+                        <img src="images/kasaragod-saree.jpg" alt="${productName}">
+                        <div class="product-info">
+                            <h4>${productName}</h4>
+                            <p class="price">₹2,499 - ₹7,999</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(24 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="order-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Delivery Address</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="variant">Variant</label>
+                            <select id="variant">
+                                <option value="traditional">Traditional Design</option>
+                                <option value="modern">Modern Design</option>
+                                <option value="bridal">Bridal Collection</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Place Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add the order form to the page
+    const orderFormContainer = document.createElement('div');
+    orderFormContainer.innerHTML = orderHTML;
+    document.body.appendChild(orderFormContainer.firstElementChild);
+    
+    // Add event listeners
+    const overlay = document.querySelector('.order-form-overlay');
+    const closeBtn = document.querySelector('.order-form-overlay .close-btn');
+    const orderForm = document.getElementById('order-form');
+    
+    // Force reflow to ensure animations work properly
+    overlay.offsetWidth;
+    
+    // Show the form with optimized animation
+    requestAnimationFrame(() => {
+        overlay.classList.add('active');
+    });
+    
+    closeBtn.addEventListener('click', () => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => {
+            overlay.remove();
+        }, 300);
+    });
+    
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.remove();
+            }, 300);
+        }
+    });
+    
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your order! We will contact you shortly to confirm the details.');
+        overlay.classList.add('fade-out');
+        setTimeout(() => {
+            overlay.remove();
+        }, 300);
+    });
+}
+
+// Defer non-critical operations
+function deferOperation(fn, delay) {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => setTimeout(fn, delay));
+    } else {
+        setTimeout(fn, delay);
     }
 }
 
-@media (max-width: 992px) {
-    nav {
-        padding: 1rem 1.5rem;
-    }
-    
-    nav a {
-        margin: 0 0.8rem;
-        font-size: 0.95rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 3.5rem;
-    }
-    
-    .hero-content {
-        padding: 4rem;
-        width: 90%;
+// Lazy load images
+function lazyLoadImages() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    if (src) {
+                        img.src = src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.getAttribute('data-src');
+            img.removeAttribute('data-src');
+        });
     }
 }
 
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 3rem;
-    }
+// Initialize performance optimizations
+deferOperation(() => {
+    // Convert regular images to lazy-loaded
+    document.querySelectorAll('img:not([data-src])').forEach(img => {
+        if (!img.src.includes('data:image')) { // Skip already loaded images
+            img.setAttribute('data-src', img.src);
+            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+            img.classList.add('lazy');
+        }
+    });
     
-    .hero-content {
-        padding: 3rem;
-        width: 90%;
-        animation: slideInFromRight 1s cubic-bezier(0.23, 1, 0.32, 1);
-    }
+    lazyLoadImages();
     
-    .cards {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2rem;
-    }
-    
-    .filter-container {
-        gap: 0.8rem;
-    }
-    
-    .filter-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-    }
+    // Pre-cache order form
+    deferOperation(() => {
+        const dummyForm = document.createElement('div');
+        dummyForm.style.display = 'none';
+        dummyForm.innerHTML = `
+            <div class="order-form-overlay" style="opacity: 0; pointer-events: none;">
+                <div class="order-form-container"></div>
+            </div>
+        `;
+        document.body.appendChild(dummyForm);
+        
+        // Remove after a short time
+        setTimeout(() => {
+            dummyForm.remove();
+        }, 500);
+    }, 2000);
+}, 1000);
+</script>
 
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .search-wrapper {
-        margin-top: 1rem;
-        max-width: 100%;
-        width: 100%;
-    }
-    
-    .card {
-        transform: translateX(30px);
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero-content {
-        padding: 2rem;
-        animation: slideInFromRight 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    
-    .cards {
-        grid-template-columns: 1fr;
-        padding: 1rem 0.5rem;
-    }
-    
-    .filter-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .filter-btn {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .section {
-        padding: 2rem 1rem;
-    }
-    
-    nav a {
-        margin: 0 0.4rem;
-        font-size: 0.9rem;
-    }
-    
-    .card-content h3 {
-        font-size: 1.4rem;
-    }
-    
-    .card {
-        transform: translateX(20px);
-    }
-}
-
-/* Search Bar */
-.search-wrapper {
-    position: relative;
-    max-width: 300px;
-}
-
-.search-wrapper input {
-    width: 100%;
-    padding: 1rem 1.2rem;
-    padding-right: 3rem;
-    border: 1px solid #eee;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.search-wrapper input:focus {
-    outline: none;
-    border-color: #e67e22;
-    box-shadow: 0 4px 20px rgba(230, 126, 34, 0.15);
-    background: white;
-    transform: scale(1.02);
-}
-
-.search-icon {
-    position: absolute;
-    right: 1.2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.search-icon:hover {
-    color: #e67e22;
-}
-/* Add smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
+<script src="js/menu-toggle.js"></script>
+</body>
+</html> 

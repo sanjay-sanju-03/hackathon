@@ -24,18 +24,46 @@
 
         nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             background: var(--secondary-color);
-            padding: 0.5rem;
+            padding: 0.6rem 2rem;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         nav a {
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.5rem 1rem;
             text-decoration: none;
             margin: 0 0.5rem;
             border-radius: 25px;
@@ -45,6 +73,67 @@
         nav a:hover {
             background: var(--primary-color);
             transform: translateY(-2px);
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 250px;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            padding-right: 3rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .search-wrapper input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        .search-suggestions.active {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #eee;
+            color: var(--secondary-color);
+        }
+
+        .suggestion-item:hover {
+            background: #f8f9fa;
+            color: var(--primary-color);
         }
 
         .hero {
@@ -172,6 +261,43 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 60px);
+                background: var(--secondary-color);
+                flex-direction: column;
+                padding: 2rem 0;
+                transition: left 0.3s ease;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                margin: 0.5rem 0;
+            }
+
+            .search-wrapper {
+                max-width: 200px;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -181,15 +307,30 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="cuisine.html">Cuisine</a>
-        <a href="experience.html">Experiences</a>
-        <a href="events.html">Events</a>
-        <a href="house.html">Houseboats</a>
-    </nav>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
+            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-suggestions"></div>
+    </div>
+</nav>
 
     <!-- Rest of the content -->
     <div class="hero">
@@ -328,6 +469,35 @@
 
         // Load comments when page loads
         loadComments();
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.nav-left') && !event.target.closest('.menu-toggle')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+
+                // Close menu when clicking a link
+                const links = document.querySelectorAll('.nav-links a');
+                links.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
     </script>
+    
+    <script src="js/menu-toggle.js"></script>
 </body>
 </html>

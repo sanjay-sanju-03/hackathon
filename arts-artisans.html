@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art & Artisans of Kasaragod</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/theyyam-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.2s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .artisan-section {
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .artisan-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .artisan-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .artisan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .artisan-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .artisan-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .artisan-card:hover .artisan-img img {
+            transform: scale(1.1);
+        }
+        
+        .artisan-info {
+            padding: 1.5rem;
+        }
+        
+        .artisan-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .artisan-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .artisan-specialty {
+            display: inline-block;
+            background: var(--light-color);
+            color: var(--dark-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .artisan-btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .artisan-btn:hover {
+            background: #e67e22;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .artisan-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+
+<body>
+    <nav>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html" class="active">Art & Artisans</a>
+            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-suggestions"></div>
+    </div>
+</nav>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Art & Artisans of Kasaragod</h1>
+            <p>Discover the skill and creativity of local artisans and experience traditional art forms</p>
+        </div>
+    </div>
+
+    <section class="artisan-section">
+        <div class="section-title">
+            <h2>Meet Our Master Artisans</h2>
+            <p>Explore the stories and crafts of talented artisans who keep traditional art forms alive in Kasaragod</p>
+        </div>
+
+        <div class="artisan-cards">
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/theyyam-artist.jpg" alt="Theyyam Artist">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Theyyam Performance</span>
+                    <h3>Rajesh Peruvannan</h3>
+                    <p>A third-generation Theyyam performer with over 25 years of experience in this sacred ritual art form.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/weaver.jpg" alt="Traditional Weaver">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Handloom Weaving</span>
+                    <h3>Lakshmi Devi</h3>
+                    <p>Master weaver specializing in traditional Kasaragod sarees using handloom techniques passed down through generations.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/wood-carver.jpg" alt="Wood Carver">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Wood Carving</span>
+                    <h3>Gopalan Asari</h3>
+                    <p>Renowned wood carver creating intricate designs for temples and traditional Kerala homes for over 40 years.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/mural-artist.jpg" alt="Mural Artist">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Mural Painting</span>
+                    <h3>Sreelatha K</h3>
+                    <p>Skilled artist preserving the tradition of Kerala mural painting with unique depictions of mythology and folklore.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/bell-metal.jpg" alt="Bell Metal Craftsman">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Bell Metal Craft</span>
+                    <h3>Manoj Mooshari</h3>
+                    <p>Expert craftsman working with bell metal to create traditional lamps, vessels, and decorative items using ancient techniques.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="artisan-card">
+                <div class="artisan-img">
+                    <img src="images/pottery.jpg" alt="Potter">
+                </div>
+                <div class="artisan-info">
+                    <span class="artisan-specialty">Traditional Pottery</span>
+                    <h3>Kunjambu</h3>
+                    <p>Traditional potter crafting eco-friendly cookware and decorative items using locally sourced clay and natural colors.</p>
+                    <a href="#" class="artisan-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close menu when clicking on a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            const artisanCards = document.querySelectorAll('.artisan-card');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    
+                    artisanCards.forEach(card => {
+                        const title = card.querySelector('h3').textContent.toLowerCase();
+                        const description = card.querySelector('p').textContent.toLowerCase();
+                        const specialty = card.querySelector('.artisan-specialty').textContent.toLowerCase();
+                        
+                        if (title.includes(searchTerm) || description.includes(searchTerm) || specialty.includes(searchTerm)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <script src="js/menu-toggle.js"></script>
+</body>
+</html> 

@@ -11,15 +11,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Leaflet Routing Machine CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .search-wrapper {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            margin-right: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 
@@ -29,16 +21,17 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-links">
-            <a href="#Home">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="cuisine.html">Cuisine</a>
             <a href="experience.html">Experiences</a>
             <a href="events.html">Events</a>
             <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
             <a href="made-in-kasaragod.html">Made in Kasaragod</a>
         </div>
     </div>
     <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search cultural heritage sites...">
+        <input type="text" id="searchInput" placeholder="Search...">
         <i class="fas fa-search search-icon"></i>
         <div class="search-suggestions"></div>
     </div>
@@ -46,7 +39,13 @@
 
 <div class="hero-container">
     <div class="hero-content">
-        <a href="#art"><h1>what next? Kasaragod. <br> &darr;</h1></a>
+        <a href="#art">
+            <h1>
+                <span class="title-top">what next?</span>
+                <span class="title-main">Kasaragod.</span>
+                <span class="title-arrow">&darr;</span>
+            </h1>
+        </a>
     </div>
     <section class="hero">
         <div class="splide" id="main-slider">
@@ -58,19 +57,19 @@
                         </a>
                     </li>
                     <li class="splide__slide">
-                        <img src="images/theyyam.webp" alt="Anantapura Lake Temple">
+                        <img src="images/Anantapura_Lake_Temple.jpg" alt="Anantapura Lake Temple">
                     </li>
                     <li class="splide__slide">
-                        <img src="images/loom.webp" alt="ASAP">
+                        <img src="images/Asap.jpg" alt="ASAP">
                     </li>
                     <li class="splide__slide">
-                        <img src="images/kalari.webp" alt="Bekal Fort">
+                        <img src="images/bekalfort front.jpg" alt="Bekal Fort">
                     </li>
                     <li class="splide__slide">
                         <img src="images/yaks.jpg" alt="Heritage Image">
                     </li>
                     <li class="splide__slide">
-                        <img src="images/scene.webp" alt="Kasaragod Heritage">
+                        <img src="images/baclklk.jpg" alt="Kasaragod Heritage">
                     </li>
                     <li class="splide__slide">
                         <img src="images/Theyyam.jpg" alt="Theyyam Performance">
@@ -95,13 +94,13 @@
 
     <div class="cards">
         <div class="card" data-category="all">
-            <img id="asap-image" src="images/Asap.jpg" alt="ASAP">
+            <img src="images/Asap.jpg" alt="ASAP">
             <div class="card-content">
-                <a href="asap-skill-park.html"><h3>ASAP Community Skill Park</h3></a>
+                <h3>ASAP Community Skill Park</h3>
                 <p>A center for skill development and vocational training in Kasaragod.</p>
             </div>
             <div class="card-buttons">
-                <button onclick="location.href='asap-skill-park.html'">Show more details</button>
+                <button onclick="showOnMap(12.5182, 75.0141, 'ASAP Community Skill Park')">Show on Map</button>
                 <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
             </div>
         </div>
@@ -150,7 +149,7 @@
             </div>
             <div class="card-buttons">
                 <button onclick="showOnMap(12.5063, 75.0014, 'Yakshagana')">Show on Map</button>
-                <a href="https://wa.me/+91-4994-250678">Contact on WhatsApp</a>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
             </div>
         </div>
            
@@ -191,7 +190,7 @@
         </div>
 
         <div class="card" data-category="temple">
-            <img src="images/kodothtemp.jpg" alt="Kodoth Bhagavathi temple">
+            <img src="images/kodothtemp.jpg" alt="Kodoth bhagavathi temple">
             <div class="card-content">
                 <h3>Kodoth bhagavathi temple </h3>
                 <p>This is a temple dedicated to Goddess Bhagavathy, and is located in the village of Kodom in Kasaragod. Rich in architectural beauty, the major attractions of this temple are the wood paintings and the temple pond. The village of Kodom itself is located 24 kms from Kanhangad in Kasaragod, Kerala.
@@ -203,7 +202,6 @@
             </div>
         </div>    
 
-        
     </div>
 </section>
 
@@ -216,7 +214,7 @@
 </section>
 
 <footer>
-    <p>&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
+    <p>© 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -227,7 +225,7 @@
     const map = L.map('map').setView([12.4280 , 75.3616], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     const bekalFort = [12.4280, 75.3616];
@@ -297,20 +295,8 @@
     }
 
     getUserLocation();
-
-    const asapImages = [
-        'images/Asap.jpg',
-        'images/asap2.jpg',
-        'images/asap3.jpg',
-        'images/asap4.jpg'
-    ];
-    let currentImageIndex = 0;
-    const asapImageElement = document.getElementById('asap-image');
-
-    setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % asapImages.length;
-        asapImageElement.src = asapImages[currentImageIndex];
-    }, 2000);
 </script>
+
+<script src="js/menu-toggle.js"></script>
 </body>
 </html>

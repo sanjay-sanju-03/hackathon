@@ -7,16 +7,34 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/anantapura.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 
 <nav>
-    <button><a href="index.html">Go back</a></button>
+    <div class="nav-left">
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cuisine.html">Cuisine</a>
+            <a href="experience.html">Experiences</a>
+            <a href="events.html">Events</a>
+            <a href="house.html">Houseboats</a>
+            <a href="arts-artisans.html">Art & Artisans</a>
+            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-suggestions"></div>
     </div>
 </nav>
 
 <div class="hero-container">
-        <h1 id="anan">Anantapura Lake temple</h1>
+    <h1 id="anan">Anantapura Lake temple</h1>
     <section class="hero">
         <iframe id="cover-video" src="https://www.youtube.com/embed/1w7OgIMMRc4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
@@ -28,5 +46,6 @@
 </footer>
 
 <script src="js/home.js"></script>
+<script src="js/menu-toggle.js"></script>
 </body>
 </html>
