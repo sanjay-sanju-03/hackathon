@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         :root {
             --primary-color: #4CAF50;
@@ -21,44 +22,6 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-start;
-            background: white;
-            padding: 0.5rem;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--secondary-color);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #e67e22;
-            background: rgba(230, 126, 34, 0.1);
         }
 
         .hero {
@@ -160,7 +123,7 @@
             margin: 20px auto;
             border-radius: 10px;
         }
-
+        
         footer {
             background: #333;
             color: white;
@@ -173,14 +136,23 @@
 <body>
     <nav>
         <div class="nav-left">
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="cuisine.html">Cuisine</a>
+                <a href="cuisine.html" class="active">Cuisine</a>
                 <a href="experience.html">Experiences</a>
                 <a href="events.html">Events</a>
                 <a href="house.html">Houseboats</a>
+                <a href="arts-artisans.html">Art & Artisans</a>
                 <a href="made-in-kasaragod.html">Made in Kasaragod</a>
             </div>
+        </div>
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <i class="fas fa-search search-icon"></i>
+            <div class="search-suggestions"></div>
         </div>
     </nav>
 
@@ -270,6 +242,7 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/menu-toggle.js"></script>
     <script>
         var map = L.map('map').setView([12.5761, 74.9906], 10);
 
@@ -287,6 +260,91 @@
                 .bindPopup(`<b>${placeName}</b>`).openPopup();
             map.setView([lat, lng], 14);
         }
+        
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchSuggestions = document.querySelector('.search-suggestions');
+            const cuisineCards = document.querySelectorAll('.cuisine-card');
+
+            // Define searchable items
+            const searchableItems = [
+                { text: 'Home', url: 'index.html' },
+                { text: 'Cuisine', url: 'cuisine.html' },
+                { text: 'Experiences', url: 'experience.html' },
+                { text: 'Events', url: 'events.html' },
+                { text: 'Houseboats', url: 'house.html' },
+                { text: 'Art & Artisans', url: 'arts-artisans.html' },
+                { text: 'Made in Kasaragod', url: 'made-in-kasaragod.html' },
+                { text: 'Beef Palli Curry', url: '#beef-curry' },
+                { text: 'Goli Baje', url: '#goli-baje' },
+                { text: 'Pathiri', url: '#pathiri' },
+                { text: 'Fresh Seafood', url: '#seafood' },
+                { text: 'Kallumakkaya Pickle', url: '#pickle' }
+            ];
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const suggestions = searchableItems.filter(item => 
+                        item.text.toLowerCase().includes(searchTerm)
+                    );
+
+                    // Update suggestions display
+                    if (searchTerm.length > 0 && suggestions.length > 0) {
+                        searchSuggestions.innerHTML = suggestions
+                            .map(item => `<div class="suggestion-item" data-url="${item.url}">${item.text}</div>`)
+                            .join('');
+                        searchSuggestions.classList.add('active');
+                    } else {
+                        searchSuggestions.classList.remove('active');
+                    }
+
+                    // Filter cuisine cards
+                    cuisineCards.forEach(card => {
+                        const title = card.querySelector('h3').textContent.toLowerCase();
+                        const description = card.querySelector('p').textContent.toLowerCase();
+                        
+                        if (searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+
+                // Handle suggestion clicks
+                searchSuggestions.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('suggestion-item')) {
+                        const url = e.target.dataset.url;
+                        if (url.startsWith('#')) {
+                            // Scroll to section - future implementation
+                            searchInput.value = '';
+                            searchSuggestions.classList.remove('active');
+                        } else {
+                            // Navigate to page
+                            window.location.href = url;
+                        }
+                    }
+                });
+
+                // Close suggestions when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.search-wrapper')) {
+                        searchSuggestions.classList.remove('active');
+                    }
+                });
+
+                // Clear search when clicking the search icon
+                const searchIcon = document.querySelector('.search-icon');
+                if (searchIcon) {
+                    searchIcon.addEventListener('click', function() {
+                        searchInput.value = '';
+                        searchInput.dispatchEvent(new Event('input'));
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
