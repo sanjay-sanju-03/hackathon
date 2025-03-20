@@ -132,28 +132,37 @@ nav a:hover, nav a.active {
         padding: 0.6rem 1rem;
     }
 
-    /* Mobile menu styles are now handled by mobile-menu.css */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--secondary-color);
+        flex-direction: column;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
 
     .search-wrapper {
-        max-width: 180px;
-        margin-right: 0;
-    }
-
-    .search-wrapper input {
-        padding: 0.6rem 1rem;
-        padding-right: 2.5rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .events-container {
-        padding: 1rem;
-    }
-
-    .event-card {
-        margin-bottom: 2rem;
+        max-width: 200px;
     }
 }
 

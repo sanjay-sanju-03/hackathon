@@ -7,12 +7,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <!-- Leaflet Routing Machine CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 
@@ -22,20 +22,17 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-links">
-            <a href="#Home">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="cuisine.html">Cuisine</a>
             <a href="experience.html">Experiences</a>
             <a href="events.html">Events</a>
             <a href="house.html">Houseboats</a>
-<<<<<<< HEAD
             <a href="arts-artisans.html">Art & Artisans</a>
-=======
->>>>>>> fb82f7265d194d29e1e78434c803354651acf4ce
             <a href="made-in-kasaragod.html">Made in Kasaragod</a>
         </div>
     </div>
     <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search cultural heritage sites...">
+        <input type="text" id="searchInput" placeholder="Search...">
         <i class="fas fa-search search-icon"></i>
         <div class="search-suggestions"></div>
     </div>
@@ -43,7 +40,13 @@
 
 <div class="hero-container">
     <div class="hero-content">
-        <a href="#art"><h1>What Next? <span class="highlight">Kasaragod</span>. <br> <span class="arrow">&darr;</span></h1></a>
+        <a href="#art">
+            <h1>
+                <span class="title-top">what next?</span>
+                <span class="title-main">Kasaragod.</span>
+                <span class="title-arrow">&darr;</span>
+            </h1>
+        </a>
     </div>
     <section class="hero">
         <div class="splide" id="main-slider">
@@ -139,28 +142,6 @@
                 <a href="https://wa.me/+91 4672 950 500">Contact on WhatsApp</a>
             </div>
         </div>
-
-        <div class="card" data-category="culture">
-            <img src="images/yaks.jpg" alt="Yakshagana">
-            <div class="card-content">
-                <h3>Yakshagana</h3>
-                <p>A traditional dance drama form that combines dance, music, and dialogue.</p>
-            </div>
-            <div class="card-buttons">
-                <button onclick="showOnMap(12.5063, 75.0014, 'Yakshagana')">Show on Map</button>
-                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
-            </div>
-           
-        <div class="card" data-category="sanctuary">
-            <img src="images/bela.jpeg" alt="Bela">
-            <div class="card-content">
-                <h3>Bela Church</h3>
-                <p>Bela Church, also known as Our Lady of Sorrows Church, is a Roman Catholic church in Kasaragod, Kerala, known for being the oldest church in the district, built in 1890 in a Gothic Revival style</p>
-            </div>
-            <div class="card-buttons">
-                <button onclick="showOnMap(12.5063, 75.0014, 'Yakshagana')">Show on Map</button>
-                <a href="https://wa.me/098952 13576">Contact on WhatsApp</a>
-            </div>
     </div>
 </section>
 

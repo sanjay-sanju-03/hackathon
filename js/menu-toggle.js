@@ -43,22 +43,43 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Menu toggled (touch)');
         }, { passive: false });
         
-        // Ensure mobile menu CSS is loaded
-        if (!document.querySelector('link[href="css/mobile-menu.css"]')) {
-            const mobileMenuLink = document.createElement('link');
-            mobileMenuLink.rel = 'stylesheet';
-            mobileMenuLink.href = 'css/mobile-menu.css';
-            document.head.appendChild(mobileMenuLink);
-        }
-        
-        // Special handling for houseboat page
-        const isHouseboatPage = window.location.href.includes('house.html');
-        const houseboatLink = document.querySelector('.nav-links a[href="house.html"]');
-        
-        if (houseboatLink && isHouseboatPage) {
-            // Preserve original styling for houseboat link when on the houseboat page
-            houseboatLink.style.background = 'inherit';
-            houseboatLink.style.color = 'inherit';
-        }
+        // Force menu visibility on mobile
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            @media (max-width: 768px) {
+                .menu-toggle {
+                    display: block !important;
+                }
+                .nav-links {
+                    position: absolute !important;
+                    top: 100% !important;
+                    left: 0 !important;
+                    width: 100% !important;
+                    background: white !important;
+                    flex-direction: column !important;
+                    padding: 1rem !important;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+                    opacity: 0 !important;
+                    pointer-events: none !important;
+                    transform: translateY(-10px) !important;
+                    transition: all 0.3s ease !important;
+                    z-index: 1000 !important;
+                }
+                .nav-links.active {
+                    opacity: 1 !important;
+                    pointer-events: all !important;
+                    transform: translateY(0) !important;
+                }
+                .nav-links a {
+                    width: 100% !important;
+                    padding: 0.8rem 1rem !important;
+                    border-bottom: 1px solid #eee !important;
+                }
+                .nav-links a:last-child {
+                    border-bottom: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(styleElement);
     }
 }); 
