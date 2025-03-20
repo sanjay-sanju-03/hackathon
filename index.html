@@ -16,24 +16,24 @@
 <body>
 
 <nav>
-    <div class="nav-left">
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="cuisine.html">Cuisine</a>
-            <a href="experience.html">Experiences</a>
-            <a href="events.html">Events</a>
-            <a href="house.html">Houseboats</a>
-            <a href="arts-artisans.html">Art & Artisans</a>
-            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
-        </div>
-    </div>
     <div class="search-wrapper">
         <input type="text" id="searchInput" placeholder="Search...">
         <i class="fas fa-search search-icon"></i>
         <div class="search-suggestions"></div>
+    </div>
+    <div class="nav-left">
+        <button title="toggle" class="menu-toggle">
+            <i class="tglbtn fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a style="--ind:1" href="index.html" class="active">Home</a>
+            <a style="--ind:2" href="cuisine.html">Cuisine</a>
+            <a style="--ind:3" href="experience.html">Experiences</a>
+            <a style="--ind:4" href="events.html">Events</a>
+            <a style="--ind:5" href="house.html">Houseboats</a>
+            <a style="--ind:6" href="arts-artisans.html">Art & Artisans</a>
+            <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
+        </div>
     </div>
 </nav>
 
@@ -43,7 +43,6 @@
             <h1>
                 <span class="title-top">what next?</span>
                 <span class="title-main">Kasaragod.</span>
-                <span class="title-arrow">&darr;</span>
             </h1>
         </a>
     </div>
@@ -72,7 +71,7 @@
                         <img src="images/chandragiri.jpg" alt="Kasaragod Heritage">
                     </li>
                     <li class="splide__slide">
-                        <img src="images/theyyam.jpg" alt="Theyyam Performance">
+                        <img src="images/Theyyam.jpg" alt="Theyyam Performance">
                     </li>
                 </ul>
             </div>
@@ -109,17 +108,17 @@
                 <p>Handwoven silk sarees with intricate designs reflecting cultural heritage.</p>
             </div>
             <div class="card-buttons">
-                <a href="http://192.168.210.84:3000" class="order-btn">
+                <a href="http://192.168.210.84:3000" class="btn order-btn">
                     <i class="fas fa-shopping-cart"></i> Order Now
                 </a>
-                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                <button class="btn location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
             </div>
         </div>
 
         <div class="card" data-category="all">
-            <img src="images/asap.jpg" alt="ASAP">
+            <img src="images/Asap.jpg" alt="ASAP">
             <div class="card-content">
                 <h3>ASAP Community Skill Park</h3>
                 <p>A center for skill development and vocational training in Kasaragod.</p>
