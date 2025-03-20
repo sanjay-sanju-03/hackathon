@@ -15,7 +15,11 @@
             --light-color: #f8f9fa;
             --dark-color: #333;
         }
-        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/theyyam.webp');
 
@@ -106,7 +110,7 @@
         }
         
         .artisan-info {
-            padding: 1.5rem;
+            padding: 10px
         }
         
         .artisan-info h3 {
@@ -135,9 +139,13 @@
             background: var(--accent-color);
             color: white;
             padding: 0.6rem 1.2rem;
-            border-radius: 30px;
+            border-radius: 5px;
+            width: calc(50% - 2.5px);
+            font-size: 18px;
             text-decoration: none;
+            text-wrap: nowrap;
             font-weight: 500;
+            border: none;
             transition: background 0.3s ease;
         }
         
@@ -167,7 +175,7 @@
             }
         }
         
-        @media (max-width: 768px) {
+        /*@media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
@@ -183,7 +191,7 @@
             .artisan-section {
                 padding: 2rem 1rem;
             }
-        }
+        }*/
         
         /* Popup Styles */
         .popup-content {
@@ -316,26 +324,26 @@
 
 <body>
     <nav>
-    <div class="nav-left">
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="cuisine.html">Cuisine</a>
-            <a href="experience.html">Experiences</a>
-            <a href="events.html">Events</a>
-            <a href="house.html">Houseboats</a>
-            <a href="arts-artisans.html" class="active">Art & Artisans</a>
-            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <i class="fas fa-search search-icon"></i>
+            <div class="search-suggestions"></div>
         </div>
-    </div>
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <i class="fas fa-search search-icon"></i>
-        <div class="search-suggestions"></div>
-    </div>
-</nav>
+        <div class="nav-left">
+            <button title="toggle" class="menu-toggle">
+                <i class="tglbtn fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a style="--ind:1" href="index.html">Home</a>
+                <a style="--ind:2" href="cuisine.html">Cuisine</a>
+                <a style="--ind:3" href="experience.html">Experiences</a>
+                <a style="--ind:4" href="events.html">Events</a>
+                <a style="--ind:5" href="house.html">Houseboats</a>
+                <a style="--ind:6" href="arts-artisans.html" class="active">Art & Artisans</a>
+                <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="hero-section">
         <div class="hero-content">
