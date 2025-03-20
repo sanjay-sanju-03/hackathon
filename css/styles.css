@@ -1,16 +1,15 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Modern No. 20', serif;
     background-color: #f8f9fa;
 }
 
-header {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+header { 
     color: white;
     padding: 2rem 0;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
 }
 
 nav {
@@ -169,9 +168,9 @@ nav {
     width: 90%;
     max-width: 800px;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);*/
 }
 
 .hero-content h1 {
@@ -442,7 +441,7 @@ nav {
 }
 
 #map {
-    height: 500px;
+    height: 400px;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;

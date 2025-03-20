@@ -6,8 +6,8 @@
 
 body {
     min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    background:  url('images/exphoto.jpg') no-repeat center center fixed;
+    font-family: 'Modern No. 20', sans-serif;
+    background: url('../images/exp.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #2c3e50;
 }
@@ -28,11 +28,11 @@ body {
     margin-bottom: 0.5rem;
     letter-spacing: 2px;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header p {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.2em;
     font-weight: 300;
     letter-spacing: 1px;
@@ -47,18 +47,94 @@ body {
     margin: 0 auto;
 }
 
+/* Card Styles - Updated for better layout */
 .card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    height: 400px; /* Fixed height for consistency */
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent images */
+    object-fit: cover; /* Maintains aspect ratio while covering the space */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Takes up remaining space */
+    justify-content: space-between;
+}
+
+.card-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #2c3e50;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limits text to 4 lines */
+    -webkit-box-orient: vertical;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card-content small {
+    color: #666;
+    font-size: 0.85rem;
+    align-self: flex-end;
+    font-style: italic;
+    margin-top: auto; /* Pushes to bottom of flex container */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Media query updates for cards */
+@media (max-width: 992px) {
+    .card {
+        height: 380px;
+    }
+    
+    .card img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        height: 360px;
+    }
+    
+    .card img {
+        height: 180px;
+    }
+    
+    .card-content {
+        padding: 1.2rem;
+    }
+    
+    .card-content p {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media (max-width: 576px) {
+    .content-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
 }
 
 .upload-btn {
@@ -74,13 +150,13 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .upload-btn:hover {
     transform: scale(1.1) rotate(180deg);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .modal {
@@ -158,7 +234,7 @@ body {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn {
@@ -180,6 +256,7 @@ body {
         transform: translateY(-100px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -190,22 +267,23 @@ body {
     .header h1 {
         font-size: 2.8em;
     }
-    
+
     .content-grid {
         padding: 1.5rem;
         gap: 1.5rem;
     }
 }
+
 :root {
     --primary-color: #4CAF50;
     --secondary-color: #2c3e50;
     --accent-color: #45a049;
     --white: #ffffff;
-    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Modern No. 20', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -258,11 +336,12 @@ nav a {
     padding: 0.5rem 1rem;
     border-radius: 25px;
     transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Modern No. 20', sans-serif;
     letter-spacing: 0.5px;
 }
 
-nav a:hover, nav a.active {
+nav a:hover,
+nav a.active {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
 }
@@ -381,7 +460,7 @@ nav a:hover, nav a.active {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/kasaragod-cuisine.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/kasaragod-cuisine.jpg');
     background-size: cover;
     background-position: center;
     height: 60vh;

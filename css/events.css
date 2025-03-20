@@ -7,22 +7,29 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Modern No. 20', serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('../images/Theyyam.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f1f1f1;
+    min-height: 100vh;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    background: var(--secondary-color);
-    padding: 0.6rem 2rem;
+    background: rgba(44, 62, 80, 0.95); /* Semi-transparent */
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 2rem;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     box-sizing: border-box;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .nav-left {
@@ -174,16 +181,17 @@ nav a:hover, nav a.active {
 
 .hero {
     height: 60vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('images/theyyam-hero.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../images/theyyam-hero.jpg') no-repeat center center;
     background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
     margin-top: 60px;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero h1 {

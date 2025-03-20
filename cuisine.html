@@ -6,6 +6,7 @@
     <title>Kasaragod Cuisine Guide</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         :root {
             --primary-color: #4CAF50;
@@ -16,7 +17,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Modern No. 20', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -24,116 +25,40 @@
 
         nav {
             display: flex;
-            justify-content: space-between;
-            background: var(--secondary-color);
-            padding: 0.6rem 2rem;
+            justify-content: flex-start;
+            background: white;
+            padding: 0.5rem;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-sizing: border-box;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--white);
-            cursor: pointer;
-            padding: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            color: var(--primary-color);
+            justify-content: space-between;
+            width: 100%;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
         }
 
         nav a {
-            color: var(--white);
-            padding: 0.5rem 1rem;
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
             text-decoration: none;
             margin: 0 0.5rem;
             border-radius: 25px;
             transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .search-wrapper {
-            position: relative;
-            max-width: 250px;
-        }
-
-        .search-wrapper input {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            padding-right: 3rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        .search-wrapper input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            cursor: pointer;
-        }
-
-        .search-suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 0.5rem;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-            z-index: 1000;
-        }
-
-        .search-suggestions.active {
-            display: block;
-        }
-
-        .suggestion-item {
-            padding: 0.8rem 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid #eee;
-            color: var(--secondary-color);
-        }
-
-        .suggestion-item:hover {
-            background: #f8f9fa;
-            color: var(--primary-color);
+        .nav-links a:hover {
+            color: #e67e22;
+            background: rgba(230, 126, 34, 0.1);
         }
 
         .hero {
@@ -208,6 +133,34 @@
             color: var(--secondary-color);
         }
 
+        button {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent-color);
+        }
+
+        #map-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f7f7f7;
+        }
+
+        #map {
+            height: 400px;
+            width: 80%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
         footer {
             background: #333;
             color: white;
@@ -215,78 +168,21 @@
             padding: 1rem 0;
             margin-top: 2rem;
         }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 0.8rem 1rem;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 60px;
-                left: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: calc(100vh - 60px);
-                background: var(--secondary-color);
-                flex-direction: column;
-                padding: 2rem 0;
-                transition: left 0.3s ease;
-                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links a {
-                width: 100%;
-                text-align: center;
-                padding: 1rem;
-                margin: 0.5rem 0;
-            }
-
-            .search-wrapper {
-                max-width: 200px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cuisine-section {
-                padding: 2rem 1rem;
-            }
-        }
     </style>
-    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
     <nav>
-    <div class="nav-left">
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="cuisine.html" class="active">Cuisine</a>
-            <a href="experience.html">Experiences</a>
-            <a href="events.html">Events</a>
-            <a href="house.html">Houseboats</a>
-            <a href="arts-artisans.html">Art & Artisans</a>
-            <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+        <div class="nav-left">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="cuisine.html">Cuisine</a>
+                <a href="experience.html">Experiences</a>
+                <a href="events.html">Events</a>
+                <a href="house.html">Houseboats</a>
+                <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+            </div>
         </div>
-    </div>
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <i class="fas fa-search search-icon"></i>
-        <div class="search-suggestions"></div>
-    </div>
-</nav>
+    </nav>
 
     <div class="hero">
         <div>
@@ -298,38 +194,28 @@
     <section class="cuisine-section">
         <div class="cuisine-grid">
             <div class="cuisine-card">
-                <img src="images/puttu.jpg" alt="Puttu">
+                <img src="images/Beef-Palli-Curry1.jpg" alt="Beef Palli Curry">
                 <div class="cuisine-content">
-                    <h3>Puttu & Kadala Curry</h3>
-                    <p>Traditional steamed rice cake served with black chickpea curry. A perfect breakfast combination.</p>
+                    <h3>Beef Palli Curry</h3>
+                    <p>Special beef curry served with ghee rice, famous in local mosques.</p>
                     <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Hotel Rahmath, Kasaragod Town
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
                     </div>
-                    <div class="price">₹50 - ₹80</div>
+                    <div class="price">₹100-₹130</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
                 </div>
             </div>
 
             <div class="cuisine-card">
-                <img src="images/karimeen.jpg" alt="Karimeen">
+                <img src="images/goli baje.jpeg" alt="Goli Baje">
                 <div class="cuisine-content">
-                    <h3>Karimeen Pollichathu</h3>
-                    <p>Pearl spot fish marinated in spices, wrapped in banana leaf and grilled to perfection.</p>
+                    <h3>Goli Baje</h3>
+                    <p>Soft and crispy fried snack made from all-purpose flour.</p>
                     <div class="location">
                         <i class="fas fa-map-marker-alt"></i> Best at: Bekal Beach Restaurant
                     </div>
-                    <div class="price">₹300 - ₹400</div>
-                </div>
-            </div>
-
-            <div class="cuisine-card">
-                <img src="images/biriyani.jpg" alt="Biriyani">
-                <div class="cuisine-content">
-                    <h3>Beef Pallikari</h3>
-                    <p>Beef Pallikari is a flavorful, spicy beef curry from Kasaragod, made with tender meat, aromatic spices, and roasted coconut. A true taste of Kerala!.</p>
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Kolya Hotel, Madhur, Kasaragod
-                    </div>
-                    <div class="price">₹150 - ₹250</div>
+                    <div class="price">₹10 - ₹20</div>
+                    <button onclick="showOnMap(12.5138378, 74.9058774, 'Bekal Beach Restaurant')">Show on Map</button>
                 </div>
             </div>
 
@@ -342,6 +228,7 @@
                         <i class="fas fa-map-marker-alt"></i> Best at: Malabar Kitchen, Nileshwar
                     </div>
                     <div class="price">₹100 - ₹150</div>
+                    <button onclick="showOnMap(12.3714, 75.1197, 'Malabar Kitchen')">Show on Map</button>
                 </div>
             </div>
 
@@ -354,62 +241,52 @@
                         <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
                     </div>
                     <div class="price">₹500 - ₹800</div>
+                    <button onclick="showOnMap(12.5138, 74.9059, 'Sea Shore Restaurant')">Show on Map</button>
                 </div>
             </div>
-                <div class="cuisine-card">
-                    <img src="images/pickle.jpg" alt="Seafood">
-                    <div class="cuisine-content">
-                        <h3>Kallumakkaya Pickle</h3>
-                        <p>Kallumakkaya Pickle is a flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices. This savory pickle offers a rich and bold taste of Kasaragod's coastal cuisine..</p>
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
-                        </div>
-                        <div class="price">₹250 - ₹400</div>
+
+            <div class="cuisine-card">
+                <img src="images/pickle.jpg" alt="Kallumakkaya Pickle">
+                <div class="cuisine-content">
+                    <h3>Kallumakkaya Pickle</h3>
+                    <p>Flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
                     </div>
+                    <div class="price">₹250 - ₹400</div>
+                    <button onclick="showOnMap(12.5138, 74.9059, 'Sea Shore Restaurant')">Show on Map</button>
                 </div>
             </div>
-        </div>    
+        </div>
     </section>
 
-<section class="section" id="map-section">
-    <h2>Location Map</h2>
-    <div id="map"></div>
-</section>
-    
-<footer>
-    <p>&copy; 2024 Kasaragod Tourism. All rights reserved.</p>
-</footer>
-    
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-<script src="js/script.js"></script>
-<script>
-    // Mobile menu toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    <section id="map-section">
+        <h2>Location Map</h2>
+        <div id="map"></div>
+    </section>
 
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
+    <footer>
+        <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
+    </footer>
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.nav-left') && !event.target.closest('.menu-toggle')) {
-                navLinks.classList.remove('active');
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([12.5761, 74.9906], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker;
+
+        function showOnMap(lat, lng, placeName) {
+            if (marker) {
+                map.removeLayer(marker);
             }
-        });
-
-        // Close menu when clicking a link
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-            });
-        });
-    });
-</script>
-
-<script src="js/menu-toggle.js"></script>
+            marker = L.marker([lat, lng]).addTo(map)
+                .bindPopup(`<b>${placeName}</b>`).openPopup();
+            map.setView([lat, lng], 14);
+        }
+    </script>
 </body>
 </html>
