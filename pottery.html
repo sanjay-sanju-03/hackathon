@@ -15,18 +15,19 @@
             --light-color: #f8f9fa;
             --dark-color: #333;
         }
-        
+        *{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
         body {
-            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
         
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/pottery.webp');
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)), url('images/pottery.webp');
             background-size: cover;
             background-position: center;
+            background-blend-mode: darken;
             background-attachment: fixed;
             height: 100vh;
             display: flex;
@@ -42,26 +43,35 @@
         .hero-content {
             max-width: 800px;
             padding: 3rem;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             animation: fadeIn 1.2s ease;
         }
         
         .hero-content h1 {
-            font-family: 'Modern No. 20', serif;
             font-size: 4.5rem;
             margin-bottom: 1.5rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            background: linear-gradient(45deg, #f8c291, #e55039);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
             animation: fadeInDown 1.2s ease;
         }
-        
+        .hero-content h1::after{
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0px;
+            height: 3px;
+            background: linear-gradient(45deg, #f8c291, #e55039);
+            border-radius: 2px;
+            animation: windin 1.2s ease;
+            animation-fill-mode: forwards;
+        }
+        @keyframes windin{
+            to{
+                width: 150px;
+            }
+        }
         .hero-content p {
             font-size: 1.8rem;
             margin-bottom: 2rem;
@@ -79,7 +89,6 @@
         }
         
         .coming-soon h2 {
-            font-family: 'Modern No. 20', serif;
             font-size: 3.5rem;
             color: #2c3e50;
             margin-bottom: 2rem;
@@ -219,23 +228,22 @@
 <body>
     <nav>
         <div class="nav-left">
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
+            <button title="toggle" class="menu-toggle">
+                <i class="tglbtn fas fa-bars"></i>
             </button>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="cuisine.html">Cuisine</a>
-                <a href="experience.html">Experiences</a>
-                <a href="events.html">Events</a>
-                <a href="house.html">Houseboats</a>
-                <a href="arts-artisans.html">Art & Artisans</a>
-                <a href="made-in-kasaragod.html">Made in Kasaragod</a>
+                <a style="--ind:1" href="index.html">Home</a>
+                <a style="--ind:2" href="cuisine.html">Cuisine</a>
+                <a style="--ind:3" href="experience.html">Experiences</a>
+                <a style="--ind:4" href="events.html">Events</a>
+                <a style="--ind:5" href="house.html">Houseboats</a>
+                <a style="--ind:6" href="arts-artisans.html" class="active">Art & Artisans</a>
+                <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
             </div>
         </div>
         <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <i class="fas fa-search search-icon"></i>
-            <div class="search-suggestions"></div>
+            <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+            <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
         </div>
     </nav>
 

@@ -75,6 +75,7 @@ nav {
 .search-wrapper {
     position: relative;
     max-width: 250px;
+    width: fit-content;
     margin-right: 0;
 }
 
@@ -566,8 +567,9 @@ footer {
     }
     
     .search-wrapper {
-        max-width: 150px;
+        max-width: fit-content;
         margin-right: 0;
+        width: fit-content;
     }
     
     .search-wrapper input {
@@ -613,7 +615,8 @@ footer {
 
 @media (max-width: 480px) {
     .search-wrapper {
-        max-width: 180px;
+        max-width: fit-content;
+        width:fit-content;
     }
 
     .search-wrapper input {
