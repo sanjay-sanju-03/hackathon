@@ -6,13 +6,12 @@
     <title>Kasaragod Cuisine Guide</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         :root {
             --primary-color: #4CAF50;
             --secondary-color: #2c3e50;
-            --accent-color: #45a049;
+            --primary-color: #1a5f7a;
             --white: #ffffff;
             --shadow: 0 0px 15px 10px rgba(0,0,0,0.1);
         }
@@ -21,7 +20,6 @@
             font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
 
         .hero {
@@ -131,11 +129,6 @@
 </head>
 <body>
     <nav>
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <i class="fas fa-search search-icon"></i>
-            <div class="search-suggestions"></div>
-        </div>
         <div class="nav-left">
             <button title="toggle" class="menu-toggle">
                 <i class="tglbtn fas fa-bars"></i>
@@ -149,6 +142,10 @@
                 <a style="--ind:6" href="arts-artisans.html">Art & Artisans</a>
                 <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
             </div>
+        </div>
+        <div class="search-wrapper">
+            <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+            <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
         </div>
     </nav>
 
@@ -228,34 +225,13 @@
         </div>
     </section>
 
-    <section id="map-section">
-        <h2>Location Map</h2>
-        <div id="map"></div>
-    </section>
 
     <footer>
         <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/menu-toggle.js"></script>
     <script>
-        var map = L.map('map').setView([12.5761, 74.9906], 10);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        var marker;
-
-        function showOnMap(lat, lng, placeName) {
-            if (marker) {
-                map.removeLayer(marker);
-            }
-            marker = L.marker([lat, lng]).addTo(map)
-                .bindPopup(`<b>${placeName}</b>`).openPopup();
-            map.setView([lat, lng], 14);
-        }
         
         // Search functionality
         document.addEventListener('DOMContentLoaded', function() {
