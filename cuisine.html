@@ -6,7 +6,6 @@
     <title>Kasaragod Cuisine Guide</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         :root {
@@ -226,34 +225,13 @@
         </div>
     </section>
 
-    <section id="map-section">
-        <h2>Location Map</h2>
-        <div id="map"></div>
-    </section>
 
     <footer>
         <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/menu-toggle.js"></script>
     <script>
-        var map = L.map('map').setView([12.5761, 74.9906], 10);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        var marker;
-
-        function showOnMap(lat, lng, placeName) {
-            if (marker) {
-                map.removeLayer(marker);
-            }
-            marker = L.marker([lat, lng]).addTo(map)
-                .bindPopup(`<b>${placeName}</b>`).openPopup();
-            map.setView([lat, lng], 14);
-        }
         
         // Search functionality
         document.addEventListener('DOMContentLoaded', function() {
