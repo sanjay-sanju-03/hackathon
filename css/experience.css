@@ -7,10 +7,9 @@
 
 body {
     min-height: 100vh;
-    background: url('../images/exp.jpg') no-repeat center center fixed,linear-gradient(to top ,rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
-    background-size: cover;
+    background: url('../images/exp.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
     color: #000000a4;
-    background-blend-mode: overlay;
 }
 
 .header {

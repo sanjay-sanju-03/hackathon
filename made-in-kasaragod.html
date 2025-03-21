@@ -84,8 +84,8 @@
                 <p>Exquisite handwoven sarees featuring traditional Kerala designs and motifs. A perfect blend of elegance and cultural heritage.</p>
             </div>
             <div class="card-buttons">
-                <a href="https://wa.me/+9104994255926" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Contact Seller
+                <a href="https://sarees.kasaroam.in/" class="whatsapp-btn" style="background-color: #4CAF50;">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
                 </a>
                 <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
@@ -111,7 +111,7 @@
                 <a href="https://wa.me/+9104994226176" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Contact Seller
                 </a>
-                <button class="location-btn" onclick="showStores('Kasaragod Handloom')">
+                <button class="location-btn" onclick="showHandloomStores()">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
             </div>
@@ -159,9 +159,9 @@
                 <a href="https://wa.me/+919048131550" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Contact Artist
                 </a>
-                <button class="location-btn" onclick="showStores('Theyyam Art & Crafts')">
-                    <i class="fas fa-map-marker-alt"></i> Visit Gallery
-                </button>
+                <a href="arts-artisans.html" class="location-btn">
+                    <i class="fas fa-paint-brush"></i> View Gallery
+                </a>
             </div>
         </div>
 
@@ -207,7 +207,7 @@
                 <button class="location-btn" onclick="showPoduvalDetails()">
                     <i class="fas fa-info-circle"></i> Learn More
                 </button>
-                <button class="location-btn" onclick="showStores('Poduval Sons Brass Works')">
+                <button class="location-btn" onclick="showPoduvalStores()">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
             </div>
@@ -249,12 +249,59 @@
         </div>
     </div>
 
+    <div id="poduvalStoresModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Poduval Sons Brass Works - Store Locations</h2>
+            <div class="store-locations">
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Udupi</h3>
+                    <p>Udupi, Karnataka, India</p>
+                </div>
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Mysore</h3>
+                    <p>Mysore district, Karnataka, India</p>
+                </div>
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Bangalore</h3>
+                    <p>Bangalore, Karnataka, India</p>
+                </div>
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Mangalore</h3>
+                    <p>Mangalore, Karnataka, India</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="poduvalModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Poduval Sons - A Legacy of Excellence</h2>
             <p>Poduval Sons is a distinguished brass and bronze manufacturing enterprise based in Kasaragod, Kerala, with a legacy dating back to 1958. Renowned for their handcrafted products, they specialize in creating brass utensils, idols, statues, Gajalakshmi lamps, and urulis (traditional cooking vessels). Their commitment to crafting items as per customer demands has solidified their reputation for quality and customization.</p>
             <p>The meticulous craftsmanship of Poduval Sons not only preserves traditional metalworking techniques but also enhances Kasaragod's cultural identity. By producing authentic brass and bronze artifacts, they contribute to the region's unique artisanal heritage. Their products are showcased across multiple branches, including locations in Kannur, Bengaluru, Thalassery, and Payyanur, further promoting Kasaragod's rich tradition of metal artistry.</p>
+        </div>
+    </div>
+
+    <div id="handloomStoresModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Kasaragod Handloom - Store Location</h2>
+            <div class="store-locations">
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Main Store</h3>
+                    <p>Kasaragod Handloom Weavers Co-operative Society</p>
+                    <p>Vidyanagar, Kasaragod, Kerala</p>
+                    <a href="https://maps.app.goo.gl/mYDAc3xE8rVPXiUT9" class="location-btn" target="_blank" style="display: inline-block; margin-top: 10px;">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -339,6 +386,40 @@ function showPoothaliDetails() {
     }
 }
 
+function showPoduvalStores() {
+    const modal = document.getElementById('poduvalStoresModal');
+    const span = modal.getElementsByClassName('close')[0];
+    
+    modal.style.display = 'block';
+    
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function showHandloomStores() {
+    const modal = document.getElementById('handloomStoresModal');
+    const span = modal.getElementsByClassName('close')[0];
+    
+    modal.style.display = 'block';
+    
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
 // Store location functionality
 function showStores(productName) {
     // This would typically show a modal or redirect to a map with store locations
@@ -402,6 +483,34 @@ function showStores(productName) {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.store-locations {
+    margin-top: 20px;
+}
+
+.store-item {
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.store-item i {
+    color: #4CAF50;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.store-item h3 {
+    margin: 5px 0;
+    color: #333;
+}
+
+.store-item p {
+    margin: 5px 0;
+    color: #666;
 }
 </style>
 </body>
