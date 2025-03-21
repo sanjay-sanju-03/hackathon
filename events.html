@@ -6,21 +6,14 @@
     <title>Events in Kasaragod</title>
     
     <!-- Font Awesome for icons -->
-     <!--test-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/events.css">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
     <nav>
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <i class="fas fa-search search-icon"></i>
-            <div class="search-suggestions"></div>
-        </div>
         <div class="nav-left">
             <button title="toggle" class="menu-toggle">
                 <i class="tglbtn fas fa-bars"></i>
@@ -35,6 +28,10 @@
                 <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
             </div>
         </div>
+        <div class="search-wrapper">
+            <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+            <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -48,7 +45,6 @@
     <!-- Events Section -->
     <div class="events-container">
         
-
         <!-- Sahitya Gana Nritya Vaibhava -->
         <div class="event-card">
             <div class="event-image" style="background-image: url('images/sahitya.jpg')"></div>
@@ -59,6 +55,41 @@
                 <a href="https://allevents.in/kasaragod/%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF-%E0%B2%97%E0%B2%BE%E0%B2%A8-%E0%B2%A8%E0%B3%83%E0%B2%A4%E0%B3%8D%E0%B2%AF-%E0%B2%B5%E0%B3%88%E0%B2%AD%E0%B2%B8%E0%B3%8D/200027890337734" class="btn btn-secondary" target="_blank">Learn More</a>
             </div>
         </div>
+
+        <!-- Curiosity Weekend -->
+        <div class="event-card">
+            <div class="event-image" style="background-image: url('images/curiosity.jpg')"></div>
+            <div class="event-content">
+                <div class="event-date">23 Mar 2025</div>
+                <h2 class="event-title">Curiosity Weekend – Together We Build!</h2>
+                <p class="event-description">Get ready for an exciting full-day event packed with innovation, robotics, and collaboration!</p>
+                <a href="#" class="btn btn-secondary" onclick="showEventDetails(event)">Learn More</a>
+                <div class="event-details" style="display: none;">
+                    <p><strong><br>Event Details:</strong></p>
+                    <p>📅 Date: March 23, 2025</p>
+                    <p>⏰ Time: 9:30 AM – 5:00 PM</p>
+                    <p>📍 Venue: Leap Co-Works, Kerala Startup Mission (KSUM)</p>
+                    <p>📍 Location: ASAP Community Skill Park, Vidyanagar, Kasaragod</p>
+                    <p><strong>What’s in Store?</strong></p>
+                    <ul>
+                        <li>🔧 Build and design a robot from scratch</li>
+                        <li>💡 Engage in group discussions on cutting-edge robotics</li>
+                        <li>🤝 Skill-sharing and practice sessions</li>
+                        <li>🎮 Robotics-themed games and challenges</li>
+                        <li>🌐 Network with fellow innovators</li>
+                    </ul>
+                    <p><strong>Who Can Participate?</strong></p>
+                    <ul>
+                        <li>▪ Students from IEDC cluster colleges in Kasaragod</li>
+                        <li>▪ Anyone passionate about robotics and technology</li>
+                    </ul>
+                    <p><strong>🍱 Food:</strong> Either pay for food in the registration form or bring your own lunch.</p>
+                    
+                    <p><strong>📞 For More Info:</strong> +91 88918 58905</p>
+                    <p>Join us for a day of learning, creating, and networking! 🚀</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -66,6 +97,13 @@
         <p>&copy; 2025 Cultural Heritage Platform. Built for Kasaragod.</p>
     </footer>
 
+    <script>
+        function showEventDetails(event) {
+            event.preventDefault();
+            const details = event.target.nextElementSibling;
+            details.style.display = details.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
     <script src="js/menu-toggle.js"></script>
 </body>
 </html>

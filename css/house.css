@@ -15,8 +15,6 @@
 }
 
 body {
-    font-family: 'Modern No. 20', serif;
-    line-height: 1.6;
     color: var(--text-color);
     padding-top: 60px; /* Add padding to account for fixed navbar */
 }
