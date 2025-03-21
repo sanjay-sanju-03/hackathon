@@ -3,71 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sri Kodoth Bhagavathy Temple</title>
-    <link rel="stylesheet" href="css/kodoth.css">
+    <title>Kodoth Bhagavathy - Divine Legacy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #2c3e50;
+            --accent-color: #ff9800;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/kodoth2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ffcc80, #d32f2f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .coming-soon {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .coming-soon h2 {
+            font-size: 3.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+        
+        .coming-soon p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffcc80, #d32f2f);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .coming-soon h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .coming-soon h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-
-    <nav>
-        <div class="logo">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Kodoth Bhagavathy</h1>
+            <p>A Sacred Temple of Devotion & Tradition</p>
         </div>
-        <ul>
-            <li><a href="index.html">Home</a>
-            <li><a href="cuisine.html">Cuisine</a></li>
-            <li><a href="experience.html">Experiences</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="house.html">Houseboats</a></li>
-            <li><a href="arts-artisans.html">Art & Artisans</a></li>
-            <li><a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a></li>
-        </ul>
-        <div class="mobile-menu">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-    <header style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/kodothtemp.jpg'); background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
-        <div>
-            <h1>Sri Kodoth Bhagavathy Temple</h1>
-            <p>Sacred and serene – Kodoth Bhagavathy Temple, Kasaragod</p>
-        </div>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>1. Where is Kodoth Bhagavathy Temple located?</h2>
-            <p>The Kodoth Bhagavathy Temple is located in the village of Kodom-Belur in Kasaragod district, Kerala. It is approximately 21 kilometers from Kanhangad town and about 2 kilometers from Udanjalil on the Kanhangad–Panathur road, making it easily accessible for pilgrims and visitors.</p>
-        </section>
-
-        <section>
-            <h2>What is the significance of the temple and its deity?</h2>
-            <p>The temple is dedicated to Goddess Bhagavathy, who represents the divine feminine energy, symbolizing protection and prosperity. Devotees from various regions visit the temple to seek her blessings, especially during the annual festival.</p>
-        </section>
-
-        <section>
-            <h2>Gallery</h2>
-            <div class="image-gallery">
-                <img src="images/kodoth1.jpg" alt="Suranga Tunnel">
-                <img src="images/kodoth2.jpg" alt="Water flowing from Suranga">
-                <img src="images/kodoth3.jpg" alt="Suranga in the hills">
-
-            </div>
-        </section>
-
-        <section>
-            <div class="quote">
-                "Kodoth Bhagavathy Temple – A sacred blend of tradition, devotion, and Kerala's timeless cultural heritage."
-            </div>
-        </section>
-
-        <section>
-            <h2>What makes the annual festival at Kodoth Bhagavathy Temple special?</h2>
-            <p>The five-day annual festival, held during the Karthika nakshatra in the Malayalam month of Kumbham (February–March), features vibrant rituals and cultural performances, attracting numerous devotees and tourists while showcasing Kerala’s rich traditions and festive spirit.</p>
-        </section>
     </div>
 
-    <footer>
-        <p>&copy; 2023 Kodoth Bhagavathy Temple - Kasaragod. | <a href="#">Learn More</a></p>
-    </footer>
+    <section class="coming-soon">
+        <h2>Mythology & Significance</h2>
+        <p>
+            Kodoth Bhagavathy Temple is one of the most revered temples in North Kerala, dedicated to Goddess Bhagavathy. It is renowned for its rich spiritual history, traditional Theyyam performances, and deep-rooted cultural significance. The temple attracts thousands of devotees who seek divine blessings, particularly during its grand annual festival.
+        </p>
+        <p>
+            The temple stands as a testament to centuries-old devotion and rituals, preserving the sacred traditions that have been passed down through generations. The deity is believed to be a powerful protector, bringing prosperity and well-being to her devotees.
+        </p>
+        <a href="index.html" class="back-btn">Go back</a>
+    </section>
 
+    <footer>
+        <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fas fa-heart"></i> for Kerala's spiritual heritage.</p>
+    </footer>
 </body>
 </html>
