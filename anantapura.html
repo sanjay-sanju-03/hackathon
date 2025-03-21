@@ -4,71 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shree Ananthapadmanabha Swamy Lake Temple: A Cultural and Spiritual Gem of Kasaragod</title>
-    <link rel="stylesheet" href="css/suranga.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/temple.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ffd700, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .image-gallery img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--accent-color);
+        }
+
+
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+    </style>
 </head>
+
 <body>
-
-    <nav>
-        <div class="logo">
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a>
-            <li><a href="cuisine.html">Cuisine</a></li>
-            <li><a href="experience.html">Experiences</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="house.html">Houseboats</a></li>
-            <li><a href="arts-artisans.html">Art & Artisans</a></li>
-            <li><a href="made-in-kasaragod.html" class="active">Made in Kasaragod</a></li>
-        </ul>
-        <div class="mobile-menu">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-    <header style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/temple.jpg'); background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
-        <div>
+    <div class="hero-section">
+        <div class="hero-content">
             <h1>Shree Ananthapadmanabha Swamy Lake Temple</h1>
             <p>A Cultural and Spiritual Gem of Kasaragod</p>
+            
         </div>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>Why is this temple a significant cultural and spiritual destination?</h2>
-            <p>Shree Ananthapadmanabha Swamy Lake Temple, located in Ananthapura, Kasaragod, is the only lake temple in Kerala. Built in the 9th century, it is regarded as the original seat (Moolasthanam) of Lord Ananthapadmanabha, attracting devotees and tourists seeking spiritual and cultural experiences.</p>
-        </section>
-
-        <section>
-            <h2> What makes the temple’s architecture and setting appealing to tourists?</h2>
-            <p>The temple is situated at the center of a two-acre lake, fed by a natural spring that remains full year-round. Its traditional Kerala-style architecture, featuring intricate wood carvings of the Dashavatara (ten incarnations of Lord Vishnu), enhances its cultural and historical value.</p>
-        </section>
-
-        <section>
-            <h2>Gallery</h2>
-            <div class="image-gallery">
-                <img src="images/temp1.jpg" alt="Suranga Tunnel">
-                <img src="images/temp2.jpg" alt="Water flowing from Suranga">
-                <img src="images/temp3.jpg" alt="Suranga in the hills">
-
-            </div>
-        </section>
-
-        <section>
-            <div class="quote">
-                "Ananthapura Lake Temple – Where devotion meets divinity amidst a serene lake."
-            </div>
-        </section>
-
-        <section>
-            <h2>How does the resident crocodile enhance the temple’s significance?</h2>
-            <p>The resident crocodile, Babiya, enhances the temple’s significance by adding a sense of mystique and divine connection. Babiya is believed to be a vegetarian crocodile that survives solely on the temple’s prasad (offerings) of rice and jaggery. This unusual behavior is seen as a divine blessing, attracting spiritual seekers and curious tourists alike. The presence of Babiya symbolizes protection and harmony, reinforcing the temple’s spiritual aura and cultural uniqueness.
-            </p>
-        </section>
     </div>
 
-    <footer>
-        <p>&copy; 2023 Suranga - Kasaragod. | <a href="#">Learn More</a></p>
-    </footer>
+    <section class="content-section">
+        <h2>Why is this temple a significant cultural and spiritual destination?</h2>
+        <p>Shree Ananthapadmanabha Swamy Lake Temple, located in Ananthapura, Kasaragod, is the only lake temple in Kerala. Built in the 9th century, it is regarded as the original seat (Moolasthanam) of Lord Ananthapadmanabha.</p>
+        
+        <h2>What makes the temple’s architecture and setting appealing?</h2>
+        <p>The temple is situated at the center of a two-acre lake, fed by a natural spring that remains full year-round. Its traditional Kerala-style architecture features intricate wood carvings of the Dashavatara (ten incarnations of Lord Vishnu).</p>
+        
+        <h2>Gallery</h2>
+        <div class="image-gallery">
+            <img src="images/temp1.jpg" alt="Temple View">
+            <img src="images/temp2.jpg" alt="Temple Interiors">
+            <img src="images/temp3.jpg" alt="Lake Surroundings">
+        </div>
+        
+        <h2>How does the resident crocodile enhance the temple’s significance?</h2>
+        <p>The temple is home to Babiya, a vegetarian crocodile that feeds on temple prasad. This rare phenomenon enhances the temple’s mystique and spiritual aura.</p>
+        <a href="index.html" class="back-btn">Go back</a>
+    </section>
 
+    <footer>
+        <p>&copy; 2023 Kasaragod Heritage. | <a href="#">Learn More</a></p>
+    </footer>
 </body>
 </html>

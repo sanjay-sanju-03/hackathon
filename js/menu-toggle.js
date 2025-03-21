@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        navLinks.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('active');
                 navBtn.classList.remove('fa-times');
