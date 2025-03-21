@@ -30,11 +30,6 @@
 </head>
 <body>
     <nav>
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <i class="fas fa-search search-icon"></i>
-            <div class="search-suggestions"></div>
-        </div>
         <div class="nav-left">
             <button title="toggle" class="menu-toggle">
                 <i class="tglbtn fas fa-bars"></i>
@@ -48,6 +43,10 @@
                 <a style="--ind:6" href="arts-artisans.html">Art & Artisans</a>
                 <a style="--ind:7" href="made-in-kasaragod.html" class="active">Made in Kasaragod</a>
             </div>
+        </div>
+        <div class="search-wrapper">
+            <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+            <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
         </div>
     </nav>
 
@@ -69,6 +68,30 @@
     </div>
 
     <div class="cards">
+        <div class="card highlighted" data-category="textiles">
+            <div class="product-badge">Featured</div>
+            <img src="images/saree.jpg" alt="Kasaragod Sarees">
+            <div class="card-content">
+                <h3>Traditional Kasaragod Sarees</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Exquisite handwoven sarees featuring traditional Kerala designs and motifs. A perfect blend of elegance and cultural heritage.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://sarees.kasaroam.in/" class="whatsapp-btn" style="background-color: #4CAF50;">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </a>
+                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
         <div class="card" data-category="handicrafts">
             <div class="product-badge">Best Seller</div>
             <img src="images/handloom.jpg" alt="Kasaragod Handloom">
@@ -87,7 +110,7 @@
                 <a href="https://wa.me/+9104994226176" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Contact Seller
                 </a>
-                <button class="location-btn" onclick="showStores('Kasaragod Handloom')">
+                <button class="location-btn" onclick="showHandloomStores()">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
             </div>
@@ -135,33 +158,9 @@
                 <a href="https://wa.me/+919048131550" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Contact Artist
                 </a>
-                <button class="location-btn" onclick="showStores('Theyyam Art & Crafts')">
-                    <i class="fas fa-map-marker-alt"></i> Visit Gallery
-                </button>
-            </div>
-        </div>
-
-        <div class="card" data-category="textiles">
-            <div class="product-badge">Premium</div>
-            <img src="images/saree.jpg" alt="Kasaragod Sarees">
-            <div class="card-content">
-                <h3>Traditional Kasaragod Sarees</h3>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>Exquisite handwoven sarees featuring traditional Kerala designs and motifs. A perfect blend of elegance and cultural heritage.</p>
-            </div>
-            <div class="card-buttons">
-                <a href="https://wa.me/+9104994255926" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Contact Seller
+                <a href="arts-artisans.html" class="location-btn">
+                    <i class="fas fa-paint-brush"></i> View Gallery
                 </a>
-                <button class="location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
-                    <i class="fas fa-map-marker-alt"></i> Find Stores
-                </button>
             </div>
         </div>
 
@@ -186,6 +185,121 @@
                 <button class="location-btn" onclick="showStores('Kasaragod Spice Collection')">
                     <i class="fas fa-map-marker-alt"></i> Find Stores
                 </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="handicrafts">
+            <div class="product-badge">Heritage</div>
+            <img src="images/poduval.jpg" alt="Poduval Sons Brass Works">
+            <div class="card-content">
+                <h3>Poduval Sons Brass Works</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Established in 1958, Poduval Sons is renowned for their exquisite brass and bronze craftsmanship, specializing in handcrafted utensils, idols, and traditional artifacts.</p>
+            </div>
+            <div class="card-buttons">
+                <button class="location-btn" onclick="showPoduvalDetails()">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </button>
+                <button class="location-btn" onclick="showPoduvalStores()">
+                    <i class="fas fa-map-marker-alt"></i> Find Stores
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="handicrafts">
+            <div class="product-badge">Experience</div>
+            <img src="images/poothali.jpg" alt="Poothali Homestay Coir Making">
+            <div class="card-content">
+                <h3>Poothali Homestay - Traditional Coir Making</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Experience the authentic art of traditional coir making at Poothali Homestay. Learn about this centuries-old craft of transforming coconut husks into versatile natural fiber products.</p>
+            </div>
+            <div class="card-buttons">
+                <a href="https://wa.me/+919876543210" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Book Experience
+                </a>
+                <button class="location-btn" onclick="showPoothaliDetails()">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="poothaliModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Traditional Coir Making at Poothali Homestay</h2>
+            <p>Poothali Homestay in Kasaragod, Kerala, offers guests a unique opportunity to immerse themselves in the traditional craft of coir making—a practice deeply rooted in the region's cultural heritage. Coir, derived from the Malayalam word 'kayar' meaning rope, is a natural fiber extracted from coconut husks and is integral to North Malabar's artisanal identity.</p>
+            <p>At Poothali, guests can engage firsthand in the coir-making process, which begins with harvesting mature coconuts. The husks are then subjected to retting—a curing process where they are immersed in water to encourage microbial activity that facilitates the separation of fibers. This retting period can last between 8 to 10 months, depending on water conditions.</p>
+            <p>Following retting, artisans beat the husks with wooden mallets to extract the coir fibers, which are then washed, combed, and sun-dried. These fibers are subsequently spun into ropes and crafted into various products, including brushes, floor mats, mattresses, and doormats. Notably, coir's durability and resistance to saltwater make it particularly suitable for maritime applications, such as ropes used in boat construction.</p>
+            <p>By participating in this coir-making experience, visitors to Poothali Homestay not only gain insight into a traditional craft but also contribute to the preservation and appreciation of a cultural practice that has been passed down through generations in North Malabar.</p>
+        </div>
+    </div>
+
+    <div id="poduvalStoresModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Poduval Sons Brass Works - Store Locations</h2>
+            <div class="store-locations">
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Udupi</h3>
+                    <p>Udupi, Karnataka, India</p>
+                </div>
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Mysore</h3>
+                    <p>Mysore district, Karnataka, India</p>
+                </div>
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Bangalore</h3>
+                    <p>Bangalore, Karnataka, India</p>
+                </div>
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Mangalore</h3>
+                    <p>Mangalore, Karnataka, India</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="poduvalModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Poduval Sons - A Legacy of Excellence</h2>
+            <p>Poduval Sons is a distinguished brass and bronze manufacturing enterprise based in Kasaragod, Kerala, with a legacy dating back to 1958. Renowned for their handcrafted products, they specialize in creating brass utensils, idols, statues, Gajalakshmi lamps, and urulis (traditional cooking vessels). Their commitment to crafting items as per customer demands has solidified their reputation for quality and customization.</p>
+            <p>The meticulous craftsmanship of Poduval Sons not only preserves traditional metalworking techniques but also enhances Kasaragod's cultural identity. By producing authentic brass and bronze artifacts, they contribute to the region's unique artisanal heritage. Their products are showcased across multiple branches, including locations in Kannur, Bengaluru, Thalassery, and Payyanur, further promoting Kasaragod's rich tradition of metal artistry.</p>
+        </div>
+    </div>
+
+    <div id="handloomStoresModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Kasaragod Handloom - Store Location</h2>
+            <div class="store-locations">
+                <div class="store-item">
+                    <i class="fas fa-store"></i>
+                    <h3>Main Store</h3>
+                    <p>Kasaragod Handloom Weavers Co-operative Society</p>
+                    <p>Vidyanagar, Kasaragod, Kerala</p>
+                    <a href="https://maps.app.goo.gl/mYDAc3xE8rVPXiUT9" class="location-btn" target="_blank" style="display: inline-block; margin-top: 10px;">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -236,6 +350,75 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Modal functionality for Poduval Sons
+function showPoduvalDetails() {
+    const modal = document.getElementById('poduvalModal');
+    const span = modal.getElementsByClassName('close')[0];
+    
+    modal.style.display = 'block';
+    
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function showPoothaliDetails() {
+    const modal = document.getElementById('poothaliModal');
+    const span = modal.getElementsByClassName('close')[0];
+    
+    modal.style.display = 'block';
+    
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function showPoduvalStores() {
+    const modal = document.getElementById('poduvalStoresModal');
+    const span = modal.getElementsByClassName('close')[0];
+    
+    modal.style.display = 'block';
+    
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function showHandloomStores() {
+    const modal = document.getElementById('handloomStoresModal');
+    const span = modal.getElementsByClassName('close')[0];
+    
+    modal.style.display = 'block';
+    
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
 // Store location functionality
 function showStores(productName) {
     // This would typically show a modal or redirect to a map with store locations
@@ -244,5 +427,90 @@ function showStores(productName) {
 </script>
 
 <script src="js/menu-toggle.js"></script>
+
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.card.highlighted {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border: 2px solid #ffd700;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.card.highlighted:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+.card.highlighted .product-badge {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.store-locations {
+    margin-top: 20px;
+}
+
+.store-item {
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.store-item i {
+    color: #4CAF50;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.store-item h3 {
+    margin: 5px 0;
+    color: #333;
+}
+
+.store-item p {
+    margin: 5px 0;
+    color: #666;
+}
+</style>
 </body>
 </html> 

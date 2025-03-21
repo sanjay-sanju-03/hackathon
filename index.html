@@ -10,17 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <!-- Leaflet Routing Machine CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 
 <nav>
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <i class="fas fa-search search-icon"></i>
-        <div class="search-suggestions"></div>
-    </div>
     <div class="nav-left">
         <button title="toggle" class="menu-toggle">
             <i class="tglbtn fas fa-bars"></i>
@@ -34,6 +28,10 @@
             <a style="--ind:6" href="arts-artisans.html">Art & Artisans</a>
             <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
         </div>
+    </div>
+    <div class="search-wrapper">
+        <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+        <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
     </div>
 </nav>
 
@@ -108,7 +106,7 @@
                 <p>Handwoven silk sarees with intricate designs reflecting cultural heritage.</p>
             </div>
             <div class="card-buttons">
-                <a href="https://sarees.kasaroam.in/" target="_blank" class="btn order-btn">
+                <a href="http://145.223.18.192/" target="_blank" class="btn order-btn">
                     <i class="fas fa-shopping-cart"></i> Order Now
                 </a>
                 <button class="btn location-btn" onclick="showStores('Traditional Kasaragod Sarees')">
@@ -117,17 +115,7 @@
             </div>
         </div>
 
-        <div class="card" data-category="all">
-            <img src="images/Asap.jpg" alt="ASAP">
-            <div class="card-content">
-                <h3>ASAP Community Skill Park</h3>
-                <p>A center for skill development and vocational training in Kasaragod.</p>
-            </div>
-            <div class="card-buttons">
-                <button onclick="showOnMap(12.5182, 75.0141, 'ASAP Community Skill Park')">Show on Map</button>
-                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
-            </div>
-        </div>
+
 
         <div class="card" data-category="temple">
             <img src="images/Anantapura_Lake_Temple.jpg" alt="Anantapura Lake Temple">
@@ -181,7 +169,7 @@
             <img src="images/bela.jpeg" alt="Bela">
             <div class="card-content">
                 <h3>Bela Church</h3>
-                <p>Bela Church, also known as Our Lady of Sorrows Church, is a Roman Catholic church in Kasaragod, Kerala, known for being the oldest church in the district, built in 1890 in a Gothic Revival style</p>
+                <p>Bela Church, also known as Our Lady of Sorrows Church, is a Roman Catholic church.</p>
             </div>
             <div class="card-buttons">
                 <button onclick="showOnMap(12.5870, 75.0224, 'Bela church')">Show on Map</button>
@@ -193,7 +181,7 @@
             <img src="images/kareems forest park.jpg" alt="forest park">
             <div class="card-content">
                 <h3>Kareem's forest park</h3>
-                <p>Kareem's Forest Park is a remarkable man-made forest located in Puliyamkulam, near Parappa, approximately 23 kilometers east of Kanhangad town in Kerala's Kasaragod district.</p>
+                <p>Kareem's Forest Park is a remarkable man-made forest located in Puliyamkulam, near Parappa.</p>
             </div>
             <div class="card-buttons">
                 <button onclick="showOnMap(12.5076, 74.9882, 'kareems Forest Park')">Show on Map</button>
@@ -205,7 +193,7 @@
             <img src="images/suranga.jpg" alt="Suranga">
             <div class="card-content">
                 <h3>Suranga </h3>
-                <p>Popularly known as Suranga or Thurangam, these artificial tunnel wells are carved in the slopes of laterite hills so that people can walk towards the water source</p>
+                <p>Popularly known as Suranga or Thurangam, these artificial tunnel wells are carved in the slopes of laterite hills.</p>
             </div>
             <div class="card-buttons">
                 <button onclick="showOnMap(12.5076, 74.9882, 'Suranga')">Show on Map</button>
@@ -217,7 +205,7 @@
             <img src="images/kodothtemp.jpg" alt="Kodoth bhagavathi temple">
             <div class="card-content">
                 <h3>Kodoth bhagavathi temple </h3>
-                <p>This is a temple dedicated to Goddess Bhagavathy, and is located in the village of Kodom in Kasaragod. Rich in architectural beauty, the major attractions of this temple are the wood paintings and the temple pond. The village of Kodom itself is located 24 kms from Kanhangad in Kasaragod, Kerala.
+                <p>This is a temple dedicated to Goddess Bhagavathy, and is located in the village of Kodom in Kasaragod. Rich in architectural beauty.
                 </p>
             </div>
             <div class="card-buttons">
@@ -238,101 +226,27 @@
             </div>
         </div>
 
+        <!--<div class="card" data-category="all">
+            <img src="images/Asap.jpg" alt="ASAP">
+            <div class="card-content">
+                <h3>ASAP Community Skill Park</h3>
+                <p>A center for skill development and vocational training in Kasaragod.</p>
+            </div>
+            <div class="card-buttons">
+                <button onclick="showOnMap(12.5182, 75.0141, 'ASAP Community Skill Park')">Show on Map</button>
+                <a href="https://wa.me/9447326319">Contact on WhatsApp</a>
+            </div>
+        </div>-->
+
     </div>
 </section>
-
-<section class="map-section">
-    <div class="map-container">
-        <h2>Find Cultural Locations</h2>
-        <div id="map"></div>
-        <div id="location-info"></div>
-    </div>
-</section>
-
+<!-- nah nothing here -->
 <footer>
     <p>© 2024 Cultural Heritage Platform. Built for Kasaragod.</p>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script src="js/script.js"></script>
-<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-<script>
-    const map = L.map('map').setView([12.4280 , 75.3616], 10);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    const bekalFort = [12.4280, 75.3616];
-
-    L.marker(bekalFort).addTo(map)
-        .bindPopup("Bekal Fort")
-        .openPopup();
-
-    function getUserLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
-
-                const userLocation = [latitude, longitude];
-                L.marker(userLocation).addTo(map)
-                    .bindPopup("You are here!")
-                    .openPopup();
-
-                map.setView(userLocation, 13);
-                document.getElementById('location-info').innerHTML = `
-                    Latitude: ${latitude}<br>
-                    Longitude: ${longitude}
-                `;
-                calculateDistance(userLocation, bekalFort);
-                showDirections(userLocation, bekalFort);
-
-            }, function(error) {
-                alert("Error getting location: " + error.message);
-            });
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
-    }
-
-    function calculateDistance(userLocation, destination) {
-        const lat1 = userLocation[0];
-        const lon1 = userLocation[1];
-        const lat2 = destination[0];
-        const lon2 = destination[1];
-
-        const rad = Math.PI / 180;
-        const dLat = (lat2 - lat1) * rad;
-        const dLon = (lon2 - lon1) * rad;
-
-        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                  Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
-                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        const R = 6371;
-        const distance = R * c;
-
-        document.getElementById('location-info').innerHTML += `
-            <br>Distance to Bekal Fort: ${distance.toFixed(2)} km
-        `;
-    }
-
-    function showDirections(userLocation, destination) {
-        L.Routing.control({
-            waypoints: [
-                L.latLng(userLocation[0], userLocation[1]),
-                L.latLng(destination[0], destination[1])
-            ],
-            routeWhileDragging: true
-        }).addTo(map);
-    }
-
-    getUserLocation();
-</script>
-
 <script>
     // Store location functionality
     function showStores(productName) {

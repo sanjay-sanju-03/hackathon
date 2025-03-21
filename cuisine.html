@@ -6,13 +6,12 @@
     <title>Kasaragod Cuisine Guide</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         :root {
             --primary-color: #4CAF50;
             --secondary-color: #2c3e50;
-            --accent-color: #45a049;
+            --primary-color: #1a5f7a;
             --white: #ffffff;
             --shadow: 0 0px 15px 10px rgba(0,0,0,0.1);
         }
@@ -21,7 +20,6 @@
             font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
 
         .hero {
@@ -131,11 +129,6 @@
 </head>
 <body>
     <nav>
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <i class="fas fa-search search-icon"></i>
-            <div class="search-suggestions"></div>
-        </div>
         <div class="nav-left">
             <button title="toggle" class="menu-toggle">
                 <i class="tglbtn fas fa-bars"></i>
@@ -149,6 +142,10 @@
                 <a style="--ind:6" href="arts-artisans.html">Art & Artisans</a>
                 <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
             </div>
+        </div>
+        <div class="search-wrapper">
+            <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+            <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
         </div>
     </nav>
 
@@ -180,10 +177,10 @@
                     <h3>Goli Baje</h3>
                     <p>Soft and crispy fried snack made from all-purpose flour.</p>
                     <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Bekal Beach Restaurant
+                        <i class="fas fa-map-marker-alt"></i> Best at: Udupi Garden (Veg)
                     </div>
                     <div class="price">₹10 - ₹20</div>
-                    <button onclick="showOnMap(12.391036365727079, 75.04170082637717, 'Bekal Beach Restaurant')">Show on Map</button>
+                    <button onclick="showOnMap(12.391036365727079, 75.04170082637717, 'Udupi Garden')">Show on Map</button>
                 </div>
             </div>
 
@@ -193,10 +190,10 @@
                     <h3>Pathiri</h3>
                     <p>Rice flour bread served with spicy chicken curry, a Malabar specialty.</p>
                     <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Malabar Kitchen, Nileshwar
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
                     </div>
                     <div class="price">₹100 - ₹150</div>
-                    <button onclick="showOnMap(12.153552, 75.184781, 'Malabar Kitchen')">Show on Map</button>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
                 </div>
             </div>
 
@@ -206,10 +203,10 @@
                     <h3>Fresh Seafood Platter</h3>
                     <p>Variety of fresh seafood including prawns, crabs, and fish prepared in local style.</p>
                     <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
                     </div>
                     <div class="price">₹500 - ₹800</div>
-                    <button onclick="showOnMap(12.405723624925907, 75.02604953173402, 'Sea Shore Restaurant')">Show on Map</button>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
                 </div>
             </div>
 
@@ -219,43 +216,243 @@
                     <h3>Kallumakkaya Pickle</h3>
                     <p>Flavorful and spicy Kerala delicacy made with fresh seafood, tangy vinegar, and aromatic spices.</p>
                     <div class="location">
-                        <i class="fas fa-map-marker-alt"></i> Best at: Sea Shore Restaurant, Bekal
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
                     </div>
                     <div class="price">₹250 - ₹400</div>
-                    <button onclick="showOnMap(12.405723624925907, 75.02604953173402, 'Sea Shore Restaurant')">Show on Map</button>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/chicken-sukka.jpg" alt="Chicken Sukka">
+                <div class="cuisine-content">
+                    <h3>Chicken Sukka – Mangalorean-Style Coconut Chicken</h3>
+                    <p>A dry, spicy chicken dish made with shredded coconut, red chilies, and a mix of aromatic spices. This dish is crunchy yet juicy, with a rich coconut coating that enhances its flavor. Perfect when paired with ghee rice or roti.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹200 - ₹300</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/ilada.webp" alt="Ilada">
+                <div class="cuisine-content">
+                    <h3>Ilada</h3>
+                    <p>A traditional steamed rice dumpling filled with a mixture of jaggery and grated coconut. The banana leaf wrapping gives it an earthy aroma, making it an irresistible breakfast or tea-time snack. Made from rice flour dough, these dumplings are carefully wrapped in banana leaves and steamed to perfection. The combination of sweet jaggery and fresh coconut creates a delightful contrast of flavors, while the banana leaf imparts a subtle earthy fragrance. This beloved local delicacy is often served during special occasions and is a favorite among both locals and visitors.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Udupi Garden (Veg)
+                    </div>
+                    <div class="price">₹20 - ₹30</div>
+                    <button onclick="showOnMap(12.391036365727079, 75.04170082637717, 'Udupi Garden')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/pola.jpeg" alt="Ottupola">
+                <div class="cuisine-content">
+                    <h3>Ottupola</h3>
+                    <p>A simple yet delicious rice pancake, slightly thicker than dosa but incredibly soft. Made with rice flour, coconut milk, and a hint of cardamom, this pancake is an ideal breakfast dish served with spicy gravies or honey.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹30 - ₹50</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/neerdosa.jpeg" alt="Neerdosa">
+                <div class="cuisine-content">
+                    <h3>Neerdosa</h3>
+                    <p>A thin, featherlight rice dosa, soft yet slightly crispy at the edges. This dosa is unique because it is fermentation-free, making it a quick and easy dish to prepare. It pairs beautifully with coconut chutney or spicy chicken curry.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹40 - ₹60</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/neypathal.jpeg" alt="Neypathal">
+                <div class="cuisine-content">
+                    <h3>Neypathal</h3>
+                    <p>A crispy and slightly chewy deep-fried bread made with rice flour, coconut, and cumin seeds. It is a must-try Malabar delicacy, often paired with beef curry or chicken roast.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹20 - ₹30</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/kaypola.jpg" alt="Kaipola">
+                <div class="cuisine-content">
+                    <h3>Kaipola</h3>
+                    <p>A rich, caramelized banana cake with eggs, cardamom, and ghee. This dessert, deeply rooted in Mappila cuisine, is soft, mildly sweet, and bursting with flavors. It is often served as an iftar treat during Ramadan.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹50 - ₹80</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/madakkada.jpg" alt="Madakkada">
+                <div class="cuisine-content">
+                    <h3>Madakkada</h3>
+                    <p>A soft, folded rice pancake with varied fillings such as coconut, jaggery, or even spiced lentils. This dish is simple yet satisfying, reflecting the traditional cooking styles of northern Kerala.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Udupi Garden (Veg)
+                    </div>
+                    <div class="price">₹25 - ₹40</div>
+                    <button onclick="showOnMap(12.391036365727079, 75.04170082637717, 'Udupi Garden')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/unnakaya.webp" alt="Unnakkaya">
+                <div class="cuisine-content">
+                    <h3>Unnakkaya</h3>
+                    <p>A crispy-on-the-outside, soft-on-the-inside snack made from mashed ripe plantains stuffed with a sweet mixture of coconut, jaggery, and nuts. Often served during festivals and weddings, it is a must-try Malabar delicacy.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Udupi Garden (Veg)
+                    </div>
+                    <div class="price">₹30 - ₹50</div>
+                    <button onclick="showOnMap(12.391036365727079, 75.04170082637717, 'Udupi Garden')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/kamb.jpeg" alt="Kaamb Varavu">
+                <div class="cuisine-content">
+                    <h3>Kaamb Varavu</h3>
+                    <p>A traditional dish made with fresh bamboo shoots, stir-fried with spices, coconut, and tamarind. This seasonal specialty is a true taste of Kasaragod's unique flavors.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹100 - ₹150</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/charu.jpg" alt="Charumuru">
+                <div class="cuisine-content">
+                    <h3>Charumuru (Churumuri)</h3>
+                    <p>A puffed rice-based snack tossed with onions, tomatoes, peanuts, and a tangy masala. A perfect evening-time munch that's popular among street food lovers in Kasaragod.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹20 - ₹30</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/chakli.jpeg" alt="Chakli">
+                <div class="cuisine-content">
+                    <h3>Chakli</h3>
+                    <p>A deep-fried crispy, spiral-shaped snack made from rice flour and lentils. It's a crunchy delight, usually made during festivals and paired with Fire Soda for the ultimate combo!</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹30 - ₹50</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/firesoda.jpg" alt="Fire Soda">
+                <div class="cuisine-content">
+                    <h3>Fire Soda</h3>
+                    <p>A fizzy, spicy, and slightly tangy drink that's an instant refresher. A special Kasaragod street beverage that tingles your taste buds like nothing else!</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹15 - ₹25</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/porotta.jpeg" alt="Porotta">
+                <div class="cuisine-content">
+                    <h3>Porotta</h3>
+                    <p>A layered, crispy-yet-soft flatbread, famous all over Kerala but deeply loved in Kasaragod. It pairs beautifully with beef, chicken, or even vegetable curries.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹30 - ₹50</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/cheerip.jpeg" alt="Porotta Cheeripanath">
+                <div class="cuisine-content">
+                    <h3>Porotta Cheeripanath</h3>
+                    <p>A softer, slightly thicker version of the traditional porotta, loved for its rich, buttery texture and unique preparation style.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹40 - ₹60</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/peere.jpeg" alt="Chicken Peere">
+                <div class="cuisine-content">
+                    <h3>Chicken Peere</h3>
+                    <p>A delicate, lightly spiced chicken dish cooked in coconut gravy with a touch of curry leaves and mild spices. It's comfort food at its best!</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹150 - ₹200</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/chicken.jpg" alt="Koi Kadamb">
+                <div class="cuisine-content">
+                    <h3>Koi Kadamb</h3>
+                    <p>A tamarind-infused, mildly spiced fish curry that's rich in coastal flavors. Made with fresh catch from the Arabian Sea, this dish is a must-try for seafood lovers.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹200 - ₹300</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
+                </div>
+            </div>
+
+            <div class="cuisine-card">
+                <img src="images/kalathappam.jpeg" alt="Kalthappam">
+                <div class="cuisine-content">
+                    <h3>Kalthappam</h3>
+                    <p>A soft, slightly sweet rice cake flavored with coconut, jaggery, and even onions for a unique twist! A traditional delicacy that's both savory and sweet.</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i> Best at: Kollya Thattukada
+                    </div>
+                    <div class="price">₹40 - ₹60</div>
+                    <button onclick="showOnMap(12.5718149, 74.9845173, 'Kollya Thattukada')">Show on Map</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="map-section">
-        <h2>Location Map</h2>
-        <div id="map"></div>
-    </section>
 
     <footer>
         <p>&copy; 2024 Cultural Heritage Platform. Built with <i class="fa fa-heart"></i> for Kasaragod.</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/menu-toggle.js"></script>
     <script>
-        var map = L.map('map').setView([12.5761, 74.9906], 10);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        var marker;
-
-        function showOnMap(lat, lng, placeName) {
-            if (marker) {
-                map.removeLayer(marker);
-            }
-            marker = L.marker([lat, lng]).addTo(map)
-                .bindPopup(`<b>${placeName}</b>`).openPopup();
-            map.setView([lat, lng], 14);
-        }
         
         // Search functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -276,7 +473,24 @@
                 { text: 'Goli Baje', url: '#goli-baje' },
                 { text: 'Pathiri', url: '#pathiri' },
                 { text: 'Fresh Seafood', url: '#seafood' },
-                { text: 'Kallumakkaya Pickle', url: '#pickle' }
+                { text: 'Kallumakkaya Pickle', url: '#pickle' },
+                { text: 'Chicken Sukka', url: '#chicken-sukka' },
+                { text: 'Ilada', url: '#ilada' },
+                { text: 'Ottupola', url: '#ottupola' },
+                { text: 'Neerdosa', url: '#neerdosa' },
+                { text: 'Neypathal', url: '#neypathal' },
+                { text: 'Kaipola', url: '#kaipola' },
+                { text: 'Madakkada', url: '#madakkada' },
+                { text: 'Unnakkaya', url: '#unnakaya' },
+                { text: 'Kaamb Varavu', url: '#kaamb-varavu' },
+                { text: 'Charumuru', url: '#charumuru' },
+                { text: 'Chakli', url: '#chakli' },
+                { text: 'Fire Soda', url: '#firesoda' },
+                { text: 'Porotta', url: '#porotta' },
+                { text: 'Porotta Cheeripanath', url: '#porotta-cheeripanath' },
+                { text: 'Chicken Peere', url: '#chicken-peere' },
+                { text: 'Koi Kadamb', url: '#koi-kadamb' },
+                { text: 'Kalthappam', url: '#kalthappam' }
             ];
 
             if (searchInput) {
