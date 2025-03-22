@@ -182,8 +182,148 @@
         });
 
         document.addEventListener('DOMContentLoaded', fetchExperiences);
+
+    
     </script>
     
     <script src="js/menu-toggle.js"></script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Section</title>
+    <style>
+        /* Footer Styling */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .footer-links a:hover {
+            color: #ffcc00;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact p {
+            margin: 0;
+        }
+
+        .footer-contact a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: #ffcc00;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 5px 0;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-links ul {
+                gap: 15px;
+            }
+
+            .footer-links a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="cuisine.html">Cuisine</a></li>
+                <li><a href="experience.html">Experiences</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="house.html">Houseboats</a></li>
+                <li><a href="arts-artisans.html">Art & Artisans</a></li>
+                <li><a href="made-in-kasaragod.html">Made in Kasaragod</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <p>Email: <a href="mailto:contact@kasaroam.in">contact@kasaroam.in</a></p>
+            <p>Phone: <a href="tel:+919847393486">+91 9847393486</a></p>
+            <p>Location: Kasaragod, Kerala 671124</p>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Preserving the Past, Celebrating the Present, Inspiring the Future.</p>
+            <p>&copy; <span id="year"></span> <strong>Cultural Heritage Platform</strong>. Built with ❤️ for Kasaragod.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
 </body>
 </html>
