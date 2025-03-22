@@ -9,51 +9,110 @@
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         :root {
-            --primary-color: #d4af37;
             --secondary-color: #2c3e50;
             --accent-color: #f39c12;
             --light-color: #f8f9fa;
             --dark-color: #333;
         }
-        
+        *{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
-        
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/temple.jpg');
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)), url('images/Anantapura_Lake_Temple.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-blend-mode: darken;
             height: 100vh;
             display: flex;
+            max-width: 100vw;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            text-wrap: wrap;
+            margin-top: 0;
             position: relative;
+            overflow: hidden;
         }
         
         .hero-content {
             max-width: 800px;
+            width: 100%;
+            text-wrap: wrap;
             padding: 3rem;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.2s ease;
         }
         
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
+            text-wrap: wrap;
+            position: relative;
             text-transform: uppercase;
-            background: linear-gradient(45deg, #ffd700, #ff4500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1.2s ease;
+        }
+        .hero-content h1::after{
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0px;
+            height: 3px;
+            background: linear-gradient(45deg, #f8c291, #e55039);
+            border-radius: 2px;
+            animation: windin 1.2s ease;
+            animation-fill-mode: forwards;
+        }
+        @keyframes windin{
+            to{
+                width: 150px;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #fff;
+            font-weight: 300;
+            animation: fadeInUp 1.5s ease;
         }
         
         .content-section {
@@ -63,13 +122,13 @@
         }
 
         .content-section h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
         }
 
         .content-section p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--dark-color);
             max-width: 800px;
             margin: 0 auto;
@@ -118,6 +177,26 @@
 </head>
 
 <body>
+    <nav>
+        <div class="nav-left">
+            <button title="toggle" class="menu-toggle">
+                <i class="tglbtn fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a style="--ind:1" href="index.html" class="active">Home</a>
+                <a style="--ind:2" href="cuisine.html">Cuisine</a>
+                <a style="--ind:3" href="experience.html">Experiences</a>
+                <a style="--ind:4" href="events.html">Events</a>
+                <a style="--ind:5" href="house.html">Houseboats</a>
+                <a style="--ind:6" href="arts-artisans.html">Art & Artisans</a>
+                <a style="--ind:7" href="made-in-kasaragod.html">Made in Kasaragod</a>
+            </div>
+        </div>
+        <div class="search-wrapper">
+            <a class="uilink" href="http://145.223.18.192/cart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+            <a class="uilink" href="http://145.223.18.192/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+        </div>
+    </nav>
     <div class="hero-section">
         <div class="hero-content">
             <h1>Shree Ananthapadmanabha Swamy Lake Temple</h1>
@@ -140,7 +219,7 @@
             <img src="images/temp3.jpg" alt="Lake Surroundings">
         </div>
         
-        <h2>How does the resident crocodile enhance the temple’s significance?</h2>
+        <h2>How does the resident crocodile enhance the temple's significance?</h2>
         <p>The temple is home to Babiya, a vegetarian crocodile that feeds on temple prasad. This rare phenomenon enhances the temple’s mystique and spiritual aura.</p>
         <a href="index.html" class="back-btn">Go back</a>
     </section>
@@ -148,5 +227,6 @@
     <footer>
         <p>&copy; 2023 Kasaragod Heritage. | <a href="#">Learn More</a></p>
     </footer>
+    <script src="./js/menu-toggle.js"></script>
 </body>
 </html>
