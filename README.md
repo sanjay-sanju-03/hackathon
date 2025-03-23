@@ -105,4 +105,4 @@ For any questions or feedback, please contact [your email].
 
 ---
 
-&copy; 2024 Cultural Heritage Platform. Built for Kasaragod.
+&copy;2024 Cultural Heritage Platform. Built for Kasaragod.
